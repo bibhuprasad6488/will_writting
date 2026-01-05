@@ -1,18 +1,18 @@
 @extends('admin.layouts.app')
-@section('title', 'Partners List')
+@section('title', 'Case Studies List')
 @section('content')
     <div class="container-fluid px-4">
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="py-2">
-                <h1 class="mt-4">Partners List</h1>
+                <h1 class="mt-4">Case Studies List</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item">Dashboard</li>
-                    <li class="breadcrumb-item active">Partners List</li>
+                    <li class="breadcrumb-item active">Case Studies List</li>
                 </ol>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('admin.partners.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('admin.case-studies.create') }}" class="btn btn-primary">Create</a>
                 </div>
             </div>
         </div>
@@ -36,35 +36,37 @@
                     <thead>
                         <tr>
                             <th>SL No</th>
-                            <th>Name</th>
-                            <th>Logo</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Short Description</th>
                             <th>Created</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($partners as $p)
+                        @foreach ($caseStudies as $cs)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><b>{{ $p->name }}</b></td>
+                                <td><b>{{ $cs->title }}</b></td>
                                 <td>
-                                    @if (!$p->logo_path)
-                                        <img src="{{ asset('storage/images/no_img.png') }}" alt="{{ $p->name }}" class="rounded"
+                                    @if (!$cs->image)
+                                        <img src="{{ asset('storage/images/no_img.png') }}" alt="{{ $cs->title }}" class="rounded"
                                             width="80">
                                     @else
-                                        <img src="{{ $p->logo_path }}" alt="{{ $p->name }}" width="80" class="rounded">
+                                        <img src="{{ $cs->image }}" alt="{{ $cs->title }}" width="80" class="rounded">
                                     @endif
                                 </td>
-                                <td>{{ $p->created_at }}</td>
+                                <td>{{ Str::limit($cs->short_desc, 50, '...') }}</td>
+                                <td>{{ $cs->created_at }}</td>
                                 <td>
-                                    <a href="{{ route('admin.partners.edit', $p->id) }}"
+                                    <a href="{{ route('admin.case-studies.edit', $cs->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>
-                                    <form action="{{ route('admin.partners.destroy', $p->id) }}" method="POST"
+                                    <form action="{{ route('admin.case-studies.destroy', $cs->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Are you sure you want to delete this partner?');">Delete</button>
+                                            onclick="return confirm('Are you sure you want to delete this?');">Delete</button>
                                     </form>
                                 </td>
                             </tr>

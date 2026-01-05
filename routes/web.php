@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CaseStudyController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\TestimonialController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +41,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.dashboard');
         })->name('dashboard');
 
-        Route::resource('partners', App\Http\Controllers\Admin\PartnerController::class)->names('partners');
+        Route::resource('partners', PartnerController::class)->names('partners');
+        Route::resource('testimonials', TestimonialController::class)->names('testimonials');
+        Route::resource('case-studies', CaseStudyController::class)->names('case-studies');
     });
 });
 

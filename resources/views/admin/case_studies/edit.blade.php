@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Partner')
+@section('title', 'Edit Case Study')
 
 @section('content')
     <div class="container-fluid px-4">
@@ -8,16 +8,16 @@
         <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1">Edit Partner</h1>
+                <h1 class="fw-bold mb-1">Edit Case Study</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">Dashboard</li>
-                        <li class="breadcrumb-item">Partners</li>
+                        <li class="breadcrumb-item">Case Studies</li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </nav>
             </div>
-            <a href="{{ route('admin.partners.index') }}" class="btn btn-outline-primary">
+            <a href="{{ route('admin.case-studies.index') }}" class="btn btn-outline-primary">
                 ← Back
             </a>
         </div>
@@ -25,7 +25,7 @@
         <!-- Card -->
         <div class="card shadow-sm border-0">
             <div class="card-header bg-light fw-semibold">
-                Partner Information
+                Case Study Information
             </div>
 
             @if (session('success'))
@@ -39,7 +39,7 @@
                 </div>
             @endif
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.partners.update', $partner->id) }}"
+                <form method="POST" action="{{ route('admin.case-studies.update', $cs->id) }}"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -48,24 +48,23 @@
                         <!-- Name -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
-                                Partner Name <span class="text-danger">*</span>
+                                Title <span class="text-danger">*</span>
                             </label>
-                            <input type="text" class="form-control" name="name"
-                                value="{{ optional($partner)->name ?? old('name') }}" placeholder="Enter partner name"
-                                required>
-                            @error('name')
+                            <input type="text" class="form-control" name="title"
+                                value="{{ optional($cs)->title ?? old('title') }}" placeholder="Enter Title" required
+                                autofocus>
+                            @error('title')
                                 <span class="alert text-danger py-1">{{ $message }}</span>
                             @enderror
                         </div>
 
-                        <!-- Website -->
+                        <!-- Short Desc -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
-                                Website URL
+                                Short Description <span class="text-danger">*</span>
                             </label>
-                            <input type="text" class="form-control" name="website_url"
-                                value="{{ optional($partner)->website_url ?? old('website_url') }}"
-                                placeholder="https://example.com">
+                            <textarea name="short_desc" id="short_desc" cols="" class="form-control" rows="5"
+                                placeholder="Short Description" required>{{ optional($cs)->short_desc ?? old('short_desc') }}</textarea>
                         </div>
 
                         <!-- Logo Upload -->
@@ -73,7 +72,7 @@
                             <label class="form-label fw-semibold">
                                 Logo
                             </label>
-                            <input type="file" class="form-control" name="logo_path" accept=".jpg,.jpeg,.png,.webp"
+                            <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.webp"
                                 onchange="previewImage(event)">
 
                             <small class="text-muted">
@@ -85,7 +84,9 @@
                         <div class="col-md-6 d-flex align-items-end">
                             <div class="border rounded p-2 w-100 text-center bg-light">
                                 <img id="imagePreview"
-                                    @if (isset($partner->logo_path)) src="{{ $partner->logo_path }}" style="max-height: 120px;" @else style="max-height: 120px; display: none;" @endif
+                                    @if (!empty($cs->image)) src="{{ $cs->image }}" style="max-height: 120px;"
+                                    @else
+                                    style="max-height: 120px; display: none;" @endif
                                     alt="Logo Preview">
                                 <div class="text-muted small mt-2">
                                     Logo Preview
@@ -96,15 +97,15 @@
                         <!-- Description -->
                         <div class="col-12">
                             <label class="form-label fw-semibold">
-                                Description
+                                Long Decription <span class="text-danger">*</span>
                             </label>
-                            <textarea name="desc" rows="4" class="form-control" placeholder="Optional description">{{ optional($partner)->desc ?? old('desc') }}</textarea>
+                            <textarea name="long_desc" rows="5" class="form-control tinymce-editor" placeholder="Description">{{ optional($cs)->long_desc ?? old('long_desc') }}</textarea>
                         </div>
                     </div>
 
                     <!-- Actions -->
                     <div class="mt-4 d-flex justify-content-end gap-2">
-                        <a href="{{ route('admin.partners.index') }}" class="btn btn-light">
+                        <a href="{{ route('admin.case-studies.index') }}" class="btn btn-light">
                             Cancel
                         </a>
                         <button type="submit" class="btn btn-primary px-4">

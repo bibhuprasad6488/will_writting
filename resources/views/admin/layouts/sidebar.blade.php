@@ -9,17 +9,22 @@
                     Dashboard
                 </a>
                 {{-- <div class="sb-sidenav-menu-heading">Interface</div> --}}
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
+                <a class="nav-link {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.case-studies.*']) ? '' : 'collapsed' }}"
+                    href="javascript:;" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
                     aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     CMS Management
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                    data-bs-parent="#sidenavAccordion">
+                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.case-studies.*']) ? 'show' : '' }}"
+                    id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('admin.partners.index') }}" {{ request()->routeIs(['admin.partners.index']) ? 'active' : '' }}>Partners List</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Case Study</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.partners.*']) ? 'active' : '' }}"
+                            href="{{ route('admin.partners.index') }}">Partners List</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.testimonials.*']) ? 'active' : '' }}"
+                            href="{{ route('admin.testimonials.index') }}">Testimonials</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.case-studies.*']) ? 'active' : '' }}"
+                            href="{{ route('admin.case-studies.index') }}">Case Study</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"

@@ -1,54 +1,118 @@
 @extends('admin.layouts.app')
-@section('title', 'Partners Add')
+
+@section('title', 'Add Partner')
+
 @section('content')
     <div class="container-fluid px-4">
-        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="py-2">
-                <h1 class="mt-4">Partners Add</h1>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item">Dashboard</li>
-                    <li class="breadcrumb-item active">Partners List</li>
-                    <li class="breadcrumb-item active">Partners Add</li>
-                </ol>
+
+        <!-- Page Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-1">Add Partner</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">Dashboard</li>
+                        <li class="breadcrumb-item">Partners</li>
+                        <li class="breadcrumb-item active">Add</li>
+                    </ol>
+                </nav>
             </div>
-            <div class="ms-auto">
-                <div class="btn-group">
-                    <a href="{{ route('admin.partners.index') }}" class="btn btn-primary">Back</a>
-                </div>
-            </div>
+            <a href="{{ route('admin.partners.index') }}" class="btn btn-outline-primary">
+                ← Back
+            </a>
         </div>
-        <div class="card mb-4">
-            {{-- <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-                DataTable Example
-            </div> --}}
+
+        <!-- Card -->
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-light fw-semibold">
+                Partner Information
+            </div>
+            
+            @if (session('success'))
+                <div class="alert alert-success mx-4 mt-3 rounded-3 shadow-sm" id="success-alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger mx-4 mt-3 rounded-3 shadow-sm" id="success-alert">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="card-body">
                 <form method="POST" action="{{ route('admin.partners.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="name" name="name" autofocus required>
+
+                    <div class="row g-4">
+                        <!-- Name -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Partner Name <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}"
+                                placeholder="Enter partner name" required>
+                            @error('name')
+                                <span class="alert text-danger py-1">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <!-- Website -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Website URL
+                            </label>
+                            <input type="text" class="form-control" name="website_url" value="{{ old('website_url') }}"
+                                placeholder="https://example.com">
+                        </div>
+
+                        <!-- Logo Upload -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Logo <span class="text-danger">*</span>
+                            </label>
+                            <input type="file" class="form-control" name="logo_path" accept=".jpg,.jpeg,.png,.webp"
+                                onchange="previewImage(event)" required>
+
+                            <small class="text-muted">
+                                Supported formats: JPG, PNG, WEBP (Max 2MB)
+                            </small>
+                        </div>
+
+                        <!-- Logo Preview -->
+                        <div class="col-md-6 d-flex align-items-end">
+                            <div class="border rounded p-2 w-100 text-center bg-light">
+                                <img id="imagePreview" src="" alt="Logo Preview"
+                                    style="max-height: 120px; display: none;">
+                                <div class="text-muted small mt-2">
+                                    Logo Preview
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="col-12">
+                            <label class="form-label fw-semibold">
+                                Description
+                            </label>
+                            <textarea name="desc" rows="4" class="form-control" placeholder="Optional description">{{ old('desc') }}</textarea>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="logo" class="form-label">Logo <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" id="logo_path" name="logo_path" required
-                            accept=".jpg,.png,.jpeg,.webp" onchange="previewImage(event)">
+
+                    <!-- Actions -->
+                    <div class="mt-4 d-flex justify-content-end gap-2">
+                        <a href="{{ route('admin.partners.index') }}" class="btn btn-light">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary px-4">
+                            Save
+                        </button>
                     </div>
-                    <div class="mb-3">
-                        <label for="website_url" class="form-label">Website URL</label>
-                        <input type="url" class="form-control" id="website_url" name="website_url"
-                            placeholder="Ex- example.com">
-                    </div>
-                    <div class="mb-3">
-                        <label for="website_url" class="form-label">Description (Optional)</label>
-                        <textarea name="desc" id="desc" cols="" rows="5" class="form-control"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
+
     </div>
 @endsection
+
 @push('scripts')
     <script>
         function previewImage(event) {
@@ -57,14 +121,11 @@
 
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = e => {
                     preview.src = e.target.result;
                     preview.style.display = 'block';
                 };
                 reader.readAsDataURL(input.files[0]);
-            } else {
-                preview.src = '#';
-                preview.style.display = 'none';
             }
         }
     </script>

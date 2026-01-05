@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Partner')
+@section('title', 'Add Testimonial')
 
 @section('content')
     <div class="container-fluid px-4">
@@ -8,16 +8,16 @@
         <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1">Edit Partner</h1>
+                <h1 class="fw-bold mb-1">Add Testimonial</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">Dashboard</li>
-                        <li class="breadcrumb-item">Partners</li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item">Testimonials</li>
+                        <li class="breadcrumb-item active">Add</li>
                     </ol>
                 </nav>
             </div>
-            <a href="{{ route('admin.partners.index') }}" class="btn btn-outline-primary">
+            <a href="{{ route('admin.testimonials.index') }}" class="btn btn-outline-primary">
                 ← Back
             </a>
         </div>
@@ -25,7 +25,7 @@
         <!-- Card -->
         <div class="card shadow-sm border-0">
             <div class="card-header bg-light fw-semibold">
-                Partner Information
+                Testimonial Information
             </div>
 
             @if (session('success'))
@@ -39,7 +39,7 @@
                 </div>
             @endif
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.partners.update', $partner->id) }}"
+                <form method="POST" action="{{ route('admin.testimonials.update', $t->id) }}"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -48,12 +48,12 @@
                         <!-- Name -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
-                                Partner Name <span class="text-danger">*</span>
+                                Client Name <span class="text-danger">*</span>
                             </label>
-                            <input type="text" class="form-control" name="name"
-                                value="{{ optional($partner)->name ?? old('name') }}" placeholder="Enter partner name"
-                                required>
-                            @error('name')
+                            <input type="text" class="form-control" name="client_name"
+                                value="{{ optional($t)->client_name ?? old('client_name') }}"
+                                placeholder="Enter partner client name" required autofocus>
+                            @error('client_name')
                                 <span class="alert text-danger py-1">{{ $message }}</span>
                             @enderror
                         </div>
@@ -61,50 +61,40 @@
                         <!-- Website -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
-                                Website URL
+                                Client Position <span class="text-danger">*</span>
                             </label>
-                            <input type="text" class="form-control" name="website_url"
-                                value="{{ optional($partner)->website_url ?? old('website_url') }}"
-                                placeholder="https://example.com">
+                            <input type="text" class="form-control" name="client_position"
+                                value="{{ optional($t)->client_position ?? old('client_position') }}"
+                                placeholder="Enter Client Position" required>
                         </div>
-
-                        <!-- Logo Upload -->
+                        <!-- Rating -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
-                                Logo
+                                Rating (1 to 5) <span class="text-danger">*</span>
                             </label>
-                            <input type="file" class="form-control" name="logo_path" accept=".jpg,.jpeg,.png,.webp"
-                                onchange="previewImage(event)">
+                            <select name="client_rating" class="form-select" required>
+                                <option value="" selected disabled>Select rating</option>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <option value="{{ $i }}"
+                                        {{ optional($t)->client_rating == $i ? 'selected' : '' }}>
+                                        {{ $i }}
+                                    </option>
+                                @endfor
+                            </select>
 
-                            <small class="text-muted">
-                                Supported formats: JPG, PNG, WEBP (Max 2MB)
-                            </small>
                         </div>
-
-                        <!-- Logo Preview -->
-                        <div class="col-md-6 d-flex align-items-end">
-                            <div class="border rounded p-2 w-100 text-center bg-light">
-                                <img id="imagePreview"
-                                    @if (isset($partner->logo_path)) src="{{ $partner->logo_path }}" style="max-height: 120px;" @else style="max-height: 120px; display: none;" @endif
-                                    alt="Logo Preview">
-                                <div class="text-muted small mt-2">
-                                    Logo Preview
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Description -->
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <label class="form-label fw-semibold">
-                                Description
+                                Client Message <span class="text-danger">*</span>
                             </label>
-                            <textarea name="desc" rows="4" class="form-control" placeholder="Optional description">{{ optional($partner)->desc ?? old('desc') }}</textarea>
+                            <textarea name="testimonial_text" rows="4" class="form-control" placeholder="Client Message" required>{{ optional($t)->testimonial_text ?? old('testimonial_text') }}</textarea>
                         </div>
                     </div>
 
                     <!-- Actions -->
                     <div class="mt-4 d-flex justify-content-end gap-2">
-                        <a href="{{ route('admin.partners.index') }}" class="btn btn-light">
+                        <a href="{{ route('admin.testimonials.index') }}" class="btn btn-light">
                             Cancel
                         </a>
                         <button type="submit" class="btn btn-primary px-4">

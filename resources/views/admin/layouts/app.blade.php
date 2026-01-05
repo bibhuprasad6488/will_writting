@@ -19,6 +19,14 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Add Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/8b15k9216emgvtcy3gcsicn7efwutzm0ddo31se6ji9anpwc/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
@@ -46,6 +54,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
+    <!-- jQuery FIRST -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Toastr SECOND -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    {{-- {!! Toastr::message() !!} --}}
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        @if (Session::has('toastr'))
+            var type = "{{ Session::get('toastr')['type'] }}";
+            var message = "{{ Session::get('toastr')['message'] }}";
+            var title = "{{ Session::get('toastr')['title'] }}";
+
+            switch (type) {
+                case 'info':
+                    toastr.info(message, title);
+                    break;
+
+                case 'warning':
+                    toastr.warning(message, title);
+                    break;
+
+                case 'success':
+                    toastr.success(message, title);
+                    break;
+
+                case 'error':
+                    toastr.error(message, title);
+                    break;
+            }
+        @endif
+        $('.btn-close').on('click', function() {
+            $('#modal').modal('hide');
+        });
+    </script>
+    {{-- @include('admin.layouts.toast') --}}
+
     <!-- Your custom script to toggle the dropdown -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -67,7 +124,49 @@
                 });
             }
         });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Loop through all elements with the class 'tinymce-editor'
+            document.querySelectorAll(".tinymce-editor").forEach(function(editor) {
+
+                // Initialize TinyMCE for each editor
+                tinymce.init({
+                    target: editor, // Use 'target' to bind TinyMCE to the specific element
+                    height: 500,
+                    plugins: 'advlist autolink link image lists charmap preview code fullscreen',
+                    toolbar: 'undo redo | blocks | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist blockquote | link image | code fullscreen ',
+
+                    // NEW: use "blocks" instead of "formatselect" in TinyMCE 6+
+                    block_formats: 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre; Blockquote=blockquote',
+
+                    setup: function(editorInstance) {
+                        // Sync content
+                        editorInstance.on('change', function() {
+                            editor.value = editorInstance.getContent();
+                        });
+                    }
+                });
+            });
+        });
     </script>
+
+    <script>
+        window.onload = function() {
+            let alert = document.getElementById('success-alert');
+            if (alert) {
+                setTimeout(function() {
+                    alert.style.transition = 'opacity 0.5s ease';
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500);
+                }, 3000);
+            }
+        };
+    </script>
+    <!-- Stack for page-level scripts -->
+    @stack('scripts')
+
+
+
 </body>
 
 </html>
