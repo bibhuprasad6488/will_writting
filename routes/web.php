@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CaseStudyController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TestimonialController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +28,15 @@ Route::get('/optimize', function () {
     // return what you want
 });
 
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/login', function () {
+    return redirect()->route('admin.login');
+    // return "ok";
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -44,8 +52,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('partners', PartnerController::class)->names('partners');
         Route::resource('testimonials', TestimonialController::class)->names('testimonials');
         Route::resource('case-studies', CaseStudyController::class)->names('case-studies');
+        Route::resource('profile-setting', SettingController::class)->names('profile-setting');
+        Route::post('chnage-password/{id}', [SettingController::class, 'chnagePassword'])->name('chnage-password');
     });
 });
+
+// Route::middleware(['auth:web'])->group(function () {
+//     // User protected routes
+// });
 
 // Auth::routes();
 

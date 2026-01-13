@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class TestimonialController extends Controller
 {
@@ -14,7 +16,10 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonials = Testimonial::orderByDesc('id')->get();
+        $testimonials = Testimonial::orderByDesc('id')->get()->map(function ($t) {
+            // $t->client_photo_path = $t->client_photo_path ? Storage::disk('public')->url('images/testimonials/' . $t->client_photo_path) : '';
+            return $t;
+        });
         return view('admin.testimonials.list', compact('testimonials'));
     }
 
@@ -47,6 +52,24 @@ class TestimonialController extends Controller
             $testimonial->client_position = $request->client_position;
             $testimonial->client_rating = $request->client_rating;
             $testimonial->testimonial_text = $request->testimonial_text;
+
+            // if ($request->hasFile('client_photo_path')) {
+
+            //     $file = $request->file('client_photo_path');
+
+            //     $fileName = preg_replace('/\s+/', '_', Str::slug($request->client_name))
+            //         . '_' . time()
+            //         . '.' . $file->getClientOriginalExtension();
+
+            //     // ✅ Correct usage
+            //     Storage::disk('public')->putFileAs(
+            //         'images/testimonials',
+            //         $file,
+            //         $fileName
+            //     );
+
+            //     $testimonial->client_photo_path = $fileName;
+            // }
             $testimonial->save();
             DB::commit();
             return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial created successfully.');
@@ -70,6 +93,7 @@ class TestimonialController extends Controller
     public function edit(string $id)
     {
         $t = Testimonial::findOrFail($id);
+        // $t->client_photo_path = $t->client_photo_path ? Storage::disk('public')->url('images/testimonials/' . $t->client_photo_path) : '';
         return view('admin.testimonials.edit', compact('t'));
     }
 
@@ -94,6 +118,34 @@ class TestimonialController extends Controller
             $testimonial->client_position = $request->client_position;
             $testimonial->client_rating = $request->client_rating;
             $testimonial->testimonial_text = $request->testimonial_text;
+
+            // if ($request->hasFile('client_photo_path')) {
+
+            //     $file = $request->file('client_photo_path');
+
+            //     $fileName = preg_replace('/\s+/', '_', Str::slug($request->client_name))
+            //         . '_' . time()
+            //         . '.' . $file->getClientOriginalExtension();
+
+            //     // Delete old client_photo_path if exists
+            //     if (
+            //         !empty($testimonial->client_photo_path) &&
+            //         Storage::disk('public')->exists('images/testimonials/' . $testimonial->client_photo_path)
+            //     ) {
+
+            //         Storage::disk('public')->delete('images/testimonials/' . $testimonial->client_photo_path);
+            //     }
+
+            //     // ✅ Correct usage
+            //     Storage::disk('public')->putFileAs(
+            //         'images/testimonials',
+            //         $file,
+            //         $fileName
+            //     );
+
+            //     $testimonial->client_photo_path = $fileName;
+            // }
+
             $testimonial->save();
             DB::commit();
             return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial updated successfully.');

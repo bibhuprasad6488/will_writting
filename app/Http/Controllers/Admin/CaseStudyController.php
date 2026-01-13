@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CaseStudy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CaseStudyController extends Controller
@@ -16,6 +17,7 @@ class CaseStudyController extends Controller
     public function index()
     {
         $caseStudies = CaseStudy::orderByDesc('id')->get()->map(function ($cs) {
+            // $cs->image = isset($cs->image) ? Storage::disk('public')->url('images/case_studies/' . $cs->image) : '';
             $cs->image = isset($cs->image) ? asset('storage/images/case_studies/' . $cs->image) : '';
             return $cs;
         });
@@ -100,6 +102,25 @@ class CaseStudyController extends Controller
                 $caseStudy->image = $imageName;
             }
 
+
+            // if ($request->hasFile('image')) {
+
+            //     $file = $request->file('image');
+
+            //     $fileName = preg_replace('/\s+/', '_', Str::slug($request->name))
+            //         . '_' . time()
+            //         . '.' . $file->getClientOriginalExtension();
+
+            //     // ✅ Correct usage
+            //     Storage::disk('public')->putFileAs(
+            //         'images/case_studies',
+            //         $file,
+            //         $fileName
+            //     );
+
+            //     $caseStudy->image = $fileName;
+            // }
+
             $caseStudy->save();
             DB::commit();
 
@@ -130,6 +151,7 @@ class CaseStudyController extends Controller
     public function edit(string $id)
     {
         $cs = CaseStudy::findOrFail($id);
+        // $cs->image = isset($cs->image) ? Storage::disk('public')->url('images/case_studies/' . $cs->image) : '';
         $cs->image = isset($cs->image) ? asset('storage/images/case_studies/' . $cs->image) : '';
         return view('admin.case_studies.edit', compact('cs'));
     }
@@ -206,6 +228,33 @@ class CaseStudyController extends Controller
 
                 $caseStudy->image = $imageName;
             }
+
+            // if ($request->hasFile('image')) {
+
+            //     $file = $request->file('image');
+
+            //     $fileName = preg_replace('/\s+/', '_', Str::slug($request->name))
+            //         . '_' . time()
+            //         . '.' . $file->getClientOriginalExtension();
+
+            //     // Delete old image if exists
+            //     if (
+            //         !empty($caseStudy->image) &&
+            //         Storage::disk('public')->exists('images/case_studies/' . $caseStudy->image)
+            //     ) {
+
+            //         Storage::disk('public')->delete('images/case_studies/' . $caseStudy->image);
+            //     }
+
+            //     // ✅ Correct usage
+            //     Storage::disk('public')->putFileAs(
+            //         'images/case_studies',
+            //         $file,
+            //         $fileName
+            //     );
+
+            //     $caseStudy->image = $fileName;
+            // }
 
             $caseStudy->save();
             DB::commit();

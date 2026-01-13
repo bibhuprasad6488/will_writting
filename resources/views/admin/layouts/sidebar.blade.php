@@ -94,7 +94,7 @@
                 </form>
 
             </div>
-            <h5>{{ Auth::user()->name }}</h5>
+            <h5>{{ Auth::user()->name ?? '' }}</h5>
         </div>
     </nav>
 </div>
