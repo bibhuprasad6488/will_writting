@@ -1,13 +1,13 @@
 @extends('admin.layouts.app')
-@section('title', 'Topic Lists')
+@section('title', 'Categories')
 @section('content')
     <div class="container-fluid px-4">
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="py-2">
-                <h1 class="mt-4">Topic Lists</h1>
+                <h1 class="mt-4">Categories</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item">Dashboard</li>
-                    <li class="breadcrumb-item active">Topic Lists</li>
+                    <li class="breadcrumb-item active">Categories</li>
                 </ol>
             </div>
             <div class="ms-auto">

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Add Topic')
+@section('title', 'Add Category')
 
 @section('content')
     <div class="container-fluid px-4">
@@ -8,11 +8,11 @@
         <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1">Add Topic</h1>
+                <h1 class="fw-bold mb-1">Add Category</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">Dashboard</li>
-                        <li class="breadcrumb-item">Topics</li>
+                        <li class="breadcrumb-item">Categories</li>
                         <li class="breadcrumb-item active">Add</li>
                     </ol>
                 </nav>
@@ -25,7 +25,7 @@
         <!-- Card -->
         <div class="card shadow-sm border-0">
             <div class="card-header bg-light fw-semibold">
-                Topic Information
+                Category Information
             </div>
 
             @if (session('success'))
@@ -45,7 +45,7 @@
                         <!-- Name -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
-                                Topic Name <span class="text-danger">*</span>
+                                Category Name <span class="text-danger">*</span>
                             </label>
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}"
                                 placeholder="Enter topic name" required>

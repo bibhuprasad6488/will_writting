@@ -32,23 +32,23 @@
                     href="javascript:;" data-bs-toggle="collapse" data-bs-target="#topicsAndInsights"
                     aria-expanded="false" aria-controls="topicsAndInsights">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Topics & Insights
+                    Insights/Case Study
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse {{ request()->routeIs(['admin.topics.*', 'admin.case-studies.*']) ? 'show' : '' }}"
                     id="topicsAndInsights" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ request()->routeIs(['admin.topics.*']) ? 'active' : '' }}"
-                            href="{{ route('admin.topics.index') }}">Topics</a>
+                            href="{{ route('admin.topics.index') }}">Category</a>
                         <a class="nav-link {{ request()->routeIs(['admin.case-studies.*']) ? 'active' : '' }}"
                             href="{{ route('admin.case-studies.index') }}">Case Study</a>
                     </nav>
                 </div>
 
                 <!-- Pricing and Category -->
-                <a class="nav-link {{ request()->routeIs(['admin.price-categories.*', 'admin.pricings.*']) ? '' : 'collapsed' }}" href="javascript:;"
-                    data-bs-toggle="collapse" data-bs-target="#pricingAndCategory" aria-expanded="false"
-                    aria-controls="pricingAndCategory">
+                <a class="nav-link {{ request()->routeIs(['admin.price-categories.*', 'admin.pricings.*']) ? '' : 'collapsed' }}"
+                    href="javascript:;" data-bs-toggle="collapse" data-bs-target="#pricingAndCategory"
+                    aria-expanded="false" aria-controls="pricingAndCategory">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Pricing
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -103,7 +103,8 @@
                 </div> --}}
 
                 <!-- Services -->
-                <a class="nav-link" href="{{ route('admin.services.index') }}">
+                <a class="nav-link {{ request()->routeIs(['admin.services.*']) ? 'active' : '' }} "
+                    href="{{ route('admin.services.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Services
                 </a>
