@@ -36,8 +36,9 @@
                     <thead>
                         <tr>
                             <th>SL No</th>
-                            <th>Title</th>
                             <th>Image</th>
+                            <th>Title</th>
+                            <th>Topic</th>
                             <th>Short Description</th>
                             <th>Created</th>
                             <th>Action</th>
@@ -47,15 +48,17 @@
                         @foreach ($caseStudies as $cs)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><b>{{ $cs->title }}</b></td>
                                 <td>
                                     @if (!$cs->image)
-                                        <img src="{{ asset('storage/images/no_img.png') }}" alt="{{ $cs->title }}" class="rounded"
-                                            width="80">
+                                        <img src="{{ asset('storage/images/no_img.png') }}" alt="{{ $cs->title }}"
+                                            class="rounded" width="180">
                                     @else
-                                        <img src="{{ $cs->image }}" alt="{{ $cs->title }}" width="80" class="rounded">
+                                        <img src="{{ $cs->image }}" alt="{{ $cs->title }}" width="150"
+                                            class="rounded">
                                     @endif
                                 </td>
+                                <td><b>{{ $cs->title }}</b></td>
+                                <td>{{ $cs->topic->name }}</td>
                                 <td>{{ Str::limit($cs->short_desc, 50, '...') }}</td>
                                 <td>{{ $cs->created_at }}</td>
                                 <td>

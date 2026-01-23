@@ -2,45 +2,56 @@
 @section('title', 'Login')
 @section('content')
     <div class="container">
+        @php
+            $setting = \App\Models\SiteSetting::find(1);
+        @endphp
         <div class="row justify-content-center">
-        <div class="login-container">
-            <h1>Login </h1>
-            <form id="loginForm" method="POST" action="{{ route('admin.login.submit') }}">
-                @csrf
-                <div class="form-group">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+            <div class="login-container">
+                {{-- <h1>Login </h1> --}}
+                <div class="admin-login-logo">
+                    @if ($setting && $setting->site_logo)
+                        <img src="{{ asset('storage/images/settings/' . $setting->site_logo) }}"
+                            alt="{{ $setting->site_title }}">
+                    @else
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="Wills">
+                    @endif
                 </div>
-                <div class="input-group">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                        name="password" required autocomplete="current-password">
-                    <div class="input-group-append py-4 px-3" style="border: 1px solid rgb(206, 202, 202)">
-                        <span class="toggle-password" style="cursor: pointer;"
-                            onclick="togglePasswordVisibility()">👁️</span>
+                <form id="loginForm" method="POST" action="{{ route('admin.login.submit') }}">
+                    @csrf
+                    <div class="form-group">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="remember-me">
-                    <input type="checkbox" id="rememberMe" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <label for="rememberMe">Remember Me</label>
-                </div>
-                <button type="submit" class="login-button">LOGIN</button>
-            </form>
+                    <div class="input-group">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                            name="password" required autocomplete="current-password">
+                        <div class="input-group-append py-4 px-3" style="border: 1px solid rgb(206, 202, 202)">
+                            <span class="toggle-password" style="cursor: pointer;"
+                                onclick="togglePasswordVisibility()">👁️</span>
+                        </div>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="remember-me">
+                        <input type="checkbox" id="rememberMe" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <label for="rememberMe">Remember Me</label>
+                    </div>
+                    <button type="submit" class="login-button">LOGIN</button>
+                </form>
 
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="forgot-password">Forgot Your password?</a>
-            @endif
-        </div>
+                @if (Route::has('password.request'))
+                    <a href="{{ route('password.request') }}" class="forgot-password">Forgot Your password?</a>
+                @endif
+            </div>
 
 
         </div>

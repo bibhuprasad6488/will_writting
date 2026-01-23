@@ -8,26 +8,62 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
-                {{-- <div class="sb-sidenav-menu-heading">Interface</div> --}}
-                <a class="nav-link {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.case-studies.*']) ? '' : 'collapsed' }}"
+
+                <!-- Cms Management -->
+                <a class="nav-link {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*']) ? '' : 'collapsed' }}"
                     href="javascript:;" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
                     aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     CMS Management
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.case-studies.*']) ? 'show' : '' }}"
+                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*']) ? 'show' : '' }}"
                     id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ request()->routeIs(['admin.partners.*']) ? 'active' : '' }}"
                             href="{{ route('admin.partners.index') }}">Partners List</a>
                         <a class="nav-link {{ request()->routeIs(['admin.testimonials.*']) ? 'active' : '' }}"
                             href="{{ route('admin.testimonials.index') }}">Testimonials</a>
+                    </nav>
+                </div>
+
+                <!-- Topics and Insights -->
+                <a class="nav-link {{ request()->routeIs(['admin.topics.*', 'admin.case-studies.*']) ? '' : 'collapsed' }}"
+                    href="javascript:;" data-bs-toggle="collapse" data-bs-target="#topicsAndInsights"
+                    aria-expanded="false" aria-controls="topicsAndInsights">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Topics & Insights
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse {{ request()->routeIs(['admin.topics.*', 'admin.case-studies.*']) ? 'show' : '' }}"
+                    id="topicsAndInsights" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ request()->routeIs(['admin.topics.*']) ? 'active' : '' }}"
+                            href="{{ route('admin.topics.index') }}">Topics</a>
                         <a class="nav-link {{ request()->routeIs(['admin.case-studies.*']) ? 'active' : '' }}"
                             href="{{ route('admin.case-studies.index') }}">Case Study</a>
                     </nav>
                 </div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+
+                <!-- Pricing and Category -->
+                <a class="nav-link {{ request()->routeIs(['admin.price-categories.*', 'admin.pricings.*']) ? '' : 'collapsed' }}" href="javascript:;"
+                    data-bs-toggle="collapse" data-bs-target="#pricingAndCategory" aria-expanded="false"
+                    aria-controls="pricingAndCategory">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Pricing
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse {{ request()->routeIs(['admin.price-categories.*', 'admin.pricings.*']) ? 'show' : '' }}"
+                    id="pricingAndCategory" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ request()->routeIs(['admin.price-categories.*']) ? 'active' : '' }}"
+                            href="{{ route('admin.price-categories.index') }}">Category</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.pricings.*']) ? 'active' : '' }}"
+                            href="{{ route('admin.pricings.index') }}"> Pricing</a>
+                    </nav>
+                </div>
+
+                {{-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                     aria-expanded="false" aria-controls="collapsePages">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     Pages
@@ -64,24 +100,30 @@
                             </nav>
                         </div>
                     </nav>
-                </div>
-                {{-- <div class="sb-sidenav-menu-heading">Addons</div> --}}
-                <a class="nav-link" href="charts.html">
+                </div> --}}
+
+                <!-- Services -->
+                <a class="nav-link" href="{{ route('admin.services.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Charts
+                    Services
                 </a>
-                <a class="nav-link" href="tables.html">
+                {{-- <a class="nav-link" href="tables.html">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Tables
-                </a>
+                </a> --}}
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:<span style="float: right">
+            <div class="small">Logged in as:
+                <span style="float: right">
+
                     <i class="fas fa-sign-out-alt"
                         onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();"
-                        style="cursor: pointer;font-size:26px;"></i></span>
+                        style="cursor: pointer;font-size:26px;"></i>
+                    <a href="{{ route('admin.site.setting') }}"> <i style="font-size:24px; float: right;"
+                            class="fa mx-2">&#xf013;</i></a>
+                </span>
 
                 <a class="dropdown-item" href="{{ route('admin.logout') }}"
                     onclick="event.preventDefault();

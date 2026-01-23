@@ -55,25 +55,41 @@
                             @enderror
                         </div>
 
+                        <!-- Topic -->
+                        <div class="col-md-3">
+                            <label class="form-label fw-semibold">
+                                Select Topic <span class="text-danger">*</span>
+                            </label>
+                            <select name="topic_id" id="topic_id" class="form-select">
+                                <option value="" selected disabled>Select</option>
+                                @foreach ($topics as $topic)
+                                    <option value="{{ $topic->id }}"
+                                        {{ old('topic_id') == $topic->id ? 'selected' : '' }}>
+                                        {{ $topic->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Logo Upload -->
+                        <div class="col-md-3">
+                            <label class="form-label fw-semibold">
+                                Logo
+                            </label>
+                            <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.webp"
+                                onchange="previewImage(event)" required>
+
+                            <small class="text-muted">
+                                Supported formats: JPG, PNG, WEBP (Max 2MB)
+                            </small>
+                        </div>
+
                         <!-- Short Desc -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
                                 Short Description <span class="text-danger">*</span>
                             </label>
-                            <textarea name="short_desc" id="short_desc" cols="" class="form-control" rows="5" placeholder="Short Description" required>{{ old('short_desc') }}</textarea>
-                        </div>
-
-                        <!-- Logo Upload -->
-                        <div class="col-md-6">
-                            <label class="form-label fw-semibold">
-                                Logo
-                            </label>
-                            <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.webp"
-                                onchange="previewImage(event)">
-
-                            <small class="text-muted">
-                                Supported formats: JPG, PNG, WEBP (Max 2MB)
-                            </small>
+                            <textarea name="short_desc" id="short_desc" cols="" class="form-control" rows="5"
+                                placeholder="Short Description" required>{{ old('short_desc') }}</textarea>
                         </div>
 
                         <!-- Logo Preview -->

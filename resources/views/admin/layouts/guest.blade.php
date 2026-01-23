@@ -93,6 +93,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
+            margin-top: 20px;
         }
 
         .remember-me input[type="checkbox"] {
@@ -130,6 +131,16 @@
 
         .signup-link a:hover {
             text-decoration: underline;
+        }
+
+        .admin-login-logo {
+            background: #000;
+            margin-bottom: 30px;
+        }
+
+        .admin-login-logo img {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 

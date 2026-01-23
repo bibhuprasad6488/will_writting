@@ -28,7 +28,9 @@
         referrerpolicy="origin"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @if (config('database.connections.mysql.username') === 'root')
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @endif
 
 </head>
 
@@ -104,27 +106,30 @@
     {{-- @include('admin.layouts.toast') --}}
 
     <!-- Your custom script to toggle the dropdown -->
+    @if (config('database.connections.mysql.username') === 'root')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get the dropdown element
+                let dropdownElement = document.getElementById('navbarDropdown');
+
+                // Check if the dropdown element exists
+                if (dropdownElement) {
+                    // Initialize the Bootstrap dropdown component
+                    let dropdown = new bootstrap.Dropdown(dropdownElement);
+
+                    // Add a click event listener to toggle the dropdown on click
+                    dropdownElement.addEventListener('click', function(e) {
+                        // Prevent the default action of the anchor tag (i.e., navigation)
+                        e.preventDefault();
+
+                        // Toggle the dropdown using Bootstrap's API
+                        dropdown.toggle();
+                    });
+                }
+            });
+        </script>
+    @endif
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get the dropdown element
-            let dropdownElement = document.getElementById('navbarDropdown');
-
-            // Check if the dropdown element exists
-            if (dropdownElement) {
-                // Initialize the Bootstrap dropdown component
-                let dropdown = new bootstrap.Dropdown(dropdownElement);
-
-                // Add a click event listener to toggle the dropdown on click
-                dropdownElement.addEventListener('click', function(e) {
-                    // Prevent the default action of the anchor tag (i.e., navigation)
-                    e.preventDefault();
-
-                    // Toggle the dropdown using Bootstrap's API
-                    dropdown.toggle();
-                });
-            }
-        });
-
         document.addEventListener("DOMContentLoaded", function() {
             // Loop through all elements with the class 'tinymce-editor'
             document.querySelectorAll(".tinymce-editor").forEach(function(editor) {

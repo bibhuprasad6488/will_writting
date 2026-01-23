@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CaseStudy;
+use App\Models\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -16,7 +18,7 @@ class CaseStudyController extends Controller
      */
     public function index()
     {
-        $caseStudies = CaseStudy::orderByDesc('id')->get()->map(function ($cs) {
+        $caseStudies = CaseStudy::orderByDesc('id')->with('topic')->get()->map(function ($cs) {
             // $cs->image = isset($cs->image) ? Storage::disk('public')->url('images/case_studies/' . $cs->image) : '';
             $cs->image = isset($cs->image) ? asset('storage/images/case_studies/' . $cs->image) : '';
             return $cs;
@@ -29,7 +31,8 @@ class CaseStudyController extends Controller
      */
     public function create()
     {
-        return view('admin.case_studies.add');
+        $topics = Topic::orderByDesc('id')->get();
+        return view('admin.case_studies.add', compact('topics'));
     }
 
     /**
@@ -39,6 +42,7 @@ class CaseStudyController extends Controller
     {
         $request->validate([
             'title'          => 'required|string|max:255|unique:case_studies,title',
+            'topic_id'       => 'required',
             'short_desc'     => 'nullable|string',
             'long_desc'      => 'nullable|string',
             'meta_title'     => 'nullable|string|max:255',
@@ -53,8 +57,10 @@ class CaseStudyController extends Controller
             $caseStudy = new CaseStudy();
             $caseStudy->title         = $request->title;
             $caseStudy->slug          = Str::slug($request->title);
+            $caseStudy->user_id       = Auth::guard('admin')->user()->id;
+            $caseStudy->topic_id      = $request->topic_id;
             $caseStudy->short_desc    = $request->short_desc;
-            $caseStudy->long_desc     = $request->long_desc;
+            $caseStudy->long_desc     = $request->long_desc ? preg_replace('/[^\x20-\x7E]/u', '', $request->long_desc) : '';
             $caseStudy->meta_title    = $request->meta_title;
             $caseStudy->meta_keywords = $request->meta_keywords;
             $caseStudy->meta_desc     = $request->meta_desc;
@@ -102,25 +108,6 @@ class CaseStudyController extends Controller
                 $caseStudy->image = $imageName;
             }
 
-
-            // if ($request->hasFile('image')) {
-
-            //     $file = $request->file('image');
-
-            //     $fileName = preg_replace('/\s+/', '_', Str::slug($request->name))
-            //         . '_' . time()
-            //         . '.' . $file->getClientOriginalExtension();
-
-            //     // ✅ Correct usage
-            //     Storage::disk('public')->putFileAs(
-            //         'images/case_studies',
-            //         $file,
-            //         $fileName
-            //     );
-
-            //     $caseStudy->image = $fileName;
-            // }
-
             $caseStudy->save();
             DB::commit();
 
@@ -153,7 +140,8 @@ class CaseStudyController extends Controller
         $cs = CaseStudy::findOrFail($id);
         // $cs->image = isset($cs->image) ? Storage::disk('public')->url('images/case_studies/' . $cs->image) : '';
         $cs->image = isset($cs->image) ? asset('storage/images/case_studies/' . $cs->image) : '';
-        return view('admin.case_studies.edit', compact('cs'));
+        $topics = Topic::orderByDesc('id')->get();
+        return view('admin.case_studies.edit', compact('cs', 'topics'));
     }
 
     /**
@@ -163,6 +151,7 @@ class CaseStudyController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255|unique:case_studies,title,' . $id,
+            'topic_id' => 'required',
             'short_desc' => 'nullable|string',
             'long_desc' => 'nullable|string',
             'mata_title' => 'nullable|string|max:255',
@@ -176,8 +165,10 @@ class CaseStudyController extends Controller
             $caseStudy =  CaseStudy::findOrFail($id);
             $caseStudy->title = $request->title;
             $caseStudy->slug = Str::slug($request->title);
+            $caseStudy->user_id      = Auth::guard('admin')->user()->id;
+            $caseStudy->topic_id = $request->topic_id;
             $caseStudy->short_desc = $request->short_desc ?? null;
-            $caseStudy->long_desc = $request->long_desc ?? null;
+            $caseStudy->long_desc = $request->long_desc ? preg_replace('/[^\x20-\x7E]/u', '', $request->long_desc) : '';
             $caseStudy->meta_title = $request->meta_title ?? null;
             $caseStudy->meta_keywords = $request->meta_keywords ?? null;
             $caseStudy->meta_desc = $request->meta_desc ?? null;

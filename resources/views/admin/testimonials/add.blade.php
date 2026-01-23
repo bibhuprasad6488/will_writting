@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Add Testimonial')
+@section('title', 'Edit Testimonial')
 
 @section('content')
     <div class="container-fluid px-4">
@@ -8,12 +8,12 @@
         <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1">Add Testimonial</h1>
+                <h1 class="fw-bold mb-1">Edit Testimonial</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">Dashboard</li>
                         <li class="breadcrumb-item">Testimonials</li>
-                        <li class="breadcrumb-item active">Add</li>
+                        <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </nav>
             </div>
@@ -56,7 +56,7 @@
                         </div>
 
                         <!-- Website -->
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label fw-semibold">
                                 Client Position <span class="text-danger">*</span>
                             </label>
@@ -64,7 +64,7 @@
                                 value="{{ old('client_position') }}" placeholder="Enter Client Position" required>
                         </div>
                         <!-- Rating -->
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label fw-semibold">
                                 Rating (1 to 5) <span class="text-danger">*</span>
                             </label>
@@ -76,10 +76,33 @@
                                     </option>
                                 @endfor
                             </select>
+                        </div>
 
+                        <!-- Logo Upload -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Testimonial Image <span class="text-danger">*</span>
+                            </label>
+                            <input type="file" class="form-control" name="client_photo_path" accept=".jpg,.jpeg,.png,.webp"
+                                onchange="previewImage(event)" required>
+
+                            <small class="text-muted">
+                                Supported formats: JPG, PNG, WEBP (Max 2MB)
+                            </small>
+                        </div>
+
+                        <!-- Logo Preview -->
+                        <div class="col-md-6 d-flex align-items-end">
+                            <div class="border rounded p-2 w-100 text-center bg-light">
+                                <img id="imagePreview" src="" alt="Logo Preview"
+                                    style="max-height: 120px; display: none;">
+                                <div class="text-muted small mt-2">
+                                    Image Preview
+                                </div>
+                            </div>
                         </div>
                         <!-- Description -->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label class="form-label fw-semibold">
                                 Client Message <span class="text-danger">*</span>
                             </label>

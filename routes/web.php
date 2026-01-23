@@ -1,9 +1,15 @@
 <?php
 
 use App\Http\Controllers\Admin\CaseStudyController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\InsightController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\PricingController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\TopicController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,10 +35,6 @@ Route::get('/optimize', function () {
 });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::get('/login', function () {
     return redirect()->route('admin.login');
@@ -49,11 +51,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.dashboard');
         })->name('dashboard');
 
+        // Partners
         Route::resource('partners', PartnerController::class)->names('partners');
-        Route::resource('testimonials', TestimonialController::class)->names('testimonials');
+        // Topics
+        Route::resource('topics', TopicController::class)->names('topics');
+        // Price Categories
+        Route::resource('price-categories', CategoryController::class)->names('price-categories');
+        // Pricing
+        Route::resource('pricings', PricingController::class)->names('pricings');
+        // Case Studies
         Route::resource('case-studies', CaseStudyController::class)->names('case-studies');
+        // Testimonials
+        Route::resource('testimonials', TestimonialController::class)->names('testimonials');
+        // Services
+        Route::resource('services', ServiceController::class)->names('services');
+        // Setting
         Route::resource('profile-setting', SettingController::class)->names('profile-setting');
         Route::post('chnage-password/{id}', [SettingController::class, 'chnagePassword'])->name('chnage-password');
+        Route::get('/settings', [SettingController::class, 'siteSetting'])->name('site.setting');
+        Route::post('/update-settings', [SettingController::class, 'updateSiteSetting'])->name('update.site.setting');
     });
 });
 
@@ -63,4 +79,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/services', [HomeController::class, 'getServices'])->name('service.lists');
+Route::get('/services/{slug}', [HomeController::class, 'serviceDetails'])->name('service.details');
+Route::get('/guided-journey', [HomeController::class, 'guidedJourney'])->name('journey');

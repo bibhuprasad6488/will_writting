@@ -32,7 +32,7 @@
             </div>
             <div class="card-body">
 
-                <table id="datatablesSimple">
+                <table id="datatablesSimple" class="table">
                     <thead>
                         <tr>
                             <th>SL No</th>
@@ -48,12 +48,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td><b>{{ $p->name }}</b></td>
                                 <td>
-                                    @if (!$p->logo_path)
-                                        <img src="{{ asset('storage/images/no_img.png') }}" alt="{{ $p->name }}" class="rounded"
-                                            width="80">
-                                    @else
-                                        <img src="{{ $p->logo_path }}" alt="{{ $p->name }}" width="80" class="rounded">
-                                    @endif
+                                    <img src="{{ $p->logo_path }}" alt="{{ $p->name }}" width="150" class="rounded">
                                 </td>
                                 <td>{{ $p->created_at }}</td>
                                 <td>
@@ -64,7 +59,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Are you sure you want to delete this partner?');">Delete</button>
+                                            onclick="return confirm('Are you sure you want to delete this?');">Delete</button>
                                     </form>
                                 </td>
                             </tr>

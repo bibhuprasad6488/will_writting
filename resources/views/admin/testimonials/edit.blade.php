@@ -59,7 +59,7 @@
                         </div>
 
                         <!-- Website -->
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label fw-semibold">
                                 Client Position <span class="text-danger">*</span>
                             </label>
@@ -68,7 +68,7 @@
                                 placeholder="Enter Client Position" required>
                         </div>
                         <!-- Rating -->
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label fw-semibold">
                                 Rating (1 to 5) <span class="text-danger">*</span>
                             </label>
@@ -82,6 +82,31 @@
                                 @endfor
                             </select>
 
+                        </div>
+
+                        <!-- Logo Upload -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Testimonial Image <span class="text-danger">*</span>
+                            </label>
+                            <input type="file" class="form-control" name="client_photo_path"
+                                accept=".jpg,.jpeg,.png,.webp" onchange="previewImage(event)">
+
+                            <small class="text-muted">
+                                Supported formats: JPG, PNG, WEBP (Max 2MB)
+                            </small>
+                        </div>
+
+                        <!-- Logo Preview -->
+                        <div class="col-md-6 d-flex align-items-end">
+                            <div class="border rounded p-2 w-100 text-center bg-light">
+                                <img id="imagePreview"
+                                    @if ($t->client_photo_path) src="{{ $t->client_photo_path }}" style="max-height: 120px;" @else style="max-height: 120px; display: none;" @endif
+                                    alt="Logo Preview">
+                                <div class="text-muted small mt-2">
+                                    Image Preview
+                                </div>
+                            </div>
                         </div>
                         <!-- Description -->
                         <div class="col-md-6">

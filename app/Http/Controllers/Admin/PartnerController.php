@@ -18,7 +18,7 @@ class PartnerController extends Controller
     {
         $partners = Partner::orderByDesc('id')->get()->map(function ($p) {
             // $p->logo_path = isset($p->logo_path) ? Storage::disk('public')->url('images/partners/' . $p->logo_path) : '';
-            $p->logo_path = isset($partner->logo_path) ? asset('storage/images/partners/' . $partner->logo_path) : '';
+            $p->logo_path = isset($p->logo_path) ? asset('storage/images/partners/' . $p->logo_path) : '';
 
             return $p;
         });

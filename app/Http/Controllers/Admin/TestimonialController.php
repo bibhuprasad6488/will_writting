@@ -17,7 +17,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::orderByDesc('id')->get()->map(function ($t) {
-            // $t->client_photo_path = $t->client_photo_path ? Storage::disk('public')->url('images/testimonials/' . $t->client_photo_path) : '';
+            $t->client_photo_path = $t->client_photo_path ? asset('storage/images/testimonials/' . $t->client_photo_path) : '';
             return $t;
         });
         return view('admin.testimonials.list', compact('testimonials'));
@@ -53,23 +53,49 @@ class TestimonialController extends Controller
             $testimonial->client_rating = $request->client_rating;
             $testimonial->testimonial_text = $request->testimonial_text;
 
-            // if ($request->hasFile('client_photo_path')) {
+            // /** Upload Path */
+            $destinationPath = public_path('storage/images/testimonials/');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
 
-            //     $file = $request->file('client_photo_path');
+            if ($request->hasFile('client_photo_path')) {
+                $file = $request->file('client_photo_path');
+                $extension = strtolower($file->getClientOriginalExtension());
 
-            //     $fileName = preg_replace('/\s+/', '_', Str::slug($request->client_name))
-            //         . '_' . time()
-            //         . '.' . $file->getClientOriginalExtension();
+                // Always store as .webp
+                $imageName = Str::slug($request->client_name) . '_' . time() . '.webp';
+                $fullPath = $destinationPath . $imageName;
 
-            //     // ✅ Correct usage
-            //     Storage::disk('public')->putFileAs(
-            //         'images/testimonials',
-            //         $file,
-            //         $fileName
-            //     );
+                /** If already WebP → move directly */
+                if ($extension === 'webp') {
+                    $file->move($destinationPath, $imageName);
+                } else {
+                    /** Convert to WebP */
+                    switch ($extension) {
+                        case 'jpg':
+                        case 'jpeg':
+                            $image = imagecreatefromjpeg($file->getRealPath());
+                            break;
 
-            //     $testimonial->client_photo_path = $fileName;
-            // }
+                        case 'png':
+                            $image = imagecreatefrompng($file->getRealPath());
+                            imagepalettetotruecolor($image);
+                            imagealphablending($image, true);
+                            imagesavealpha($image, true);
+                            break;
+
+                        default:
+                            throw new \Exception('Unsupported image format');
+                    }
+
+                    imagewebp($image, $fullPath, 80);
+                    imagedestroy($image);
+                }
+
+                $testimonial->client_photo_path = $imageName;
+            }
+
             $testimonial->save();
             DB::commit();
             return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial created successfully.');
@@ -93,7 +119,7 @@ class TestimonialController extends Controller
     public function edit(string $id)
     {
         $t = Testimonial::findOrFail($id);
-        // $t->client_photo_path = $t->client_photo_path ? Storage::disk('public')->url('images/testimonials/' . $t->client_photo_path) : '';
+        $t->client_photo_path = $t->client_photo_path ? asset('storage/images/testimonials/' . $t->client_photo_path) : '';
         return view('admin.testimonials.edit', compact('t'));
     }
 
@@ -119,32 +145,56 @@ class TestimonialController extends Controller
             $testimonial->client_rating = $request->client_rating;
             $testimonial->testimonial_text = $request->testimonial_text;
 
-            // if ($request->hasFile('client_photo_path')) {
+            // /** Upload Path */
+            $destinationPath = public_path('storage/images/testimonials/');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
 
-            //     $file = $request->file('client_photo_path');
+            if ($request->hasFile('client_photo_path')) {
+                $file = $request->file('client_photo_path');
+                $extension = strtolower($file->getClientOriginalExtension());
 
-            //     $fileName = preg_replace('/\s+/', '_', Str::slug($request->client_name))
-            //         . '_' . time()
-            //         . '.' . $file->getClientOriginalExtension();
+                // Always store as .webp
+                $imageName = Str::slug($request->client_name) . '_' . time() . '.webp';
+                $fullPath = $destinationPath . $imageName;
 
-            //     // Delete old client_photo_path if exists
-            //     if (
-            //         !empty($testimonial->client_photo_path) &&
-            //         Storage::disk('public')->exists('images/testimonials/' . $testimonial->client_photo_path)
-            //     ) {
+                // Delete old file first
+                if (!empty($testimonial->client_photo_path)) {
+                    $oldFilePath = $destinationPath . $testimonial->client_photo_path;
+                    if (file_exists($oldFilePath)) {
+                        unlink($oldFilePath);
+                    }
+                }
 
-            //         Storage::disk('public')->delete('images/testimonials/' . $testimonial->client_photo_path);
-            //     }
+                /** If already WebP → move directly */
+                if ($extension === 'webp') {
+                    $file->move($destinationPath, $imageName);
+                } else {
+                    /** Convert to WebP */
+                    switch ($extension) {
+                        case 'jpg':
+                        case 'jpeg':
+                            $image = imagecreatefromjpeg($file->getRealPath());
+                            break;
 
-            //     // ✅ Correct usage
-            //     Storage::disk('public')->putFileAs(
-            //         'images/testimonials',
-            //         $file,
-            //         $fileName
-            //     );
+                        case 'png':
+                            $image = imagecreatefrompng($file->getRealPath());
+                            imagepalettetotruecolor($image);
+                            imagealphablending($image, true);
+                            imagesavealpha($image, true);
+                            break;
 
-            //     $testimonial->client_photo_path = $fileName;
-            // }
+                        default:
+                            throw new \Exception('Unsupported image format');
+                    }
+
+                    imagewebp($image, $fullPath, 80);
+                    imagedestroy($image);
+                }
+
+                $testimonial->client_photo_path = $imageName;
+            }
 
             $testimonial->save();
             DB::commit();

@@ -58,17 +58,23 @@
                             @enderror
                         </div>
 
-                        <!-- Short Desc -->
-                        <div class="col-md-6">
+                        <!-- Topic -->
+                        <div class="col-md-3">
                             <label class="form-label fw-semibold">
-                                Short Description <span class="text-danger">*</span>
+                                Select Topic <span class="text-danger">*</span>
                             </label>
-                            <textarea name="short_desc" id="short_desc" cols="" class="form-control" rows="5"
-                                placeholder="Short Description" required>{{ optional($cs)->short_desc ?? old('short_desc') }}</textarea>
+                            <select name="topic_id" id="topic_id" class="form-select">
+                                <option value="" selected disabled>Select</option>
+                                @foreach ($topics as $topic)
+                                    <option value="{{ $topic->id }}"
+                                        {{ ($cs->topic_id ? $cs->topic_id : old('topic_id') == $topic->id) ? 'selected' : '' }}>
+                                        {{ $topic->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- Logo Upload -->
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label fw-semibold">
                                 Logo
                             </label>
@@ -78,6 +84,15 @@
                             <small class="text-muted">
                                 Supported formats: JPG, PNG, WEBP (Max 2MB)
                             </small>
+                        </div>
+
+                        <!-- Short Desc -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Short Description <span class="text-danger">*</span>
+                            </label>
+                            <textarea name="short_desc" id="short_desc" cols="" class="form-control" rows="5"
+                                placeholder="Short Description" required>{{ optional($cs)->short_desc ?? old('short_desc') }}</textarea>
                         </div>
 
                         <!-- Logo Preview -->
