@@ -76,7 +76,7 @@
                         <!-- Logo Upload -->
                         <div class="col-md-3">
                             <label class="form-label fw-semibold">
-                                Logo
+                                Image
                             </label>
                             <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.webp"
                                 onchange="previewImage(event)">
@@ -95,16 +95,16 @@
                                 placeholder="Short Description" required>{{ optional($cs)->short_desc ?? old('short_desc') }}</textarea>
                         </div>
 
-                        <!-- Logo Preview -->
+                        <!-- Image Preview -->
                         <div class="col-md-6 d-flex align-items-end">
                             <div class="border rounded p-2 w-100 text-center bg-light">
                                 <img id="imagePreview"
                                     @if (!empty($cs->image)) src="{{ $cs->image }}" style="max-height: 120px;"
                                     @else
                                     style="max-height: 120px; display: none;" @endif
-                                    alt="Logo Preview">
+                                    alt="Image Preview">
                                 <div class="text-muted small mt-2">
-                                    Logo Preview
+                                    Image Preview
                                 </div>
                             </div>
                         </div>

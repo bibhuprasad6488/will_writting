@@ -141,6 +141,7 @@ class SettingController extends Controller
             $setting->alt_phone = $request->alt_phone;
             $setting->copyright = $request->copyright;
             $setting->site_desc = $request->site_desc;
+            $setting->site_map_key = $request->site_map_key;
             $setting->address = $request->address;
             $setting->site_meta_desc = $request->site_meta_desc;
             $setting->site_meta_key = $request->site_meta_key;
@@ -244,7 +245,7 @@ class SettingController extends Controller
 
                 $setting->favicon = $favicon;
             }
-            
+
 
 
             $setting->save();

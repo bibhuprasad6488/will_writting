@@ -20,6 +20,15 @@
     <meta name="keywords" content="@yield('meta_keyword', 'some default keywords')">
     <meta name="description" content="@yield('meta_description', 'default description')">
 
+    <!-- Favicons -->
+    <link
+        href="@if ($siteSetting) {{ asset('storage/images/settings/' . $siteSetting->favicon) }} @endif"
+        rel="icon" />
+
+    <link
+        href="@if ($siteSetting) {{ asset('storage/images/settings/' . $siteSetting->favicon) }} @endif"
+        rel="apple-touch-icon" />
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     {{-- <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
@@ -98,11 +107,28 @@
         </main>
     </div>
     @include('layouts.footer')
-    @stack('scripts')
+
+    <!-- jQuery FIRST -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/scroll.js') }}"></script>
     <script src="{{ asset('assets/js/testimonial.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/timeline.js') }}"></script> --}}
+
+    <script>
+        window.onload = function() {
+            let alert = document.getElementById('success-alert');
+            if (alert) {
+                setTimeout(function() {
+                    alert.style.transition = 'opacity 0.5s ease';
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500);
+                }, 3000);
+            }
+        };
+    </script>
+    @stack('scripts')
 </body>
 
 </html>

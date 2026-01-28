@@ -73,7 +73,7 @@
                         <!-- Logo Upload -->
                         <div class="col-md-3">
                             <label class="form-label fw-semibold">
-                                Logo
+                                Image
                             </label>
                             <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.webp"
                                 onchange="previewImage(event)" required>
@@ -98,7 +98,7 @@
                                 <img id="imagePreview" src="" alt="Logo Preview"
                                     style="max-height: 120px; display: none;">
                                 <div class="text-muted small mt-2">
-                                    Logo Preview
+                                    Image Preview
                                 </div>
                             </div>
                         </div>

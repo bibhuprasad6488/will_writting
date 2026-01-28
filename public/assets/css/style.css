@@ -12,6 +12,127 @@ img {
     filter: grayscale(100%);
 }
 
+iframe {
+    filter: grayscale(100%);
+}
+
+.py-6 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.py-7 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+.py-8 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+.py-9 {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+}
+
+.py-10 {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+
+.progress-bar {
+    background-color: gray !important;
+}
+
+.custom-check {
+    border: 1px solid #dee2e6;
+    padding: 14px 16px;
+    border-radius: 10px;
+    transition: all .2s ease;
+}
+
+.custom-check:hover {
+    background-color: #f8f9fa;
+}
+
+.custom-check.active {
+    border-color: #212529;
+    background-color: #f1f3f5;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+/* Custom checkbox container */
+.custom-check {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dee2e6;
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Hide native checkbox */
+.custom-check input {
+    display: none;
+}
+
+/* Label styling */
+.custom-check label {
+    position: relative;
+    padding-left: 34px;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Checkbox box */
+.custom-check label::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    border-radius: 4px;
+}
+
+.custom-check {
+    border: 1px solid #000;
+}
+
+/* Checked state */
+.custom-check input:checked+label::before {
+    background-color: #000;
+    border-color: #000;
+}
+
+/* Tick */
+.custom-check input:checked+label::after {
+    content: "✓";
+    position: absolute;
+    left: 4px;
+    top: 0px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Hover */
+.custom-check:hover {
+    background: #f8f9fa;
+}
+
 .container {
     max-width: 1140px !important;
 }
@@ -583,6 +704,36 @@ marquee .partner-card img {
     display: block;
 }
 
+/* Center About Us item and its submenu in mobile offcanvas */
+#mobileMenu .navbar-nav {
+    align-items: center;
+}
+
+#mobileMenu .nav-item {
+    width: 100%;
+}
+
+#mobileMenu .nav-link {
+    justify-content: center !important;
+    text-align: center;
+}
+
+#mobileMenu #aboutSubMenu {
+    text-align: center;
+}
+
+#mobileMenu #aboutSubMenu .nav-link {
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+.navbar .dropdown:hover>.dropdown-menu {
+    display: block;
+    margin-top: 0;
+    background: gray;
+    /* padding: 0px 10px; */
+}
+
 /* Smooth infinite animation */
 @keyframes marquee-scroll {
     from {
@@ -614,6 +765,7 @@ marquee .partner-card img {
         font-size: 25px;
         ;
     }
+
     .offcanvas {
         width: 100vw !important;
         left: 0 !important;

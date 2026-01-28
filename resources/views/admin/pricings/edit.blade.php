@@ -44,11 +44,11 @@
                     @method('PUT')
                     <div class="row g-4">
                         <!-- Name -->
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <label class="form-label fw-semibold">
                                 Pricing Category <span class="text-danger">*</span>
                             </label>
-                            <select name="pricing_cat_id" id="pricing_cat_id" class="form-select" required>
+                            <select name="pricing_cat_id" id="pricing_cat_id" class="form-select border-secondary" autofocus required>
                                 <option value="" selected disabled>Select Category</option>
                                 @foreach ($priceCategories as $pc)
                                     <option value="{{ $pc->id }}" {{ $id == $pc->id ? 'selected' : '' }}>
@@ -62,7 +62,6 @@
                         <div class="col-md-8">
                             <table class="table">
                                 <thead>
-
                                     <tr>
                                         <th>
                                             <label for="pricingText" class="form-label">Text</label>
@@ -73,7 +72,6 @@
                                             <span class="text-danger">*</span>
                                         </th>
                                         <td>
-                                            <button class="btn btn-primary addKeys">+</button>
                                         </td>
                                     </tr>
                                 </thead>
@@ -83,17 +81,20 @@
                                             <td>
                                                 <textarea name="pricing_text[]" rows="3" class="form-control border-secondary" placeholder="Enter Text">{{ $pricing->pricing_text }}</textarea>
                                             </td>
-                                            <td>
+                                            <td style="width: 100px">
                                                 <input type="text" name="price[]" placeholder="Price"
                                                     class="form-control border-secondary numeric-only"
-                                                    value="{{ $pricing->price }}">
+                                                    value="{{ $pricing->price }}" width="50%">
                                             </td>
                                             @if ($loop->iteration != 1)
                                                 <td>
                                                     <button class="btn btn-danger removeKeys">-</button>
                                                 </td>
                                             @else
-                                                <td></td>
+                                                <td>
+                                            <button class="btn btn-primary addKeys">+</button>
+
+                                                </td>
                                             @endif
                                         </tr>
                                     @endforeach
@@ -139,7 +140,7 @@
                             </td>
                         </tr>`;
             // row.find('td').empty();
-            $(tbody).append(row);
+            $(tbody).prepend(row);
         });
         $(document).on('click', '.removeKeys', function(e) {
             e.preventDefault();

@@ -12,7 +12,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('admin.pricings.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('admin.pricings.create') }}" class="btn btn-primary">Add</a>
                 </div>
             </div>
         </div>

@@ -145,6 +145,15 @@
                             </div>
 
                             <div class="form-group row  mb-2">
+                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                    Google Map Setting
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea name="site_map_key" id="site_map_key" class="form-control" rows="3" placeholder="Iframe link">{{ optional($setting)->site_map_key }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row  mb-2">
                                 <label for=""
                                     class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Copyrights
                                 </label>
@@ -227,7 +236,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <hr />
                             <div class="row">
                                 <label class=" col-form-label"></label>

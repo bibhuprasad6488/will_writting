@@ -12,6 +12,8 @@ class CaseStudy extends Model
     protected $fillable = [
         'title',
         'slug',
+        'topic_id',
+        'user_id',
         'image',
         'short_desc',
         'long_desc',
@@ -19,6 +21,8 @@ class CaseStudy extends Model
         'meta_keywords',
         'meta_desc',
         'status',
+        'read_time',
+        'view',
         'created_at',
         'updated_at'
     ];
@@ -26,5 +30,11 @@ class CaseStudy extends Model
     public function topic()
     {
         return $this->belongsTo(Topic::class, 'topic_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(Admin::class, 'user_id');
+
     }
 }

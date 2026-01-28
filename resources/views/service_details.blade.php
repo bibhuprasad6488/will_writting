@@ -69,7 +69,7 @@
             <h2 class="text-center mb-5 maastrix">Our expert specialist services will take care of the rest:</h2>
             <div class="row g-4">
                 @foreach ($services as $service)
-                    <div class="col-md-4">
+                    <div class="col-md-4 px-5 py-4">
                         <div class="card service-card h-100 text-center rounded-0">
                             <img src="{{ $service->service_image }}" class="card-img-top">
                             <div class="card-body text-center">

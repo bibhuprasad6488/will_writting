@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Add Testimonial')
+@section('title', 'Edit Testimonial')
 
 @section('content')
     <div class="container-fluid px-4">
@@ -8,12 +8,12 @@
         <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1">Add Testimonial</h1>
+                <h1 class="fw-bold mb-1">Edit Testimonial</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">Dashboard</li>
                         <li class="breadcrumb-item">Testimonials</li>
-                        <li class="breadcrumb-item active">Add</li>
+                        <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </nav>
             </div>
@@ -61,7 +61,7 @@
                         <!-- Website -->
                         <div class="col-md-3">
                             <label class="form-label fw-semibold">
-                                Client Position <span class="text-danger">*</span>
+                                Short Title <span class="text-danger">*</span>
                             </label>
                             <input type="text" class="form-control" name="client_position"
                                 value="{{ optional($t)->client_position ?? old('client_position') }}"

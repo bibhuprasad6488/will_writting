@@ -71,7 +71,6 @@
                                             <span class="text-danger">*</span>
                                         </th>
                                         <td>
-                                            <button class="btn btn-primary addKeys">+</button>
                                         </td>
                                     </tr>
                                 </thead>
@@ -81,11 +80,14 @@
                                             <textarea name="pricing_text[]" rows="3" class="form-control border-secondary" placeholder="Enter Text"></textarea>
 
                                         </td>
-                                        <td>
+                                        <td style="width: 100px">
                                             <input type="text" name="price[]" placeholder="Price"
                                                 class="form-control border-secondary numeric-only">
                                         </td>
-                                        <td></td>
+                                        <td>
+                                            <button class="btn btn-primary addKeys">+</button>
+
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -127,7 +129,7 @@
                             </td>
                         </tr>`;
             // row.find('td').empty();
-            $(tbody).append(row);
+            $(tbody).prepend(row);
         });
         $(document).on('click', '.removeKeys', function(e) {
             e.preventDefault();

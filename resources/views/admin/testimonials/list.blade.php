@@ -12,7 +12,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('admin.testimonials.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('admin.testimonials.create') }}" class="btn btn-primary">Add New</a>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                         <tr>
                             <th>SL No</th>
                             <th>Name</th>
-                            <th>Position</th>
+                            <th>Short Title</th>
                             <th>Testimonial Text</th>
                             <th>Created</th>
                             <th>Action</th>

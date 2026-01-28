@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Services')
+@section('title', 'Guided Journey')
 
 @section('content')
     <div class="services" class="text-center">
@@ -86,6 +86,9 @@
                     <div class="content">
                         <h3>Getting Started </h3>
                         <p>(Analysis + Choosing the right service)</p>
+                        <p>Kick off your estate planning journey by understanding your needs and choosing the right service.
+                            Whether it’s will writing, trust setup, or estate planning, our guided approach ensures you make
+                            informed decisions that protect your assets and secure your family’s future.</p>
                     </div>
                     <div class="time">
                         <!-- <h4>January 2018</h4> -->
@@ -97,6 +100,10 @@
                     <div class="content">
                         <h3>Provide Your Information </h3>
                         <p>(Fact finding + Review)</p>
+                        <p>Share all necessary details about your assets, family, and personal wishes. Our experts carefully
+                            review the information to ensure nothing is missed, creating a complete and accurate picture.
+                            This step ensures your estate plan is fully tailored to your circumstances and long-term goals.
+                        </p>
                     </div>
                     <div class="time">
                         <!-- <h4>February 2018</h4> -->
@@ -108,6 +115,9 @@
                     <div class="content">
                         <h3>We Prepare Your Will </h3>
                         <p>(Document preparation + Signing)</p>
+                        <p>We draft your will or legal documents in line with your instructions. Our team ensures every
+                            detail is precise, then guides you through the signing process to make it legally binding. This
+                            step gives you confidence that your wishes will be followed exactly as intended.</p>
                     </div>
                     <div class="time">
                         <!-- <h4>March 2018</h4> -->
@@ -119,6 +129,9 @@
                     <div class="content">
                         <h3>Storage and Ongoing Support </h3>
                         <p>(Secure storage + Ongoing support)</p>
+                        <p>Once your documents are prepared, we securely store them and provide ongoing support. Updates and
+                            guidance are available whenever your circumstances change, ensuring your estate plan remains
+                            effective and your family’s future is always protected.</p>
                     </div>
                     <div class="time">
                         <!-- <h4>April 2018</h4> -->
@@ -132,9 +145,6 @@
     </section>
 
     <style>
-        /* ===============================
-   Timeline Base
-================================ */
         .timeline {
             position: relative;
             margin: 50px auto;
@@ -162,7 +172,7 @@
             top: 0;
             width: 5px;
             height: 0;
-            background: #1b1618;
+            background: gray;
             transition: height 0.25s ease-out;
         }
 
@@ -212,9 +222,6 @@
             clear: both;
         }
 
-        /* ===============================
-   Numbered Circle
-================================ */
         .timeline ul li::before {
             counter-increment: step;
             content: counter(step);
@@ -249,15 +256,11 @@
         }
 
         .timeline ul li.active::before {
-            background: #000;
+            background: gray;
             transform: scale(1.15);
             box-shadow: -4px 6px 13px 5px rgba(0, 0, 0, 0.3);
         }
 
-
-        /* ===============================
-   Content
-================================ */
         .content {
             display: block;
         }
@@ -274,9 +277,6 @@
             color: #444;
         }
 
-        /* ===============================
-   Image / Time Box
-================================ */
         .step-img {
             max-width: 350px;
         }
@@ -305,9 +305,6 @@
             clear: both;
         }
 
-        /* ===============================
-   Responsive
-================================ */
         @media (max-width: 1000px) {
             .timeline {
                 max-width: 100%;
@@ -316,36 +313,107 @@
 
         @media (max-width: 767px) {
 
+            /* Timeline spine */
             .timeline::before,
             .timeline-progress {
                 left: 20px;
             }
 
+            /* Reset layout */
             .timeline ul li {
                 width: 100%;
-                padding: 20px 20px 20px 60px;
+                float: none;
+                padding: 20px 15px 30px 60px;
                 text-align: left;
+                margin-bottom: 40px;
+                opacity: 1;
             }
 
+            /* Step circle */
             .timeline ul li::before {
-                top: 20px;
-                left: 16px;
+                top: 18px;
+                left: 0;
                 right: auto;
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
             }
 
+            /* Content spacing */
+            .timeline ul li .content h3 {
+                font-size: 18px;
+            }
+
+            .timeline ul li .content p {
+                font-size: 14px;
+                margin-top: 6px;
+            }
+
+            /* Image container reset */
             .timeline ul li .time {
                 position: relative;
                 top: auto;
                 left: auto;
                 right: auto;
                 transform: none;
-                margin-top: 15px;
+                margin-top: 12px;
                 box-shadow: none;
-                padding: 0;
             }
 
+
+            /* Image sizing */
             .step-img {
-                max-width: 120px;
+                max-width: 100%;
+                width: 180px;
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* Kill desktop behavior completely */
+            .timeline ul li,
+            .timeline ul li:nth-child(odd),
+            .timeline ul li:nth-child(even) {
+                float: none !important;
+                width: 100% !important;
+                padding: 20px 15px 30px 60px !important;
+                text-align: left !important;
+                margin-bottom: 40px !important;
+                opacity: 1 !important;
+            }
+
+            /* Timeline vertical line */
+            .timeline::before,
+            .timeline-progress {
+                left: 20px !important;
+            }
+
+            /* Step number circle */
+            .timeline ul li::before {
+                left: 4px !important;
+                right: auto !important;
+                top: 18px !important;
+                width: 34px !important;
+                height: 34px !important;
+                font-size: 16px !important;
+            }
+
+            /* Image container — HARD RESET */
+            .timeline ul li .time {
+                position: relative !important;
+                left: auto !important;
+                right: auto !important;
+                top: auto !important;
+                transform: none !important;
+                margin-top: 12px !important;
+                box-shadow: none !important;
+            }
+
+            /* Images */
+            .step-img {
+                max-width: 100% !important;
+                width: 160px !important;
             }
         }
     </style>
@@ -388,7 +456,7 @@
 @endsection
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const timeline = document.querySelector('.timeline');
             const progressLine = document.querySelector('.timeline-progress');
             const items = document.querySelectorAll('.timeline ul li');

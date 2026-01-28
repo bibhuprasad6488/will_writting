@@ -68,7 +68,7 @@
             <h2 class="text-center mb-5 maastrix">Our Services</h2>
             <div class="row g-4">
                 @foreach ($services as $service)
-                    <div class="col-md-4">
+                    <div class="col-md-4 px-5 py-4">
                         <div class="card service-card h-100 text-center rounded-0">
                             <img src="{{ $service->service_image }}" class="card-img-top">
                             <div class="card-body text-center">
@@ -130,7 +130,7 @@
     </section>
 
 
-    <section class="section guided_journey pb-5">
+    {{-- <section class="section guided_journey pb-5">
         <div class="container">
             <h2 class="text-center mb-5 maastrix">Guided Journey</h2>
             <div class="row g-4">
@@ -154,7 +154,7 @@
                     all</a></div>
             <div class="start_will"><a class="btn btn-dark mt-3 rounded-0 fs-4 px-4 py-2">Make your will today</a></div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="section client_testimonials pb-5">
         <div class="container position-relative">
