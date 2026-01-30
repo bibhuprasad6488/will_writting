@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TopicController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('login.submit');
     Route::post('/logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('logout');
 
+    // Route::get('/forget-password', [App\Http\Controllers\Admin\Auth\LoginController::class, 'forgetPassword'])->name('password.request');
+    Route::post('/forgot-password', [App\Http\Controllers\Admin\Auth\LoginController::class, 'sendResetLink'])->name('password.email');
+    Route::get('/reset-password/{token}', function (Request $request, $token) {
+        return view('admin.auth.reset-password', [
+            'token' => $token,
+            'request' => $request
+        ]);
+    })->name('password.reset');
+
+    Route::post('/reset-password', [App\Http\Controllers\Admin\Auth\LoginController::class, 'reset'])->name('password.store');
+
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', function () {
             return view('admin.dashboard');
@@ -70,6 +82,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('chnage-password/{id}', [SettingController::class, 'chnagePassword'])->name('chnage-password');
         Route::get('/settings', [SettingController::class, 'siteSetting'])->name('site.setting');
         Route::post('/update-settings', [SettingController::class, 'updateSiteSetting'])->name('update.site.setting');
+        Route::get('/get-wills', [SettingController::class, 'getWills'])->name('wills.list');
+        Route::get('/view-will/{id}', [SettingController::class, 'viewWill'])->name('wills.list.show');
+        Route::get('/contact-requests', [SettingController::class, 'contactRequests'])->name('contact.request');
     });
 });
 

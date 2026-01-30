@@ -1,5 +1,8 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@php
+    $siteSetting = \App\Models\SiteSetting::find(1);
+@endphp
 
 <head>
     <meta charset="utf-8">
@@ -13,6 +16,15 @@
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+    <!-- Favicons -->
+    <link
+        href="@if ($siteSetting) {{ asset('storage/images/settings/' . $siteSetting->favicon) }} @endif"
+        rel="icon" />
+
+    <link
+        href="@if ($siteSetting) {{ asset('storage/images/settings/' . $siteSetting->favicon) }} @endif"
+        rel="apple-touch-icon" />
 
     <!-- Fonts -->
     {{-- <link rel="dns-prefetch" href="//fonts.bunny.net">

@@ -12,6 +12,8 @@ use App\Models\Topic;
 use App\Models\Will;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -107,7 +109,14 @@ class HomeController extends Controller
     {
         $blog = CaseStudy::where('slug', $slug)->where('status', 1)->with('topic')->firstOrFail();
         $blog->image = $blog->image ? asset('storage/images/case_studies/' . $blog->image) : '';
-        return view('blog_details', compact('blog'));
+        $relatedBlogs = CaseStudy::where('topic_id', $blog->topic_id)->where('id', '!=', $blog->id)->where('status', 1)->orderByDesc('id')->take(3)->get()->map(function ($rb) {
+            $rb->image = $rb->image ? asset('storage/images/case_studies/' . $rb->image) : '';
+            return $rb;
+        });
+
+        $topics = Topic::where('status', 1)->take(4)->get();
+
+        return view('blog_details', compact('blog', 'relatedBlogs', 'topics'));
     }
 
 
@@ -145,8 +154,25 @@ class HomeController extends Controller
             $c->ct_message = $request->ct_message;
             $c->ip_address = request()->ip();
             $c->save();
+
+            $internalRecipients = [
+                'bibhuprasad.maastrix@gmail.com',
+            ];
+
+            $internalSubject = "New Contact Requested: {$c->ct_name}";
+            $internalMessage = "A new contact form has been submitted on Website.\n\n" .
+                "Name: {$c->ct_name}\n" .
+                "Email: {$c->ct_email}\n" .
+                "Phone: {$c->ct_phone}\n" .
+                "Message: {$c->ct_message}\n";
+
+            Mail::raw($internalMessage, function ($message) use ($internalSubject, $internalRecipients, $c) {
+                $message->to($internalRecipients)->subject($internalSubject);
+                // ->replyTo($c->ct_email, $c->ct_name);
+            });
+
             DB::commit();
-            return redirect()->back()->with('success', 'Thank you for contacting us. We will get back to you ASPA');
+            return redirect()->back()->with('success', 'Thank you for contacting us. We will get back to you as soon as possible');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('error', 'Error during submission: ' . $th->getMessage());
@@ -174,6 +200,25 @@ class HomeController extends Controller
             $will->confirm_free_will = $request->confirm_free_will;
             $will->assets = $request->assets ? implode(', ', $request->assets) : '';
             $will->save();
+
+            // Send email to admin
+            try {
+                $sub = 'New will form Submitted';
+                $to = 'bibhuprasad.maastrix@gmail.com';
+                $internalMessage = "A new will form submitted on Website.\n\n" .
+                    "User Name:	{$will->full_name}\n" .
+                    "Email:	{$will->email}\n" .
+                    "Post Code:	{$will->postcode}\n";
+
+                Mail::raw($internalMessage, function ($message) use ($sub, $to) {
+                    $message->to($to)->subject($sub);
+                    // ->replyTo($cForm->cf_email, $cForm->cf_name);
+                });
+                // Log::info('Email Successfully Send');
+            } catch (\Throwable $th) {
+                Log::info('Failed to send Internal email', ['response' => $th->getMessage()]);
+            }
+
             DB::commit();
             return redirect()->route('thank-you');
         } catch (\Throwable $th) {

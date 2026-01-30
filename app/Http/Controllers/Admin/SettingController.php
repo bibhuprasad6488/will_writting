@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\GetInTouch;
 use App\Models\SiteSetting;
 use App\Models\User;
+use App\Models\Will;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -256,27 +258,22 @@ class SettingController extends Controller
             return back()->with('error', $th->getMessage());
         }
     }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function getWills()
     {
-        //
+        $wills = Will::orderByDesc('id')->get();
+        return view('admin.common.wills', compact('wills'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function ViewWill($id)
     {
-        //
+        $will = Will::find($id);
+        return view('admin.common.view_will', compact('will'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function contactRequests()
     {
-        //
+        $contacts = GetInTouch::orderByDesc('id')->get();
+        return view('admin.common.contacts', compact('contacts'));
     }
 }

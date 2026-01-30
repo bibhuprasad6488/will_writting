@@ -23,4 +23,20 @@ class Will extends Model
         'created_at',
         'updated_at',
     ];
+
+    protected $appends = ['setup_array', 'assets_array'];
+
+    public function getSetupArrayAttribute()
+    {
+        return $this->setup
+            ? array_map('trim', explode(',', $this->setup))
+            : [];
+    }
+
+    public function getAssetsArrayAttribute()
+    {
+        return $this->assets
+            ? array_map('trim', explode(',', $this->assets))
+            : [];
+    }
 }

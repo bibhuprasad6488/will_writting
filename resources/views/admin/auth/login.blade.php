@@ -48,8 +48,8 @@
                     <button type="submit" class="login-button">LOGIN</button>
                 </form>
 
-                @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}" class="forgot-password">Forgot Your password?</a>
+                @if (Route::has('admin.password.request'))
+                    <a href="{{ route('admin.password.request') }}" class="forgot-password">Forgot Your password?</a>
                 @endif
             </div>
 

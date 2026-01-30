@@ -108,12 +108,22 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Services
                 </a>
-                {{-- <a class="nav-link" href="tables.html">
+
+                <!-- Wills -->
+                <a class="nav-link {{ request()->routeIs(['admin.wills.list']) ? 'active' : '' }} "
+                    href="{{ route('admin.wills.list') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    Wills Requests
+                </a>
+                <!-- Contact Forms -->
+                <a class="nav-link {{ request()->routeIs(['admin.contact.request']) ? 'active' : '' }}"
+                    href="{{ route('admin.contact.request') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Tables
-                </a> --}}
+                    Contact Forms
+                </a>
             </div>
         </div>
+        
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:
                 <span style="float: right">
