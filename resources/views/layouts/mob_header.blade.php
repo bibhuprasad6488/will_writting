@@ -23,8 +23,9 @@
             <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="#">About Us</a></li> --}}
             <li class="nav-item">
-                <a class="nav-link d-flex justify-content-between align-items-center {{ request()->routeIs(['journey','blogs']) ? 'active' : '' }}" data-bs-toggle="collapse"
-                    href="#aboutSubMenu" role="button" aria-expanded="false" aria-controls="aboutSubMenu">
+                <a class="nav-link d-flex justify-content-between align-items-center {{ request()->routeIs(['journey', 'protection']) ? 'active' : '' }}"
+                    data-bs-toggle="collapse" href="#aboutSubMenu" role="button" aria-expanded="false"
+                    aria-controls="aboutSubMenu">
                     About Us
                     <i class="bi bi-chevron-down small"></i>
                 </a>
@@ -34,13 +35,14 @@
                         <a class="nav-link fs-6" href="{{ route('journey') }}">Guided Journey</a>
                     </li>
                     <li class="py-1">
-                        <a class="nav-link fs-6" href="{{ route('blogs') }}">Case Studies</a>
+                        <a class="nav-link fs-6" href="{{ route('protection') }}">Protection</a>
                     </li>
                 </ul>
             </li>
 
             <li class="nav-item"><a class="nav-link" href="{{ route('service.lists') }}">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('price-lists') }}">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('blogs') }}">Case Study</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="#">Protection</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
         </ul>

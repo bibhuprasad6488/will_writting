@@ -109,3 +109,8 @@ Route::post('/contact-us-submit', [HomeController::class, 'contactUsStore'])->na
 Route::get('/start-your-will', [HomeController::class, 'startYourWills'])->name('start.will');
 Route::post('/start-your-will-store', [HomeController::class, 'storeWills'])->name('start.will.submit');
 Route::get('/thank-you', [HomeController::class, 'thankYou'])->name('thank-you');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy');
+Route::get('/terms-of-business', [HomeController::class, 'termsOfBusiness'])->name('terms.business');
+Route::get('/our-story', [HomeController::class, 'ourStory'])->name('story');
+Route::get('/witnesses', [HomeController::class, 'witnesses'])->name('witness');
+Route::get('/protection', [HomeController::class, 'protection'])->name('protection');

@@ -24,14 +24,27 @@
 
     </div>
 
+    <section class=" py-4 cm10">
+        <div class="container">
+            <div class="row justify-content-center  rounded-0">
+                <div class="col-lg-12">
+                    <h2 class="mb-3">
+                        Wills Sterling is your trusted Will Lawyer
+                    </h2>
 
+                    <p class="mb-4 fs-5">
+                        We’re here to help you take the next step with confidence. Whether you have questions about will
+                        writing, estate planning, trusts, or lasting power of attorney, our team is ready to guide you. Use
+                        the form below to get in touch, request a consultation, or seek clarity on our services. We’ll
+                        respond promptly and ensure you receive clear, professional advice tailored to your needs.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
     <section class="cta ">
-        @php
-            $siteSetting = \App\Models\SiteSetting::find(1);
-        @endphp
-        @if ($siteSetting)
-            {!! $siteSetting->site_map_key !!}
-        @endif
+
         <div class="container py-7">
             <div class="row  text-center rounded-0">
                 <div class="col-lg-6 px-5">
@@ -61,52 +74,72 @@
         </div>
     </section>
 
-    <section class="py-5 mb-6 cmt10 ">
+    <section class="py-5 mb-6 cmt10">
         <div class="container">
-            <div class="row text-center rounded-0 ">
-                <div class="col-lg-12">
-                    <h2 class="fw-bold fs-1 mb-4">
-                        Get in touch today For A Free Consultation
+            <div class="row align-items-center g-5">
+
+                <!-- Left: Content + Form -->
+                <div class="col-md-6">
+                    <h2 class="fw-bold fs-3 mb-3">
+                        Get in Touch Today for a Free Consultation
                     </h2>
 
+                    <p class="mb-4 text-muted">
+                        Get in touch with our team to discuss your estate planning needs. We’re here to answer your
+                        questions, provide clear guidance, and help you take the next step with confidence.
+                    </p>
+
                     @if (session('success'))
-                        <div class="alert alert-success mx-1 mt-3 rounded-3 shadow-sm" id="success-alert">
+                        <div class="alert alert-success mt-3 rounded-3 shadow-sm">
                             {{ session('success') }}
                         </div>
                     @endif
+
                     @if (session('error'))
-                        <div class="alert alert-danger mx-1 mt-3 rounded-3 shadow-sm" id="success-alert">
+                        <div class="alert alert-danger mt-3 rounded-3 shadow-sm">
                             {{ session('error') }}
                         </div>
                     @endif
-                    <form action="{{ route('contact.submit') }}" method="post">
+
+                    <form action="{{ route('contact.submit') }}" method="post" class="mt-4">
                         @csrf
-                        <div class="input-group mb-3">
+
+                        <div class="mb-3">
                             <input type="text" class="form-control border-secondary rounded-0" name="ct_name"
                                 placeholder="Your name" required>
                         </div>
-                        <div class="input-group mb-3">
+
+                        <div class="mb-3">
                             <input type="email" class="form-control border-secondary rounded-0" name="ct_email"
                                 placeholder="Your email" required>
                         </div>
-                        <div class="input-group mb-3">
+
+                        <div class="mb-3">
                             <input type="text" class="form-control border-secondary rounded-0 numeric-only"
                                 name="ct_phone" placeholder="Your phone" required>
                         </div>
-                        <div class="input-group mb-3">
-                            <textarea name="ct_message" id="ct_message" rows="5" class="form-control border-secondary rounded-0"
-                                placeholder="Your message" required></textarea>
+
+                        <div class="mb-4">
+                            <textarea name="ct_message" rows="5" class="form-control border-secondary rounded-0" placeholder="Your message"
+                                required></textarea>
                         </div>
-                        <button type="submit"
-                            class="btn btn-dark rounded-circle fw-bold d-flex align-items-center justify-content-center p-4"
-                            style="width: 65px; height: 65px;">
+
+                        <button type="submit" class="btn btn-secondary fw-bold px-5 py-2 rounded-0">
                             Submit
                         </button>
                     </form>
                 </div>
+
+                <!-- Right: Image -->
+                <div class="col-md-6 text-center">
+                    <img src="{{ asset('assets/images/consultation.png') }}" alt="Consultation"
+                        class="img-fluid rounded-3 shadow-sm d-none d-md-block">
+                </div>
+
             </div>
         </div>
     </section>
+
 
 @endsection
 @push('scripts')

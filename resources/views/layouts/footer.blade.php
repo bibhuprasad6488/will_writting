@@ -13,16 +13,34 @@
                         @endif
                     </a>
                 </p>
-                <p>Call:
-                    @if ($siteSetting && $siteSetting->contact_phone)
-                        {{ $siteSetting->contact_phone }}
-                    @elseif ($siteSetting && $siteSetting->alt_phone)
-                        {{ $siteSetting->alt_phone }}
-                    @else
-                        (0)
-                        123-456-7899
-                    @endif
-                </p>
+                <p>At Sterling Wills, we pride ourselves on providing clear, professional will writing services designed
+                    to give our clients peace of mind. Our approach is built on trust, experience, and a genuine
+                    commitment to protecting what matters most to you and your family.</p>
+            </div>
+
+            <!-- Column 2: Services -->
+            <div class="col-md-3 col-xs-12 mb-4 mb-md-0">
+                <h6 class="footer-title">Quick Links</h6>
+                <ul class="footer-links">
+                    <li>
+                        <a href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('story') }}">Our Story</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('journey') }}">Guided Journey</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('blogs') }}">Case Studies</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('witness') }}">Witnesses</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('price-lists') }}">Pricing</a>
+                    </li>
+                </ul>
             </div>
 
             <!-- Column 2: Services -->
@@ -39,22 +57,7 @@
                 </ul>
             </div>
 
-            <!-- Column 3: Navigation -->
             <div class="col-md-3 col-xs-12 mb-4 mb-md-0">
-                <h6 class="footer-title">Guided Journey</h6>
-                <ul class="footer-links">
-                    <li><a href="#">Analysic</a></li>
-                    <li><a href="#">Choose right service</a></li>
-                    <li><a href="#">Detailed fact finding</a></li>
-                    <li><a href="#">Review your info</a></li>
-                    <li><a href="#">Document Preparation<a></li>
-                    <li><a href="#">Signing and next</a></li>
-                    <li><a href="#">Secure storage</a></li>
-                    <li><a href="#">Ongoing support</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3 col-xs-12 text-center text-md-end">
 
                 <!-- Row 1: Compliance logos -->
                 <div class="footer-logos mb-4">
@@ -77,7 +80,7 @@
                 </div>
 
                 <!-- Row 2: Social icons -->
-                <div class="footer-socials">
+                <div class="footer-socials mb-3">
                     <div class="social-box">
                         <img src="{{ asset('assets/images/fb.png') }}" alt="Facebook">
                     </div>
@@ -92,11 +95,54 @@
                     </div>
                 </div>
 
-            </div>
+                <div class="d-flex flex-column gap-3 mt-3">
 
+                    <!-- Phone -->
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-phone-alt me-2 text-secondary"></i>
+                        <span>
+                            @if ($siteSetting && $siteSetting->contact_phone)
+                                {{ $siteSetting->contact_phone }}
+                            @elseif ($siteSetting && $siteSetting->alt_phone)
+                                {{ $siteSetting->alt_phone }}
+                            @else
+                                +44 (0) 203 957 7000
+                            @endif
+                        </span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-envelope me-2 text-secondary"></i>
+                        <span>
+                            Email:
+                            <a href="mailto:{{ $siteSetting->contact_email ? $siteSetting->contact_email : $siteSetting->alt_email ?? 'info@example.com' }}"
+                                class="text-decoration-none">
+                                Click here
+                            </a>
+                        </span>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="d-flex align-items-start">
+                        <i class="fa fa-map-marker me-2 text-secondary mt-1"></i>
+                        <span>
+                            Address:
+                            {{ $siteSetting->address ? $siteSetting->address : 'Suite xxx, 34–35 Hatton Garden, London EC1N 8DX' }}
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-12 col-xs-12 mb-4 mb-md-0 mt-4 text-center">
+                <p class="text-white">Accredited Member of the Society of Will Writers (SWW)
+                    ‘The Sterling Wills’ is a trading name of Sterling Wills & Estate Planning LTD
+                </p>
+            </div>
         </div>
 
-        <!-- <hr class="footer-divider"> -->
+        {{-- <hr class="footer-divider"> --}}
 
 
     </div>
@@ -104,14 +150,26 @@
 
 <div class="footer-bottom">
     <div class="container">
-        <div class="col-xs-12">
-            <div class="text-center small">
-                @if ($siteSetting && $siteSetting->copyright)
-                    {{ $siteSetting->copyright }}
-                @else
-                    © {{ date('Y') }} Sterling Wills &amp; Estate Planning
-                @endif
+        <div class="col-12">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small py-3">
+
+                <!-- Copyright -->
+                <div class="mb-2 mb-md-0 text-center text-md-start">
+                    @if ($siteSetting && $siteSetting->copyright)
+                        {{ $siteSetting->copyright }}
+                    @else
+                        © {{ date('Y') }} Sterling Wills &amp; Estate Planning
+                    @endif
+                </div>
+
+                <!-- Links -->
+                <div class="text-center text-md-end">
+                    <a href="{{ route('privacy') }}" class="text-decoration-none text-white me-2">Privacy Policy</a> /
+                    <a href="{{ route('terms.business') }}" class="text-decoration-none text-white ms-2">Terms of
+                        Business</a>
+                </div>
             </div>
         </div>
+
     </div>
 </div>

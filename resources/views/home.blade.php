@@ -15,9 +15,9 @@
                 <h1 class="mb-3 banner-title">Planning for tomorrow?</h1>
                 <h4 class="mb-4 banner-subtitle">Start from today !</h4>
 
-                <a class="btn btn-outline-light btn-lg m-2 rounded-0" href="#" role="button">View Details..</a>
+                <a class="btn btn-outline-light btn-lg m-2 rounded-0" href="javascript:;" role="button">View Details..</a>
 
-                <a class="btn btn-outline-light btn-lg m-2 rounded-0" href="#" role="button">Contact us today !</a>
+                <a class="btn btn-outline-light btn-lg m-2 rounded-0" href="{{ route('contact') }}" role="button">Contact us today !</a>
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
     <!-- MOB HEADER -->
     @include('layouts.mob_header')
 
-    <section class="section page mt-4 mb-4">
+    <section class="section page mt-4 mb-4 cm10">
         <div class="container mt-4">
             <div class="row g-4">
                 <!-- LEFT TEXT BOXES -->
@@ -50,70 +50,73 @@
 
                     </div>
                 </div>
-                <div class="col-md-9 mx-auto">
-                    <div class="my-2">
-                        <a href="{{ route('blogs') }}" class="text-dark">< Back to List</a>
+                <div class="col-md-8">
+                    <div class="fs-5 py-2 px-1">
+                        {!! $blog->long_desc !!}
                     </div>
-                    <div>
+                </div>
+                <div class="col-md-4">
+
+                    {{-- <div class="my-2">
+                        <a href="{{ route('blogs') }}" class="text-dark">< Back to List</a>
+                    </div> --}}
+                    <div class="mb-5">
+                        <p class="fs-4">Category</p>
+                        <hr>
                         @foreach ($topics as $t)
-                            <a class="btn btn-secondary rounded-0 "
+                            <a class="btn btn-outline-secondary rounded-0 px-4 border-0"
                                 href="{{ route('blogs', array_merge(request()->query(), ['topic' => $t->slug])) }}">
                                 {{ $t->name }}
                             </a>
                         @endforeach
                     </div>
-                    <div class="fs-5 my-5 py-5">
-                        {!! $blog->long_desc !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="mb-4">
+                        <p class="fs-4 fw-thin">Featured Posts</p>
+                        <hr>
+                        @foreach ($relatedBlogs as $b)
+                            <div class="d-flex align-items-start gap-3 mb-3 mt-4">
 
-    <section class="section">
-        <div class="container py-5">
-            <div class="fw-bold fs-5 mb-2">Featured Insights:</div>
-            <h2 class="mb-3">Stay up to date with our latest insights</h2>
-            <div class="row py-5">
-                <div class="col-sm-3">
-                    <a href="{{ route('blogs') }}" class="btn btn-secondary">View All Insights</a>
-                </div>
-            </div>
-            <div class="row g-4">
-                @foreach ($relatedBlogs as $k => $b)
-                    <div class="col-md-4">
-                        <a href="{{ route('blog.details', $b->slug) }}" class="text-decoration-none">
-                            <div class="card service-card h-100 rounded-0 border-0 ">
-                                <img src="{{ $b->image }}" class="card-img-top" width="100" height="200"
-                                    alt="{{ $b->title }}">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-start align-items-left mb-2 p-0 border-0">
-                                        <div
-                                            class="text-dark fw-bold @if ($k == 0) fs-5 @else fs-5 @endif  text-decoration-none">
-                                            {{ $b->title }}</div>
+                                <!-- Image -->
+                                <a href="{{ route('blog.details', $b->slug) }}" class="text-decoration-none">
+                                    <!-- Image -->
+                                    <div class="flex-shrink-0 featured-img">
+                                        <img src="{{ $b->image }}" alt="{{ $b->title }}" class="img-fluid rounded">
                                     </div>
-                                    <div class="d-flex justify-content-start align-items-center mb-3 p-0 border-0">
-                                        @if ($k == 0)
-                                            <p>{{ Str::limit($b->short_desc, 100, '...') }}</p>
-                                        @else
-                                            <p>{{ Str::limit($b->short_desc, 40, '...') }}</p>
-                                        @endif
+                                </a>
+                                <!-- Content -->
+                                <div class="flex-grow-1">
+                                    <div class="text-muted small mb-1">
+                                        <i class="fa fa-calendar me-1"></i>
+                                        {{ \Carbon\Carbon::parse($b->created_at)->format('d M Y') }}
                                     </div>
-                                    <div class="d-flex">
-                                        <div><i class="fa fa-calendar mx-1"></i>
-                                            {{ \Carbon\Carbon::parse($b->created_at)->format('d-m-Y') }}</div>
-                                        <div class="ms-auto"><i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                                    <a href="{{ route('blog.details', $b->slug) }}" class="text-decoration-none">
+                                        <div class="fw-bold fs-6 text-dark">
+                                            {{ $b->title }}
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
+
                             </div>
-                        </a>
+                        @endforeach
                     </div>
-                @endforeach
+                    <style>
+                        .featured-img {
+                            width: 120px;
+                            height: 90px;
+                            overflow: hidden;
+                        }
+
+                        .featured-img img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    </style>
+                </div>
             </div>
         </div>
     </section>
-
 
 
 @endsection

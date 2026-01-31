@@ -109,7 +109,7 @@ class HomeController extends Controller
     {
         $blog = CaseStudy::where('slug', $slug)->where('status', 1)->with('topic')->firstOrFail();
         $blog->image = $blog->image ? asset('storage/images/case_studies/' . $blog->image) : '';
-        $relatedBlogs = CaseStudy::where('topic_id', $blog->topic_id)->where('id', '!=', $blog->id)->where('status', 1)->orderByDesc('id')->take(3)->get()->map(function ($rb) {
+        $relatedBlogs = CaseStudy::where('topic_id', $blog->topic_id)->where('id', '!=', $blog->id)->where('status', 1)->orderByDesc('id')->take(10)->get()->map(function ($rb) {
             $rb->image = $rb->image ? asset('storage/images/case_studies/' . $rb->image) : '';
             return $rb;
         });
@@ -230,5 +230,28 @@ class HomeController extends Controller
     public function thankYou()
     {
         return view('thank_you');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('privacy_policy');
+    }
+
+    public function termsOfBusiness()
+    {
+        return view('terms_of_business');
+    }
+    public function ourStory()
+    {
+        return view('our_story');
+    }
+    public function witnesses()
+    {
+        return view('witness');
+    }
+
+    public function protection()
+    {
+        return view('protection');
     }
 }

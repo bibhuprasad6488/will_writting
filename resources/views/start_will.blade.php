@@ -63,7 +63,7 @@
                                 <label class="form-check-label" for="setupTrust">A Trust</label>
                             </div>
 
-                            <button type="button" class="btn btn-dark rounded-pill px-4" onclick="nextStep()">Next</button>
+                            <button type="button" class="btn btn-secondary rounded-0 px-4" onclick="nextStep()">Next</button>
                         </div>
 
                         <!-- STEP 2 -->
@@ -88,9 +88,9 @@
                                     required>
                             </div>
 
-                            <button type="button" class="btn btn-outline-secondary rounded-pill px-4 me-2"
+                            <button type="button" class="btn btn-outline-secondary rounded-0 px-4 me-2"
                                 onclick="prevStep()">Back</button>
-                            <button type="button" class="btn btn-dark rounded-pill px-4" onclick="nextStep()">Next</button>
+                            <button type="button" class="btn btn-secondary rounded-0 px-4" onclick="nextStep()">Next</button>
                         </div>
 
                         <!-- STEP 3 -->
@@ -125,10 +125,10 @@
                                 </label>
                             </div>
 
-                            <button type="button" class="btn btn-outline-secondary rounded-pill px-4 me-2"
+                            <button type="button" class="btn btn-outline-secondary rounded-0 px-4 me-2"
                                 onclick="prevStep()">Back</button>
 
-                            <button type="button" class="btn btn-dark rounded-pill px-4"
+                            <button type="button" class="btn btn-secondary rounded-0 px-4"
                                 onclick="nextStep()">Next</button>
                         </div>
 
@@ -152,9 +152,9 @@
                                 <label class="form-check-label" for="a3">A business</label>
                             </div>
 
-                            <button type="button" class="btn btn-outline-secondary rounded-pill px-4 me-2"
+                            <button type="button" class="btn btn-outline-secondary rounded-0 px-4 me-2"
                                 onclick="prevStep()">Back</button>
-                            <button type="submit" class="btn btn-dark rounded-pill px-5">Submit</button>
+                            <button type="submit" class="btn btn-secondary rounded-0 px-5">Submit</button>
                         </div>
 
                         <!-- Progress Bar -->

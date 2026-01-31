@@ -2,19 +2,11 @@
 @section('title', 'Login')
 @section('content')
     <div class="container">
-        @php
-            $setting = \App\Models\SiteSetting::find(1);
-        @endphp
         <div class="row justify-content-center">
             <div class="login-container">
                 {{-- <h1>Login </h1> --}}
                 <div class="admin-login-logo">
-                    @if ($setting && $setting->site_logo)
-                        <img src="{{ asset('storage/images/settings/' . $setting->site_logo) }}"
-                            alt="{{ $setting->site_title }}">
-                    @else
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="Wills">
-                    @endif
+                    <img src="{{ asset('assets/images/Logo_d.png') }}" alt="Wills">
                 </div>
                 <form id="loginForm" method="POST" action="{{ route('admin.login.submit') }}">
                     @csrf

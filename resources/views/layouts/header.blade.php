@@ -22,7 +22,7 @@
                         href="{{ route('home') }}">Home</a></li>
                 {{-- <li class="nav-item"><a class="nav-link" href="#">About Us</a></li> --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ request()->routeIs(['journey', 'blogs']) ? 'active' : '' }}"
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs(['journey', 'protection']) ? 'active' : '' }}"
                         href="javascript:;" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         About Us
@@ -32,7 +32,7 @@
                             <a class="dropdown-item" href="{{ route('journey') }}">Guided Journey</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('blogs') }}">Case Studies</a>
+                            <a class="dropdown-item" href="{{ route('protection') }}">Protection</a>
                         </li>
                     </ul>
                 </li>
@@ -41,6 +41,8 @@
                         href="{{ route('service.lists') }}">Services</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs(['price-lists']) ? 'active' : '' }}"
                         href="{{ route('price-lists') }}">Pricing</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->routeIs(['blogs']) ? 'active' : '' }}"
+                        href="{{ route('blogs') }}">Case Study</a></li>
                 {{-- <li class="nav-item"><a class="nav-link" href="#">Protection</a></li> --}}
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs(['contact']) ? 'active' : '' }}"
                         href="{{ route('contact') }}">Contact</a></li>

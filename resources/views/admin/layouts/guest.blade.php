@@ -145,7 +145,7 @@
         }
 
         .admin-login-logo {
-            background: #000;
+            /* background: #000; */
             margin-bottom: 30px;
         }
 

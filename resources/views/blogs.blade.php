@@ -37,12 +37,12 @@
                             <form action="{{ route('blogs') }}" method="get">
                                 {{-- Search bar --}}
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control border border-secondary rounded"
+                                    <input type="text" class="form-control border border-secondary rounded-0"
                                         name="search" placeholder="Search..." value="{{ $search }}">
                                     <button class="btn btn-secondary mx-1" type="submit">
                                         <i class="fa fa-search"></i>
                                     </button>
-                                    <a href="{{ route('blogs') }}" class="btn btn-secondary">
+                                    <a href="{{ route('blogs') }}" class="btn btn-secondary rounded-0">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </div>
@@ -50,16 +50,16 @@
                                 {{-- Topic buttons --}}
                                 <div class="d-flex flex-wrap gap-2">
                                     {{-- All topics --}}
-                                    <a class="btn btn-outline-secondary text-dark
-                    @if (!isset($topic)) active text-white @endif"
+                                    <a class="btn btn-outline-secondary text-dark rounded-0
+                                            @if (!isset($topic)) active text-white @endif"
                                         href="{{ route('blogs') }}">
                                         All
                                     </a>
 
                                     {{-- Individual topics --}}
                                     @foreach ($topics as $t)
-                                        <a class="btn btn-outline-secondary text-dark
-                        @if (isset($topic) && $topic->id === $t->id) active text-white @endif"
+                                        <a class="btn btn-outline-secondary rounded-0
+                                            @if (isset($topic) && $topic->id === $t->id) active text-white @endif"
                                             href="{{ route('blogs', array_merge(request()->query(), ['topic' => $t->slug])) }}">
                                             {{ $t->name }}
                                         </a>
@@ -79,8 +79,7 @@
             {{-- <h2 class="text-center mb-5 maastrix">Our Services</h2> --}}
             <div class="row g-4">
                 @foreach ($blogs as $k => $blog)
-                    <div class="@if ($k == 0) col-md-8
-                    @else col-md-4 @endif ">
+                    <div class="col-md-4 px-5 py-4">
                         <a href="{{ route('blog.details', $blog->slug) }}" class="text-decoration-none">
                             <div class="card service-card h-100 rounded-0 border-0 ">
                                 <img src="{{ asset('storage/images/case_studies/' . $blog->image) }}" class="card-img-top"
@@ -92,11 +91,7 @@
                                             {{ $blog->title }}</div>
                                     </div>
                                     <div class="d-flex justify-content-start align-items-center mb-3 p-0 border-0">
-                                        @if ($k == 0)
-                                            <p>{{ Str::limit($blog->short_desc, 100, '...') }}</p>
-                                        @else
-                                            <p>{{ Str::limit($blog->short_desc, 40, '...') }}</p>
-                                        @endif
+                                        <p>{{ Str::limit($blog->short_desc, 20, '...') }}</p>
                                     </div>
                                     <div class="d-flex">
                                         <div><i class="fa fa-calendar mx-1"></i>
