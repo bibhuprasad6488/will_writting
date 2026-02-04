@@ -6,9 +6,10 @@
     <div class="services" class="text-center">
         <!-- HERO -->
         <div class="services" class="text-center">
-            <video class="bg-video" autoplay muted loop playsinline>
-                <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
-            </video>
+            {{-- <video class="bg-video" autoplay muted loop playsinline>
+            <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
+        </video> --}}
+            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
             <!-- Overlay (optional dark mask) -->
             <div class="mask">
@@ -48,24 +49,27 @@
         <div class="container py-7">
             <div class="row  text-center rounded-0">
                 <div class="col-lg-6 px-5">
+                    <div class="cta-title ">
+                        <i class="fa fa-phone-alt fa-1x" aria-hidden="true"></i>
+                    </div>
                     <h2 class="cta-title mb-3">
-                        Office Address one
+                        Office Address
                     </h2>
 
                     <p class="cta-subtitle mb-4">
-                        Contact us today and experience personalised and expert legal assistance
-                        to support all of your personal matters.
+                        {{ $siteSetting->address ?? '' }}
                     </p>
                 </div>
 
                 <div class="col-lg-6 px-5">
+                    <div class="cta-title ">
+                        <i class="fa fa-map-marker fa-1x" aria-hidden="true"></i>
+                    </div>
                     <h2 class="cta-title mb-3">
-                        Office Address two
+                        Phone Number
                     </h2>
-
                     <p class="cta-subtitle mb-4">
-                        Contact us today and experience personalised and expert legal assistance
-                        to support all of your personal matters.
+                        {{ $siteSetting->contact_phone ?? '' }}
                     </p>
                 </div>
 

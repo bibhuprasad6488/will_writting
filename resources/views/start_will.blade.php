@@ -6,9 +6,10 @@
     <div class="services text-center">
         <!-- HERO -->
         <div class="services text-center">
-            <video class="bg-video" autoplay muted loop playsinline>
-                <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
-            </video>
+            {{-- <video class="bg-video" autoplay muted loop playsinline>
+            <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
+        </video> --}}
+            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
             <div class="mask">
                 <div class="text-white">
@@ -63,7 +64,8 @@
                                 <label class="form-check-label" for="setupTrust">A Trust</label>
                             </div>
 
-                            <button type="button" class="btn btn-secondary rounded-0 px-4" onclick="nextStep()">Next</button>
+                            <button type="button" class="btn btn-secondary rounded-0 px-4"
+                                onclick="nextStep()">Next</button>
                         </div>
 
                         <!-- STEP 2 -->
@@ -90,7 +92,8 @@
 
                             <button type="button" class="btn btn-outline-secondary rounded-0 px-4 me-2"
                                 onclick="prevStep()">Back</button>
-                            <button type="button" class="btn btn-secondary rounded-0 px-4" onclick="nextStep()">Next</button>
+                            <button type="button" class="btn btn-secondary rounded-0 px-4"
+                                onclick="nextStep()">Next</button>
                         </div>
 
                         <!-- STEP 3 -->

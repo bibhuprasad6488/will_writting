@@ -7,6 +7,7 @@ use App\Models\GetInTouch;
 use App\Models\Partner;
 use App\Models\PricingCategory;
 use App\Models\Service;
+use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\Topic;
 use App\Models\Will;
@@ -50,7 +51,8 @@ class HomeController extends Controller
         });
         $home_page_data = '';
         // dd($services);
-        return view('home', compact('services', 'partners', 'home_page_data', 'testimonials'));
+        $siteSetting = SiteSetting::find(1);
+        return view('home', compact('services', 'partners', 'home_page_data', 'testimonials', 'siteSetting'));
     }
     public function getServices()
     {
@@ -59,7 +61,8 @@ class HomeController extends Controller
             $service->banner_image = $service->banner_image ? asset('storage/images/services/' . $service->banner_image) : '';
             return $service;
         });
-        return view('services', compact('services'));
+        $siteSetting = SiteSetting::find(1);
+        return view('services', compact('services', 'siteSetting'));
     }
 
     public function serviceDetails($slug)
@@ -73,12 +76,14 @@ class HomeController extends Controller
             $service->banner_image = $service->banner_image ? asset('storage/images/services/' . $service->banner_image) : '';
             return $service;
         });
-        return view('service_details', compact('service', 'services'));
+        $siteSetting = SiteSetting::find(1);
+        return view('service_details', compact('service', 'services', 'siteSetting'));
     }
 
     public function guidedJourney()
     {
-        return view('journey');
+        $siteSetting = SiteSetting::find(1);
+        return view('journey', compact('siteSetting'));
     }
 
     public function blogLists(Request $request)
@@ -100,8 +105,9 @@ class HomeController extends Controller
             ->paginate(11);
 
         $topics = Topic::where('status', 1)->get();
+        $siteSetting = SiteSetting::find(1);
 
-        return view('blogs', compact('blogs', 'topics', 'search', 'topic'));
+        return view('blogs', compact('blogs', 'topics', 'search', 'topic', 'siteSetting'));
     }
 
 
@@ -134,13 +140,15 @@ class HomeController extends Controller
             }
         }
         // dd($priceArr);
+        $siteSetting = SiteSetting::find(1);
 
-        return view('price_list', compact('priceArr'));
+        return view('price_list', compact('priceArr', 'siteSetting'));
     }
 
     public function contactUs()
     {
-        return view('contact');
+        $siteSetting = SiteSetting::find(1);
+        return view('contact', compact('siteSetting'));
     }
 
     public function contactUsStore(Request $request)

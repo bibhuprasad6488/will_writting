@@ -4,43 +4,48 @@
 
             <!-- Column 1: Company -->
             <div class="col-md-3 col-xs-12 mb-4 mb-md-0">
-                <p><a href="{{ route('home') }}">
-                        @if ($siteSetting && $siteSetting->footer_logo)
-                            <img src="{{ asset('storage/images/settings/' . $siteSetting->footer_logo) }}"
-                                alt="{{ $siteSetting->site_title }}">
-                        @else
-                            <img src="{{ asset('assets/images/logo.png') }}" alt="Sterling Wills & Estate Planning">
-                        @endif
-                    </a>
-                </p>
-                <p>At Sterling Wills, we pride ourselves on providing clear, professional will writing services designed
-                    to give our clients peace of mind. Our approach is built on trust, experience, and a genuine
-                    commitment to protecting what matters most to you and your family.</p>
+                <div class="footer_1st">
+                    <p><a href="{{ route('home') }}">
+                            @if ($siteSetting && $siteSetting->footer_logo)
+                                <img src="{{ asset('storage/images/settings/' . $siteSetting->footer_logo) }}"
+                                    alt="{{ $siteSetting->site_title }}">
+                            @else
+                                <img src="{{ asset('assets/images/logo.png') }}" alt="Sterling Wills & Estate Planning">
+                            @endif
+                        </a>
+                    </p>
+                    <p>At Sterling Wills, we pride ourselves on providing clear, professional will writing services
+                        designed
+                        to give our clients peace of mind. Our approach is built on trust, experience, and a genuine
+                        commitment to protecting what matters most to you and your family.</p>
+                </div>
             </div>
 
             <!-- Column 2: Services -->
-            <div class="col-md-3 col-xs-12 mb-4 mb-md-0">
-                <h6 class="footer-title">Quick Links</h6>
-                <ul class="footer-links">
-                    <li>
-                        <a href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('story') }}">Our Story</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('journey') }}">Guided Journey</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('blogs') }}">Case Studies</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('witness') }}">Witnesses</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('price-lists') }}">Pricing</a>
-                    </li>
-                </ul>
+            <div class="col-md-3 col-xs-12 mb-4 mb-md-0 ">
+                <div class="footer_2nd">
+                    <h6 class="footer-title">Quick Links</h6>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('story') }}">Our Story</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('journey') }}">Guided Journey</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blogs') }}">Case Studies</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('witness') }}">Witnesses</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('price-lists') }}">Pricing</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Column 2: Services -->
@@ -136,8 +141,8 @@
 
             </div>
             <div class="col-md-12 col-xs-12 mb-4 mb-md-0 mt-4 text-center">
-                <p class="text-white">Accredited Member of the Society of Will Writers (SWW)
-                    ‘The Sterling Wills’ is a trading name of Sterling Wills & Estate Planning LTD
+                <p class="text-white">Accredited Member of the Society of Will Writers (SWW)</p>
+                <p class="text-white"> ‘The Sterling Wills’ is a trading name of Sterling Wills & Estate Planning LTD
                 </p>
             </div>
         </div>

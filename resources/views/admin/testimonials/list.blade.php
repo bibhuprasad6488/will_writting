@@ -37,7 +37,7 @@
                         <tr>
                             <th>SL No</th>
                             <th>Name</th>
-                            <th>Short Title</th>
+                            <th>Location</th>
                             <th>Testimonial Text</th>
                             <th>Created</th>
                             <th>Action</th>
@@ -59,13 +59,13 @@
 
                                     {{-- Star Rating --}}
                                     @php
-                                        $rating = $t->client_rating ?? 0;
-                                        $fullStars = floor($rating);
-                                        $halfStar = $rating - $fullStars >= 0.5 ? true : false;
-                                        $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+                                        // $rating = $t->client_rating ?? 0;
+                                        // $fullStars = floor($rating);
+                                        // $halfStar = $rating - $fullStars >= 0.5 ? true : false;
+                                        // $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
                                     @endphp
 
-                                    <div class="star-rating text-warning mb-1">
+                                    {{-- <div class="star-rating text-warning mb-1">
                                         @for ($i = 0; $i < $fullStars; $i++)
                                             <i class="fas fa-star"></i>
                                         @endfor
@@ -77,7 +77,7 @@
                                         @for ($i = 0; $i < $emptyStars; $i++)
                                             <i class="far fa-star"></i>
                                         @endfor
-                                    </div>
+                                    </div> --}}
 
                                     {{ Str::limit($t->testimonial_text, 100) }}
                                 </td>

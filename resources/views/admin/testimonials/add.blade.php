@@ -58,13 +58,13 @@
                         <!-- Website -->
                         <div class="col-md-3">
                             <label class="form-label fw-semibold">
-                                Short Title <span class="text-danger">*</span>
+                                Location <span class="text-danger">*</span>
                             </label>
                             <input type="text" class="form-control" name="client_position"
-                                value="{{ old('client_position') }}" placeholder="Enter Client Position" required>
+                                value="{{ old('client_position') }}" placeholder="Enter location" required>
                         </div>
                         <!-- Rating -->
-                        <div class="col-md-3">
+                        <div class="col-md-3 d-none">
                             <label class="form-label fw-semibold">
                                 Rating (1 to 5) <span class="text-danger">*</span>
                             </label>
@@ -79,7 +79,7 @@
                         </div>
 
                         <!-- Logo Upload -->
-                        <div class="col-md-6">
+                        <div class="col-md-6 d-none">
                             <label class="form-label fw-semibold">
                                 Testimonial Image <span class="text-danger">*</span>
                             </label>
@@ -92,7 +92,7 @@
                         </div>
 
                         <!-- Logo Preview -->
-                        <div class="col-md-6 d-flex align-items-end">
+                        <div class="col-md-6 d-flex align-items-end d-none">
                             <div class="border rounded p-2 w-100 text-center bg-light">
                                 <img id="imagePreview" src="" alt="Logo Preview"
                                     style="max-height: 120px; display: none;">

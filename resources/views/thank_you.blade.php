@@ -6,9 +6,10 @@
     <div class="services" class="text-center">
         <!-- HERO -->
         <div class="services" class="text-center">
-            <video class="bg-video" autoplay muted loop playsinline>
-                <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
-            </video>
+            {{-- <video class="bg-video" autoplay muted loop playsinline>
+            <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
+        </video> --}}
+            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
             <!-- Overlay (optional dark mask) -->
             <div class="mask">
@@ -28,8 +29,8 @@
 
             <!-- Success Icon -->
             <div class="mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#000" class="bi bi-check-circle"
-                    viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#000"
+                    class="bi bi-check-circle" viewBox="0 0 16 16">
                     <path
                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 5.323 7.262a.75.75 0 0 0-1.06 1.06l2.707 2.708z" />
                 </svg>

@@ -6,9 +6,10 @@
     <div class="services" class="text-center">
         <!-- HERO -->
         <div class="services" class="text-center">
-            <video class="bg-video" autoplay muted loop playsinline>
-                <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
-            </video>
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
+            <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
+        </video> --}}
+        <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
             <!-- Overlay (optional dark mask) -->
             <div class="mask">
@@ -200,8 +201,12 @@
                 </div>
 
                 <div class="col-md-5 col-lg-4">
-                    <a href="tel:0292621666" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Call 02 9262 1666
+                    <a href="tel:{{ $siteSetting->contact_phone ?? '' }}"
+                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
+                        Call
+                        @if ($siteSetting && $siteSetting->contact_phone)
+                            {{ $siteSetting->contact_phone }}
+                        @endif
                     </a>
                 </div>
 

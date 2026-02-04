@@ -6,18 +6,20 @@
 @section('content')
     <!-- HERO -->
     <div id="intro-example" class="text-center">
-        <video class="bg-video" autoplay muted loop playsinline>
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
-        </video>
+        </video> --}}
+        <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
         <div class="mask">
             <div class="text-white">
                 <h1 class="mb-3 banner-title">Planning for tomorrow?</h1>
                 <h4 class="mb-4 banner-subtitle">Start from today !</h4>
 
-                <a class="btn btn-outline-light btn-lg m-2 rounded-0" href="javascript:;" role="button">View Details..</a>
+                <a class="btn btn-light btn-lg m-2 rounded-0" href="javascript:;" role="button">View Details..</a>
 
-                <a class="btn btn-outline-light btn-lg m-2 rounded-0" href="{{ route('contact') }}" role="button">Contact us today !</a>
+                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('contact') }}" role="button">Contact
+                    us today !</a>
             </div>
         </div>
     </div>
@@ -87,7 +89,7 @@
                     </div>
                 @endforeach
 
-                <div class="start_will"><a class="btn btn-dark mt-3 rounded-0 fs-4 px-4 py-2"
+                <div class="start_will"><a class="btn btn-secondary mt-3 rounded-0 fs-4 px-4 py-2"
                         href="{{ url('/services') }}">View
                         all</a></div>
             </div>
@@ -119,9 +121,14 @@
                     </a>
                 </div>
 
+
                 <div class="col-md-5 col-lg-4">
-                    <a href="tel:0292621666" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Call 02 9262 1666
+                    <a href="tel:{{ $siteSetting->contact_phone ?? '' }}"
+                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
+                        Call
+                        @if ($siteSetting && $siteSetting->contact_phone)
+                            {{ $siteSetting->contact_phone }}
+                        @endif
                     </a>
                 </div>
 
@@ -174,23 +181,9 @@
                     @endphp
                     <div class="testimonial-card">
                         <div class="card p-3 text-center rounded-0">
-                            <p><img src="{{ $t->client_photo_path }}"></p>
 
-                            <div class="star-rating text-dark mb-1">
-                                @for ($i = 0; $i < $fullStars; $i++)
-                                    <i class="fas fa-star"></i>
-                                @endfor
-
-                                @if ($halfStar)
-                                    <i class="fas fa-star-half-alt"></i>
-                                @endif
-
-                                @for ($i = 0; $i < $emptyStars; $i++)
-                                    <i class="far fa-star"></i>
-                                @endfor
-                            </div>
-
-                            <p>{{ $t->client_position }}</p>
+                            <p class="fs-4"> <i>{{ $t->client_name }}</i> <br><span>...{{ $t->client_position }}</span>
+                            </p>
                             <p>{{ $t->testimonial_text }}</p>
                         </div>
                     </div>
@@ -217,47 +210,46 @@
 @endsection
 @push('scripts')
     <script>
-    const container = document.getElementById('testimonialScroll');
-    let autoScrollInterval;
+        const container = document.getElementById('testimonialScroll');
+        let autoScrollInterval;
 
-    function scrollTestimonials(direction) {
-        container.scrollBy({
-            left: direction * container.clientWidth * 0.9,
-            behavior: 'smooth'
-        });
-    }
-
-    function autoScroll() {
-        const maxScrollLeft = container.scrollWidth - container.clientWidth;
-
-        if (container.scrollLeft >= maxScrollLeft - 10) {
-            container.scrollTo({
-                left: 0,
-                behavior: 'smooth'
-            });
-        } else {
+        function scrollTestimonials(direction) {
             container.scrollBy({
-                left: container.clientWidth * 0.9,
+                left: direction * container.clientWidth * 0.9,
                 behavior: 'smooth'
             });
         }
-    }
 
-    function startAutoScroll() {
-        autoScrollInterval = setInterval(autoScroll, 3500);
-    }
+        function autoScroll() {
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-    function stopAutoScroll() {
-        clearInterval(autoScrollInterval);
-    }
+            if (container.scrollLeft >= maxScrollLeft - 10) {
+                container.scrollTo({
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                container.scrollBy({
+                    left: container.clientWidth * 0.9,
+                    behavior: 'smooth'
+                });
+            }
+        }
 
-    /* Pause on interaction */
-    container.addEventListener('mouseenter', stopAutoScroll);
-    container.addEventListener('mouseleave', startAutoScroll);
-    container.addEventListener('touchstart', stopAutoScroll);
-    container.addEventListener('touchend', startAutoScroll);
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(autoScroll, 3500);
+        }
 
-    startAutoScroll();
-</script>
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
 
+        /* Pause on interaction */
+        container.addEventListener('mouseenter', stopAutoScroll);
+        container.addEventListener('mouseleave', startAutoScroll);
+        container.addEventListener('touchstart', stopAutoScroll);
+        container.addEventListener('touchend', startAutoScroll);
+
+        startAutoScroll();
+    </script>
 @endpush

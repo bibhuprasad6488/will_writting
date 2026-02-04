@@ -60,7 +60,8 @@
                     {{-- <div class="my-2">
                         <a href="{{ route('blogs') }}" class="text-dark">< Back to List</a>
                     </div> --}}
-                    <div class="mb-5">
+                    {{-- ( d-none d-md-block ) For hide on mobile --}}
+                    <div class="mb-5 ">
                         <p class="fs-4">Category</p>
                         <hr>
                         @foreach ($topics as $t)

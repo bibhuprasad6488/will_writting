@@ -3,22 +3,23 @@
 
 @section('content')
 
-    <!-- HERO -->
-    <div class="services text-center position-relative">
-        <video class="bg-video" autoplay muted loop playsinline>
+    <div class="services text-center">
+        <!-- HERO -->
+        <div class="services text-center">
+            {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
-        </video>
+        </video> --}}
+            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
-        <!-- Overlay -->
-        <div class="mask d-flex align-items-center justify-content-center">
-            <div class="text-white text-center">
-                <h2 class="mb-3 inner-page-title">Witnesses</h2>
+            <div class="mask">
+                <div class="text-white">
+                    <h2 class="mb-3 inner-page-title">Witnesses</h2>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- MOBILE HEADER -->
-    @include('layouts.mob_header')
+        @include('layouts.mob_header')
+    </div>
 
     <!-- INTRO -->
     <section class="py-2 cm10">

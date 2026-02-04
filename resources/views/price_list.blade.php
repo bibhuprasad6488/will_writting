@@ -6,9 +6,10 @@
     <div class="services" class="text-center">
         <!-- HERO -->
         <div class="services" class="text-center">
-            <video class="bg-video" autoplay muted loop playsinline>
-                <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
-            </video>
+            {{-- <video class="bg-video" autoplay muted loop playsinline>
+            <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
+        </video> --}}
+            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
             <!-- Overlay (optional dark mask) -->
             <div class="mask">
@@ -54,31 +55,31 @@
         </div>
     </section>
 
-<section class="section py-5">
-    <div class="container">
-        {{-- <h2 class="text-center mb-5 maastrix">Our Services</h2> --}}
-        <div class="row g-4">
-            @foreach ($priceArr as $category => $prices)
-                <div class="col-12">
-                    <h3 class="mb-2">{{ $category }}</h3>
-                </div>
-
-                @foreach ($prices as $item)
+    <section class="section py-5">
+        <div class="container">
+            {{-- <h2 class="text-center mb-5 maastrix">Our Services</h2> --}}
+            <div class="row g-4">
+                @foreach ($priceArr as $category => $prices)
                     <div class="col-12">
-                        <div class="d-flex justify-content-between align-items-center p-1 border-0 rounded">
-                            <div class="flex-fill">
-                                <p class="mb-0">{{ $item['text'] }}</p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <p class="fw-bold mb-0">{{ '£ ' . $item['price'] }}</p>
+                        <h3 class="mb-2">{{ $category }}</h3>
+                    </div>
+
+                    @foreach ($prices as $item)
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-center p-1 border-0 rounded">
+                                <div class="flex-fill">
+                                    <p class="mb-0">{{ $item['text'] }}</p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <p class="fw-bold mb-0">{{ '£ ' . $item['price'] }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 @endforeach
-            @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <section class="cta py-5 cm10">
@@ -107,8 +108,12 @@
                 </div>
 
                 <div class="col-md-5 col-lg-4">
-                    <a href="tel:0292621666" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Call 02 9262 1666
+                    <a href="tel:{{ $siteSetting->contact_phone ?? '' }}"
+                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
+                        Call
+                        @if ($siteSetting && $siteSetting->contact_phone)
+                            {{ $siteSetting->contact_phone }}
+                        @endif
                     </a>
                 </div>
 

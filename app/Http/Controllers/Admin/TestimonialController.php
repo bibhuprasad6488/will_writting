@@ -42,7 +42,7 @@ class TestimonialController extends Controller
             // 'client_photo_path' => 'required|image|max:2048|mimes:jpg,jpeg,png,webp',
             'testimonial_text' => 'required|string',
             // 'client_company' => 'nullable|string|max:255',
-            'client_rating' => 'required|numeric|min:1|max:5',
+            // 'client_rating' => 'required|numeric|min:1|max:5',
         ]);
 
         DB::beginTransaction();
@@ -134,7 +134,7 @@ class TestimonialController extends Controller
             // 'client_photo_path' => 'required|image|max:2048|mimes:jpg,jpeg,png,webp',
             'testimonial_text' => 'required|string',
             // 'client_company' => 'nullable|string|max:255',
-            'client_rating' => 'required|numeric|min:1|max:5',
+            // 'client_rating' => 'required|numeric|min:1|max:5',
         ]);
 
         DB::beginTransaction();

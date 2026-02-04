@@ -5,9 +5,10 @@
 
     <!-- HERO -->
     <div class="services text-center position-relative">
-        <video class="bg-video" autoplay muted loop playsinline>
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
-        </video>
+        </video> --}}
+        <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
         <!-- Overlay -->
         <div class="mask d-flex align-items-center justify-content-center">
