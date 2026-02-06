@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="fs-5 py-2 px-1">
+                    <div class="py-2 px-1">
                         {!! $blog->long_desc !!}
                     </div>
                 </div>

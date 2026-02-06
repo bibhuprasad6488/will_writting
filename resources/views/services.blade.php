@@ -57,7 +57,7 @@
     <section class="bg_grey page py-5 mt-3">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-6 col-xs-12 px-5 text-center">
                     <h3>Trusted Expertise with a Personal Approach</h3>
                     <p>At Wills & Sterling, we understand that estate planning is deeply personal and often emotional.
                         Our team takes the time to listen, explain every option clearly, and tailor solutions to your
@@ -68,7 +68,7 @@
                         priority.</p>
                 </div>
 
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-6 col-xs-12 px-5 text-center">
                     <h3>Comprehensive Planning for Long-Term Peace of Mind</h3>
                     <p>Wills & Sterling offers more than just will writing. We provide comprehensive estate and trust
                         planning designed to protect your assets, minimise future disputes, and adapt to life’s changes.
@@ -128,7 +128,7 @@
             <div class="row justify-content-center mt-3 g-3 rounded-0">
 
                 <div class="col-md-5 col-lg-4">
-                    <a href="#" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
+                    <a href="{{ route('start.will') }}" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
                         Fill Out Our Form
                     </a>
                 </div>

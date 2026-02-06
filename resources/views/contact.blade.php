@@ -50,7 +50,7 @@
             <div class="row  text-center rounded-0">
                 <div class="col-lg-6 px-5">
                     <div class="cta-title ">
-                        <i class="fa fa-phone-alt fa-1x" aria-hidden="true"></i>
+                        <i class="fa fa-map-marker fa-1x" aria-hidden="true"></i>
                     </div>
                     <h2 class="cta-title mb-3">
                         Office Address
@@ -63,7 +63,7 @@
 
                 <div class="col-lg-6 px-5">
                     <div class="cta-title ">
-                        <i class="fa fa-map-marker fa-1x" aria-hidden="true"></i>
+                        <i class="fa fa-phone-alt fa-1x" aria-hidden="true"></i>
                     </div>
                     <h2 class="cta-title mb-3">
                         Phone Number

@@ -94,7 +94,7 @@
                 </div>
                 <div class="col-lg-6 text-center border-secondary portman">
                     <!-- Replace with your image -->
-                    <img src="{{ asset('assets/images/Portman-Rise-Logo.png') }}" class="img-fluid rounded border"
+                    <img src="{{ asset('assets/images/Portman_Rise_Logo.svg') }}" class="img-fluid rounded border"
                         alt="Protection">
                 </div>
             </div>

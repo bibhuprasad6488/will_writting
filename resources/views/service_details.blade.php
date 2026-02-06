@@ -111,7 +111,7 @@
             <div class="row justify-content-center mt-3 g-3 rounded-0">
 
                 <div class="col-md-5 col-lg-4">
-                    <a href="#" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
+                    <a href="{{ route('start.will') }}" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
                         Fill Out Our Form
                     </a>
                 </div>

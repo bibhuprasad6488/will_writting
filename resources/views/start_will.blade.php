@@ -13,7 +13,7 @@
 
             <div class="mask">
                 <div class="text-white">
-                    <h2 class="mb-3 inner-page-title">Start Your Wills</h2>
+                    <h2 class="mb-3 inner-page-title">Start Your Will</h2>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <div class="col-lg-12">
 
                     <h2 class="fw-bold text-center maastrix fs-1 mb-4">
-                        Start Your Wills
+                        Start Your Will
                     </h2>
 
                     @if (session('success'))

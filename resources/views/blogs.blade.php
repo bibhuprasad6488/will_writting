@@ -6,10 +6,10 @@
     <div class="services" class="text-center">
         <!-- HERO -->
         <div class="services" class="text-center">
-        {{-- <video class="bg-video" autoplay muted loop playsinline>
+            {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-        <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
 
             <!-- Overlay (optional dark mask) -->
             <div class="mask">
@@ -24,6 +24,33 @@
         @include('layouts.mob_header')
 
     </div>
+
+    <section class="section page cmt10 text-center">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- RIGHT TEXT BOXES -->
+                <div class="col-xs-12">
+                    <div class="d-flex flex-column h-100 gap-4">
+
+                        <div class="feature-box flex-fill">
+                            <h2 class="text-center ">Overview...</h2>
+                            <p>Every family’s situation is unique, and our case studies highlight how tailored estate and
+                                will planning can make a meaningful difference. From straightforward wills to complex estate
+                                and trust planning, these real-world examples show how we guide clients through every step
+                                with clarity and care.</p>
+                            <p>Each case demonstrates our structured approach, expert consultation, and long-term
+                                support—ensuring assets are protected, wishes are respected, and loved ones are supported.
+                                Explore these stories to see how thoughtful planning today can provide confidence, control,
+                                and peace of mind for the future.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
     <section class="section page">
         <div class="container">
             <div class="row g-4">
@@ -195,7 +222,8 @@
             <div class="row justify-content-center mt-3 g-3 rounded-0">
 
                 <div class="col-md-5 col-lg-4">
-                    <a href="#" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
+                    <a href="{{ route('start.will') }}"
+                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
                         Fill Out Our Form
                     </a>
                 </div>

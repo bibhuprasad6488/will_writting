@@ -24,6 +24,36 @@
 
     </div>
 
+    <section class="section page cm10">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- RIGHT TEXT BOXES -->
+                <div class="col-xs-12">
+                    <div class="d-flex flex-column h-100 gap-4">
+
+                        <div class="feature-box flex-fill">
+                            <h2 class="text-center">How the journey works...</h2>
+                            <p>Our guided journey is designed to make will writing and estate planning clear, structured,
+                                and stress-free. Whether you need a will, trust planning, estate planning, lasting power of
+                                attorney, or related services, we guide you through every stage with expert support. From
+                                understanding your personal circumstances and choosing the right service, to gathering
+                                information, preparing your documents, and ensuring they are correctly signed, we take care
+                                of the details. </p>
+                            <p>Once complete, your documents are securely stored, with ongoing support
+                                available as your needs change. This step-by-step approach ensures your wishes are
+                                accurately recorded, legally compliant, and protected for the future. With clear guidance at
+                                every step, you can move forward with confidence, knowing your assets, family, and legacy
+                                are in safe hands.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     {{-- <section class="section guided_journey pb-5">
         <div class="container">
             <h2 class="text-center mb-5 maastrix">Guided Journey</h2>
@@ -439,7 +469,8 @@
             <div class="row justify-content-center mt-3 g-3 rounded-0">
 
                 <div class="col-md-5 col-lg-4">
-                    <a href="#" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
+                    <a href="{{ route('start.will') }}"
+                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
                         Fill Out Our Form
                     </a>
                 </div>

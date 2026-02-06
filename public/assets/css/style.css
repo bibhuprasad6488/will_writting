@@ -14,6 +14,8 @@ img {
 
 .portman img {
     filter: none;
+    width: 100%;
+    height: auto;
 }
 
 iframe {
@@ -255,11 +257,10 @@ iframe {
 .services .mask p {
     font-size: 20px;
 }
-
+/* 
 .page p {
-    color: #555;
-    ;
-}
+    color: #000;
+} */
 
 
 /* Background video */
