@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pricings', function (Blueprint $table) {
+        Schema::create('price_packages', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('pricing_cat_id');
-            $table->string('pricing_title')->nullable();
-            $table->longText('pricing_text')->nullable();
+            $table->bigInteger('cat_id')->nullable();
+            $table->string('package_title')->nullable();
+            $table->longText('package_text')->nullable();
             $table->integer('price')->nullable();
-            $table->enum('status', [1, 0])->default(1)->comment('1=Acrive,0==Inactive');
+            $table->enum('status', [1, 0])->default(1)->comment('1=Acrive,0=Inactive');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pricings');
+        Schema::dropIfExists('price_packages');
     }
 };

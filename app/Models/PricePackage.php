@@ -5,22 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pricing extends Model
+class PricePackage extends Model
 {
     use HasFactory;
-    protected $table = 'pricings';
+    protected $table = 'price_packages';
     protected $fillable = [
-        'pricing_cat_id',
-        'pricing_title',
-        'pricing_text',
+        'cat_id',
+        'package_title',
+        'package_text',
         'price',
         'status',
         'created_at',
         'updated_at'
     ];
-
-    public function category()
-    {
-        return $this->belongsTo(PricingCategory::class, 'pricing_cat_id');
-    }
 }

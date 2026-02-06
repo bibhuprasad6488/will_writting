@@ -13,8 +13,8 @@
 
         <div class="mask">
             <div class="text-white">
-                <h1 class="mb-3 banner-title">Planning for tomorrow?</h1>
-                <h4 class="mb-4 banner-subtitle">Start from today !</h4>
+                <h1 class="mb-5 banner-title">Protect your family’s future with a professionally written Will.</h1>
+                <h4 class="my-4 banner-subtitle">Professional Will Writing Services You Can Trust</h4>
 
                 <a class="btn btn-light btn-lg m-2 rounded-0" href="javascript:;" role="button">View Details..</a>
 
@@ -116,7 +116,8 @@
             <div class="row justify-content-center mt-3 g-3">
 
                 <div class="col-md-5 col-lg-4">
-                    <a href="{{ route('start.will') }}" class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
+                    <a href="{{ route('start.will') }}"
+                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
                         Fill Out Our Form
                     </a>
                 </div>

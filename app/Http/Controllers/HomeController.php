@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CaseStudy;
 use App\Models\GetInTouch;
 use App\Models\Partner;
+use App\Models\PricePackage;
+use App\Models\Pricing;
 use App\Models\PricingCategory;
 use App\Models\Service;
 use App\Models\SiteSetting;
@@ -129,20 +131,36 @@ class HomeController extends Controller
     public function priceLists()
     {
         $priceArr = [];
-        $pricingCat = PricingCategory::where('status', 1)->with('pricing')->get();
-        // dd($pricingCat);
-        foreach ($pricingCat as $key => $pc) {
-            foreach ($pc->pricing as $k => $v) {
-                $priceArr[$pc->name][] = [
-                    'text' => $v->pricing_text,
-                    'price' => $v->price
+
+        $pricingCategories = PricingCategory::where('status', 1)
+            // ->with('pricing')
+            ->get();
+
+        foreach ($pricingCategories as $category) {
+            $pricesDatas = Pricing::where('pricing_cat_id', $category->id)->orderByDesc('id')->get();
+            $prices = [];
+            if (count($pricesDatas) > 0) {
+
+                foreach ($pricesDatas as $pricing) {
+                    $prices[] = [
+                        'title' => $pricing->pricing_title,
+                        'text'  => $pricing->pricing_text,
+                        'price' => $pricing->price,
+                    ];
+                }
+
+                $priceArr[] = [
+                    'cat_name'   => $category->name,
+                    'cat_desc'   => $category->desctiption,
+                    'cat_prices' => $prices,
                 ];
             }
         }
         // dd($priceArr);
         $siteSetting = SiteSetting::find(1);
+        $packages = PricePackage::orderByDesc('id')->get();
 
-        return view('price_list', compact('priceArr', 'siteSetting'));
+        return view('price_list', compact('priceArr', 'siteSetting', 'packages'));
     }
 
     public function contactUs()

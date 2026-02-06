@@ -48,7 +48,8 @@
                             <label class="form-label fw-semibold">
                                 Pricing Category <span class="text-danger">*</span>
                             </label>
-                            <select name="pricing_cat_id" id="pricing_cat_id" class="form-select border-secondary" autofocus required>
+                            <select name="pricing_cat_id" id="pricing_cat_id" class="form-select border-secondary" autofocus
+                                required>
                                 <option value="" selected disabled>Select Category</option>
                                 @foreach ($priceCategories as $pc)
                                     <option value="{{ $pc->id }}" {{ $id == $pc->id ? 'selected' : '' }}>
@@ -64,7 +65,11 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            <label for="pricingText" class="form-label">Text</label>
+                                            <label for="pricingText" class="form-label">Service</label>
+                                            <span class="text-danger">*</span>
+                                        </th>
+                                        <th>
+                                            <label for="pricingText" class="form-label">Description</label>
                                             <span class="text-danger">*</span>
                                         </th>
                                         <th>
@@ -79,25 +84,31 @@
                                     @foreach ($pricings as $pricing)
                                         <tr>
                                             <td>
-                                                <textarea name="pricing_text[]" rows="3" class="form-control border-secondary" placeholder="Enter Text">{{ $pricing->pricing_text }}</textarea>
+                                                <input type="text" name="pricing_title[]"
+                                                    class="form-control border-secondary" placeholder="Service Name"
+                                                    value="{{ $pricing->pricing_title }}" required>
                                             </td>
+
+                                            <td>
+                                                <textarea name="pricing_text[]" rows="3" class="form-control border-secondary" placeholder="Enter description">{{ $pricing->pricing_text }}</textarea>
+                                            </td>
+
                                             <td style="width: 100px">
                                                 <input type="text" name="price[]" placeholder="Price"
                                                     class="form-control border-secondary numeric-only"
-                                                    value="{{ $pricing->price }}" width="50%">
+                                                    value="{{ $pricing->price }}">
                                             </td>
-                                            @if ($loop->iteration != 1)
-                                                <td>
-                                                    <button class="btn btn-danger removeKeys">-</button>
-                                                </td>
-                                            @else
-                                                <td>
-                                            <button class="btn btn-primary addKeys">+</button>
 
-                                                </td>
-                                            @endif
+                                            <td>
+                                                @if ($loop->last)
+                                                    <button type="button" class="btn btn-primary addKeys">+</button>
+                                                @else
+                                                    <button type="button" class="btn btn-danger removeKeys">-</button>
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
+
                                 </tbody>
                             </table>
                         </div>
@@ -128,8 +139,11 @@
             let tbody = $(this).closest('table').find('tbody');
             let row = ` <tr>
                             <td>
-                                <textarea name="pricing_text[]" rows="3" class="form-control border-secondary" placeholder="Enter Text"></textarea>
-
+                                <input type="text" name="pricing_title[]"
+                                    class="form-control border-secondary" placeholder="Service Name" required>
+                            </td>
+                            <td>
+                                <textarea name="pricing_text[]" rows="3" class="form-control border-secondary" placeholder="Enter description"></textarea>
                             </td>
                             <td>
                                 <input type="text" name="price[]" placeholder="Price"

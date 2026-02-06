@@ -15,7 +15,7 @@ class PricingController extends Controller
      */
     public function index()
     {
-        $pricings = Pricing::orderBYDesc('id')->with('category')->get();
+        $pricings = Pricing::orderBy('id')->with('category')->get();
         return view('admin.pricings.list', compact('pricings'));
     }
 
@@ -52,12 +52,13 @@ class PricingController extends Controller
                         continue;
                     }
                     if ($request->price[$k] === '') {
-                        $debug[] = "Skipping empty price for text:" . $pt;
+                        $debug[] = "Skipping empty price for text:" . $request->pricing_title[$k];
                         continue;
                     }
                     $p = new Pricing();
                     $p->pricing_cat_id = $request->pricing_cat_id;
                     $p->pricing_text = $pt;
+                    $p->pricing_title = $request->pricing_title[$k];
                     $p->price = $request->price[$k];
                     $p->save();
                 }
@@ -112,12 +113,13 @@ class PricingController extends Controller
                 Pricing::where('pricing_cat_id', $request->pricing_cat_id)->delete();
                 foreach ($request->pricing_text as $k => $pt) {
                     if ($request->price[$k] === '') {
-                        $debug[] = "Skipping empty price for text:" . $pt;
+                        $debug[] = "Skipping empty price for text:" . $request->pricing_title[$k];
                         continue;
                     }
                     $p = new Pricing();
                     $p->pricing_cat_id = $request->pricing_cat_id;
                     $p->pricing_text = $pt;
+                    $p->pricing_title = $request->pricing_title[$k];
                     $p->price = $request->price[$k];
                     $p->save();
                 }

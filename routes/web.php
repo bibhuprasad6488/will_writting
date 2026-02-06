@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CaseStudyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\InsightController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PricingController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -71,6 +72,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('price-categories', CategoryController::class)->names('price-categories');
         // Pricing
         Route::resource('pricings', PricingController::class)->names('pricings');
+        // Packages
+        Route::resource('packages', PackageController::class)->names('packages');
         // Case Studies
         Route::resource('case-studies', CaseStudyController::class)->names('case-studies');
         // Testimonials

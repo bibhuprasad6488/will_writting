@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.price_category.add');
     }
 
     /**
@@ -47,6 +47,7 @@ class CategoryController extends Controller
             $pc = new PricingCategory();
             $pc->name = $request->name;
             $pc->slug = Str::slug($request->name);
+            $pc->desctiption = $request->desctiption;
             $pc->save();
             DB::commit();
             return redirect()->back()->with('success', 'Category created successfully');
@@ -70,7 +71,7 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $pc = PricingCategory::find($id);
-        return response()->json($pc);
+        return view('admin.price_category.edit', compact('pc'));
     }
 
     /**
@@ -91,10 +92,11 @@ class CategoryController extends Controller
         try {
             $pc =  PricingCategory::find($id);
             $pc->name = $request->name;
+            $pc->desctiption = $request->desctiption;
             $pc->slug = Str::slug($request->name);
             $pc->save();
             DB::commit();
-            return redirect()->back()->with('success', 'Category updated successfully');
+            return redirect()->route('admin.price-categories.index')->with('success', 'Category updated successfully');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->with('error', 'Category update failed Error: ' . $th->getMessage());

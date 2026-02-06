@@ -46,7 +46,7 @@
                 </div>
 
                 <!-- Pricing and Category -->
-                <a class="nav-link {{ request()->routeIs(['admin.price-categories.*', 'admin.pricings.*']) ? '' : 'collapsed' }}"
+                <a class="nav-link {{ request()->routeIs(['admin.price-categories.*', 'admin.pricings.*', 'admin.packages.*']) ? '' : 'collapsed' }}"
                     href="javascript:;" data-bs-toggle="collapse" data-bs-target="#pricingAndCategory"
                     aria-expanded="false" aria-controls="pricingAndCategory">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -60,6 +60,8 @@
                             href="{{ route('admin.price-categories.index') }}">Category</a>
                         <a class="nav-link {{ request()->routeIs(['admin.pricings.*']) ? 'active' : '' }}"
                             href="{{ route('admin.pricings.index') }}"> Pricing</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.packages.*']) ? 'active' : '' }}"
+                            href="{{ route('admin.packages.index') }}"> Packages</a>
                     </nav>
                 </div>
 
@@ -123,7 +125,7 @@
                 </a>
             </div>
         </div>
-        
+
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:
                 <span style="float: right">

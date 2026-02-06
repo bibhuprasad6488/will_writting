@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Add Pricing')
+@section('title', 'Add Package')
 
 @section('content')
     <div class="container-fluid px-4">
@@ -8,16 +8,16 @@
         <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1">Add Pricing</h1>
+                <h1 class="fw-bold mb-1">Add Package</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">Dashboard</li>
-                        <li class="breadcrumb-item">Pricings</li>
+                        <li class="breadcrumb-item">Packages</li>
                         <li class="breadcrumb-item active">Add</li>
                     </ol>
                 </nav>
             </div>
-            <a href="{{ route('admin.pricings.index') }}" class="btn btn-outline-primary">
+            <a href="{{ route('admin.packages.index') }}" class="btn btn-outline-primary">
                 ← Back
             </a>
         </div>
@@ -25,7 +25,7 @@
         <!-- Card -->
         <div class="card shadow-sm border-0">
             <div class="card-header bg-light fw-semibold">
-                Pricing Information
+                Package Information
             </div>
 
             @if (session('success'))
@@ -39,39 +39,24 @@
                 </div>
             @endif
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.pricings.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.packages.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row g-4">
-                        <!-- Name -->
-                        <div class="col-md-6">
-                            <label class="form-label fw-semibold">
-                                Pricing Category <span class="text-danger">*</span>
-                            </label>
-                            <select name="pricing_cat_id" id="pricing_cat_id" class="form-select" required>
-                                <option value="" selected disabled>Select Category</option>
-                                @foreach ($priceCategories as $pc)
-                                    <option value="{{ $pc->id }}"> {{ $pc->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('name')
-                                <span class="alert text-danger py-1">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-8">
-                            <table class="table">
+                        <div class="col-md-9 mx-auto">
+                            <table class="table ">
                                 <thead>
 
                                     <tr>
                                         <th>
-                                            <label for="pricingText" class="form-label">Service</label>
+                                            <label for="packageText" class="form-label">Package</label>
                                             <span class="text-danger">*</span>
                                         </th>
                                         <th>
-                                            <label for="pricingText" class="form-label">Description</label>
+                                            <label for="packageText" class="form-label">Includes</label>
                                             <span class="text-danger">*</span>
                                         </th>
                                         <th>
-                                            <label for="pricingText">Price</label>
+                                            <label for="packageText">Price</label>
                                             <span class="text-danger">*</span>
                                         </th>
                                         <td>
@@ -81,11 +66,11 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input type="text" name="pricing_title[]"
-                                                class="form-control border-secondary" placeholder="Service Name">
+                                            <input type="text" name="package_title[]"
+                                                class="form-control border-secondary" placeholder="Package Name">
                                         </td>
                                         <td>
-                                            <textarea name="pricing_text[]" rows="3" class="form-control border-secondary" placeholder="Enter description"></textarea>
+                                            <textarea name="package_text[]" rows="2" class="form-control border-secondary" placeholder="Enter includes"></textarea>
 
                                         </td>
                                         <td style="width: 100px">
@@ -104,7 +89,7 @@
 
                     <!-- Actions -->
                     <div class="mt-4 d-flex justify-content-end gap-2">
-                        <a href="{{ route('admin.pricings.index') }}" class="btn btn-light">
+                        <a href="{{ route('admin.packages.index') }}" class="btn btn-light">
                             Cancel
                         </a>
                         <button type="submit" class="btn btn-primary px-4">
@@ -125,11 +110,11 @@
             let tbody = $(this).closest('table').find('tbody');
             let row = ` <tr>
                             <td>
-                                <input type="text" name="pricing_title[]"
-                                    class="form-control border-secondary" placeholder="Service Name">
+                                <input type="text" name="package_title[]"
+                                    class="form-control border-secondary" placeholder="Package Name">
                             </td>
                             <td>
-                                <textarea name="pricing_text[]" rows="3" class="form-control border-secondary" placeholder="Enter description"></textarea>
+                                <textarea name="package_text[]" rows="2" class="form-control border-secondary" placeholder="Enter includes"></textarea>
 
                             </td>
                             <td>

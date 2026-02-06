@@ -41,7 +41,8 @@
                     <thead>
                         <tr>
                             <th>SL No</th>
-                            <th>Text</th>
+                            <th>Service</th>
+                            <th>Description</th>
                             <th>Category</th>
                             <th>Price</th>
                             <th>Created</th>
@@ -52,6 +53,7 @@
                         @foreach ($pricings as $price)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $price->pricing_title }}</td>
                                 <td>{{ Str::limit($price->pricing_text, 100) }}</td>
                                 <td>{{ $price->category->name }}</td>
                                 <td><b>{{ $price->price ? '£ ' . $price->price : '' }}</b></td>
