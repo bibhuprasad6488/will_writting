@@ -16,7 +16,7 @@
                 <h1 class="mb-5 banner-title">Protect your family’s future with a professionally written Will.</h1>
                 <h4 class="my-4 banner-subtitle">Professional Will Writing Services You Can Trust</h4>
 
-                <a class="btn btn-light btn-lg m-2 rounded-0" href="javascript:;" role="button">View Details..</a>
+                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('service.lists') }}" role="button">View Details..</a>
 
                 <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('contact') }}" role="button">Contact
                     us today !</a>
