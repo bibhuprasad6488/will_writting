@@ -89,6 +89,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/view-will/{id}', [SettingController::class, 'viewWill'])->name('wills.list.show');
         Route::get('/contact-requests', [SettingController::class, 'contactRequests'])->name('contact.request');
         Route::post('/access-change', [SettingController::class, 'chnageAccess'])->name('change.access');
+        Route::get('/privacy-policy', [SettingController::class, 'privacyPolicy'])->name('privacy.policy');
+        Route::post('/privacy-policy-store', [SettingController::class, 'privacyPolicyStore'])->name('privacy.policy.store');
+        Route::get('/terms-of-business', [SettingController::class, 'termOfBusiness'])->name('term.business');
+        Route::post('/terms-of-business-store', [SettingController::class, 'termOfBusinessStore'])->name('term.business.store');
     });
 });
 

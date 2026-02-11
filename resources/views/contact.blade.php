@@ -48,9 +48,9 @@
             </div>
         </div>
     </section>
-    <section class="cta ">
+    <section class="cta py-5">
 
-        <div class="container py-7">
+        <div class="container ">
             <div class="row  text-center rounded-0">
                 <div class="col-lg-6 px-5">
                     <div class="cta-title ">

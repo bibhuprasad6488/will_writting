@@ -8,8 +8,10 @@ use App\Models\Partner;
 use App\Models\PricePackage;
 use App\Models\Pricing;
 use App\Models\PricingCategory;
+use App\Models\PrivacyPolicy;
 use App\Models\Service;
 use App\Models\SiteSetting;
+use App\Models\TermsOfBusiness;
 use App\Models\Testimonial;
 use App\Models\Topic;
 use App\Models\Will;
@@ -260,12 +262,14 @@ class HomeController extends Controller
 
     public function privacyPolicy()
     {
-        return view('privacy_policy');
+        $privacy = PrivacyPolicy::find(1);
+        return view('privacy_policy', compact('privacy'));
     }
 
     public function termsOfBusiness()
     {
-        return view('terms_of_business');
+        $term = TermsOfBusiness::find(1);
+        return view('terms_of_business', compact('term'));
     }
     public function ourStory()
     {

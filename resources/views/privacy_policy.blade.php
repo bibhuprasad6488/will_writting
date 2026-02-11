@@ -20,10 +20,12 @@
 
         @include('layouts.mob_header')
     </div>
-    <section class="py-5 mb-6 cm10">
+    <section class=" mb-6 cm10">
         <div class="container">
             <div class="row">
-
+                <div class="col-md-12">
+                    {!! $privacy->content ?? '' !!}
+                </div>
             </div>
         </div>
     </section>

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\GetInTouch;
+use App\Models\PrivacyPolicy;
 use App\Models\SiteSetting;
+use App\Models\TermsOfBusiness;
 use App\Models\User;
 use App\Models\Will;
 use Illuminate\Http\Request;
@@ -295,6 +297,45 @@ class SettingController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json(['status' => false, 'message' => 'Access Update failed: ' . $th->getMessage()]);
+        }
+    }
+
+    public function privacyPolicy()
+    {
+        $privacy = PrivacyPolicy::find(1);
+        return view('admin.common.privacy', compact('privacy'));
+    }
+    public function privacyPolicyStore(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $privacy = PrivacyPolicy::find(1) ?? new PrivacyPolicy();
+            $privacy->content = $request->content ? preg_replace('/[^\x20-\x7E]/u', '', $request->content) : '';
+            $privacy->save();
+            DB::commit();
+            return back()->with('success', 'Content Saved Succefully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->with('error', 'Content Saved failed Error: ' . $th->getMessage());
+        }
+    }
+    public function termOfBusiness()
+    {
+        $term = TermsOfBusiness::find(1);
+        return view('admin.common.terms', compact('term'));
+    }
+    public function termOfBusinessStore(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $term = TermsOfBusiness::find(1) ?? new TermsOfBusiness();
+            $term->content = $request->content ? preg_replace('/[^\x20-\x7E]/u', '', $request->content) : '';
+            $term->save();
+            DB::commit();
+            return back()->with('success', 'Content Saved Succefully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->with('error', 'Content Saved failed Error: ' . $th->getMessage());
         }
     }
 }

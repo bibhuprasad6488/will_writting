@@ -24,7 +24,7 @@
     <section class="py-5 mb-6 cm10">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-xs-12 col-md-6 col-lg-4 mx-auto">
 
                     <h2 class="fw-bold text-center maastrix fs-1 mb-4">
                         Start Your Will

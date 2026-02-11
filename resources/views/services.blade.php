@@ -19,8 +19,8 @@
             <div class="mask">
                 <div class="text-white">
                     <h2 class="mb-3 inner-page-title">We offer various services</h2>
-                    <p><b>Entertainment law services in Sydney that protect your creative intellectual property to develop
-                            and produce your creative projects.</b></p>
+                    <h3 class="inner-page-subtitle">Entertainment law services in Sydney that protect your creative intellectual property to develop
+                            and produce your creative projects.</h3>
                 </div>
             </div>
         </div>

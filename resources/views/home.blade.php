@@ -16,12 +16,11 @@
 
         <div class="mask">
             <div class="text-white">
-                <h1 class="mt-5 banner-title">Protect your family’s future with a professionally written Will.</h1>
-                <h4 class="my-4 banner-subtitle">Professional Will Writing Services You Can Trust</h4>
+                <h1 class="mt-5 banner-title">Professional Will Writing Services You Can Trust</h1>
+                <h4 class="my-4 banner-subtitle">Protect your family’s future with a professionally written Will.</h4>
 
-                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('service.lists') }}" role="button">View
+                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('journey') }}" role="button">View
                     Details..</a>
-
                 <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('contact') }}" role="button">Contact
                     us today !</a>
             </div>
@@ -148,7 +147,7 @@
                     <div class="testimonial-card">
                         <div class="card p-3 text-center rounded-0">
 
-                            <p class="fs-4"> <i>{{ $t->client_name }}</i> <br><span>...{{ $t->client_position }}</span>
+                            <p class="fs-4"> <i>{{ $t->client_name }} ,{{ $t->client_position }}</i>
                             </p>
                             <p>{{ $t->testimonial_text }}</p>
                         </div>

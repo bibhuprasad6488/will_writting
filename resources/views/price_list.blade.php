@@ -247,8 +247,7 @@
                 <span class="w-50">
                     <hr class="text-secondary">
                 </span>
-                <a href="{{ route('contact') }}" class="btn btn-light  rounded-0 text-uppercase fw-semibold m-2 px-5">Book
-                    a Consultation</a>
+                <a href="{{ route('journey') }}" class="btn btn-light  rounded-0 text-uppercase fw-semibold m-2 px-5">Guided journey</a>
                 <a href="{{ route('contact') }}"
                     class="btn btn-light  rounded-0 text-uppercase fw-semibold m-2 px-4">Contact Our Team Today</a>
             </div>

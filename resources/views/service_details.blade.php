@@ -28,14 +28,14 @@
 
     <section class="section page">
         <div class="container">
-            <div class="row g-4">
+            <div class="row gx-5 justify-content-between">
 
                 <div class="col-xs-12">
-                    <h2 class="text-center">{{ $service->name }}</h2>
+                    <h2 class="text-center text-uppercase">{{ $service->name }}</h2>
                 </div>
                 <!-- LEFT TEXT BOXES -->
                 <div class="col-sm-3 col-xs-12">
-                    <div class="d-flex flex-column h-100 gap-4">
+                    <div class="d-flex flex-column h-100 p-2" style="border: 2px solid gray; height:max-content !important;">
 
                         <div class="feature-box flex-fill">
                             @foreach ($services as $s)
@@ -53,7 +53,7 @@
                 </div>
                 <!-- RIGHT TEXT BOXES -->
                 <div class="col-sm-9 col-xs-12">
-                    <div class="d-flex flex-column h-100 gap-4">
+                    <div class="d-flex flex-column h-100">
 
                         <div class="feature-box flex-fill">
                             {!! $service->description !!}
