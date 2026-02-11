@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', $blog->title)
+@section('meta_title', $blog->meta_title ?? '')
+@section('meta_description', $blog->meta_desc ?? '')
 
 @section('content')
 

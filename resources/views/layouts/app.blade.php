@@ -16,9 +16,9 @@
             | {{ $siteSetting->site_title }}
         @endif
     </title>
-    <meta name="title" content="@yield('meta_title', 'A default title')">
-    <meta name="keywords" content="@yield('meta_keyword', 'some default keywords')">
-    <meta name="description" content="@yield('meta_description', 'default description')">
+    <meta name="title" content="@yield('meta_title', '')">
+    <meta name="keywords" content="@yield('meta_keyword', '')">
+    <meta name="description" content="@yield('meta_description', '')">
 
     <!-- Favicons -->
     <link
@@ -42,7 +42,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="fs-5 ">
     <div id="app">
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

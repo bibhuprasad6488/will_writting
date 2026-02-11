@@ -110,6 +110,30 @@
                             </label>
                             <textarea name="description" rows="4" class="form-control tinymce-editor" placeholder="Optional description">{{ old('description') }}</textarea>
                         </div>
+                        <!-- Meta Title -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">
+                                Meta Title
+                            </label>
+                            <input type="text" class="form-control" name="meta_title" value=""
+                                placeholder="Meta title">
+                        </div>
+                        <!-- Meta Desc -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">
+                                Meta Description
+                            </label>
+                            <textarea name="meta_desc" id="meta_desc" cols="" class="form-control" rows="5"
+                                placeholder="Meta Description"></textarea>
+                        </div>
+                        <!-- Meta Keys -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">
+                                Meta Keywords
+                            </label>
+                            <textarea name="meta_keywords" id="meta_keywords" cols="" class="form-control" rows="5"
+                                placeholder="Meta keywords"></textarea>
+                        </div>
 
                     </div>
 

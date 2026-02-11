@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Contact Us')
+@section('meta_title', 'Contact Sterling Wills | Will Writing & Estate Planning')
+@section('meta_description',
+    'Contact Sterling Wills for expert will writing & estate planning advice. Our friendly team
+    is here to help with wills, trusts, and LPAs.')
 
 @section('content')
 
@@ -34,10 +38,10 @@
                     </h2>
 
                     <p class="mb-4 fs-5">
-                        We’re here to help you take the next step with confidence. Whether you have questions about will
-                        writing, estate planning, trusts, or lasting power of attorney, our team is ready to guide you. Use
-                        the form below to get in touch, request a consultation, or seek clarity on our services. We’ll
-                        respond promptly and ensure you receive clear, professional advice tailored to your needs.
+                        Thank you for considering <b>Sterling Wills & Estate Planning.</b> We’re here to make connecting with us as
+                        simple and stress-free as possible. Whether you have questions about <b>will writing, estate planning,
+                        trusts</b>, or <b>lasting powers of attorney</b>, or you’re ready to start your planning journey, our friendly
+                        team is ready to help.
                     </p>
                 </div>
 

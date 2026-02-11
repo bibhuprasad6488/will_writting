@@ -88,6 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/get-wills', [SettingController::class, 'getWills'])->name('wills.list');
         Route::get('/view-will/{id}', [SettingController::class, 'viewWill'])->name('wills.list.show');
         Route::get('/contact-requests', [SettingController::class, 'contactRequests'])->name('contact.request');
+        Route::post('/access-change', [SettingController::class, 'chnageAccess'])->name('change.access');
     });
 });
 

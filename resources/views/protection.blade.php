@@ -9,10 +9,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h1 class="fw-bold">Protection</h1>
-                    <h4 class="mt-3">Expert Protection Advice</h4>
+                    <h4 class="mt-3">Safeguarding Your Family’s Future</h4>
                     <p class="mt-3">
-                        Safeguarding your future is just as important as planning your will.
-                        That’s why we’ve partnered with Portman Rise to provide expert protection advice.
+                        At Sterling Wills, we believe that protecting your family and financial security is just as important as preparing your will. That’s why we work in partnership with <b>independent protection specialists </b> offer you tailored advice on financial protection solutions that may help provide peace of mind.
                     </p>
 
                     <ul class="list-unstyled mt-4">
@@ -104,6 +103,7 @@
     <!-- HOW IT WORKS -->
     <section class="py-5">
         <div class="container">
+            <p class="mb-5">Our process starts with an <b>initial consultation</b> to understand your situation, followed by a referral to the regulated advisers at Portman Rise. They’ll provide <b>personalised, FCA-regulated advice </b> recommend protection solutions tailored to your needs.</p>
             <h2 class="text-center mb-5 fw-bold">How It Works</h2>
 
             <div class="row g-4">
@@ -155,12 +155,11 @@
                     Touch</a>
             </div>
 
-            <div class="disclaimer py-4">
+            <div class="py-5">
                 <p>
-                    Sterling Wills is not authorised or regulated by the Financial Conduct Authority
-                    and does not provide financial or protection advice.
+                    Please note that <b>Sterling Wills is not authorised or regulated by the Financial Conduct Authority (FCA)</b> and does not provide financial advice. All protection advice is provided independently by Portman Rise, who are FCA-regulated specialists.
                 </p>
-                <p class="fst-italic">
+                <p class="fst-italic d-none">
                     All protection advice is provided by Portman Rise, independent and FCA regulated specialists.
                 </p>
             </div>

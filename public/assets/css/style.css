@@ -1,7 +1,34 @@
+@font-face {
+    font-family: 'Lora';
+    src: url('fonts/Lora-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter' !important;
     color: #000;
     padding: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lora';
 }
 
 .mobile_menu {
@@ -174,7 +201,7 @@ iframe {
 }
 
 .tbb2 .nav-item {
-    padding: 0px 12PX;
+    padding: 0px 10PX;
 }
 
 .nav-item a {
@@ -212,7 +239,7 @@ iframe {
 }
 
 .banner-title {
-    font-size: 58px;
+    font-size: 30px;
 }
 
 .inner-page-title {
@@ -307,6 +334,7 @@ iframe {
     position: relative;
     z-index: 2;
     padding: 0 15px;
+    margin-top: 150px;
 }
 
 .services .mask {
@@ -392,7 +420,7 @@ iframe {
 
 .cta-title {
     color: #fff;
-    font-size: clamp(1.8rem, 3vw, 2.0rem);
+    font-size: clamp(1.8rem, 3vw, 1.5rem);
     font-weight: 600;
 }
 
@@ -639,6 +667,7 @@ marquee .partner-card img {
 .service-card .card-img-top {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+    object-fit: cover;
 }
 
 .service-title {
@@ -664,7 +693,6 @@ marquee .partner-card img {
 
 .partner {
     margin-bottom: 25px;
-    ;
 }
 
 .maastrix {

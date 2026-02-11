@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Guided Journey')
+@section('meta_title', 'Our Will Writing & Estate Planning Journey | Sterling Wills')
+@section('meta_description', 'Discover The Sterling Wills Journey for will writing & estate planning. A clear, guided
+    process with expert support from start to finish.')
 
 @section('content')
     <div class="services" class="text-center">
@@ -34,17 +37,20 @@
 
                         <div class="feature-box flex-fill">
                             <h2 class="text-center">How the journey works...</h2>
-                            <p>Our guided journey is designed to make will writing and estate planning clear, structured,
-                                and stress-free. Whether you need a will, trust planning, estate planning, lasting power of
-                                attorney, or related services, we guide you through every stage with expert support. From
-                                understanding your personal circumstances and choosing the right service, to gathering
-                                information, preparing your documents, and ensuring they are correctly signed, we take care
-                                of the details. </p>
-                            <p>Once complete, your documents are securely stored, with ongoing support
-                                available as your needs change. This step-by-step approach ensures your wishes are
-                                accurately recorded, legally compliant, and protected for the future. With clear guidance at
-                                every step, you can move forward with confidence, knowing your assets, family, and legacy
-                                are in safe hands.</p>
+                            <p>The Sterling Wills journey is designed to make <b>will writing and estate planning</b>,
+                                structured, and completely stress-free. From your first conversation with us, we take the
+                                time to understand your personal circumstances, family needs, and long-term wishes, ensuring
+                                you receive the right guidance from the very start. </p>
+                            <p>Whether you require a <b>professionally drafted will, trust planning, estate planning</b>, or
+                                <b>lasting power of attorney</b>, we guide you through each stage with expert care. We help
+                                you gather the necessary information, prepare your legal documents with precision, and
+                                ensure everything is completed correctly, legally compliant, and properly signed.
+                            </p>
+                            <p>Once finalised, your documents are <b>securely stored</b>, with ongoing support available
+                                should your circumstances change. Our step-by-step approach ensures your wishes are clearly
+                                recorded and protected for the future, giving you complete peace of mind. With Sterling
+                                Wills, your <b>assets, family, and legacy</b> are safeguarded with clarity, care, and
+                                confidence.</p>
                         </div>
 
                     </div>
@@ -108,7 +114,15 @@
 
 
     <section class="py-5">
-
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="journey-title">
+                        <span>Start your will-writing journey with Sterling Wills</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="timeline">
             <div class="timeline-progress"></div>
 
@@ -173,9 +187,30 @@
                 <div style="clear:both;"></div>
             </ul>
         </div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    <div class="journey-title2">
+                        <span>Peace of Mind & Legacy Assurance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <style>
+        .journey-title {
+            border: 2px solid #000;
+            padding: 9px 10px;
+            font-size: 27px;
+        }
+
+        .journey-title2 {
+            border: 2px solid #000;
+            padding: 9px 10px;
+            font-size: 27px;
+        }
+
         .timeline {
             position: relative;
             margin: 50px auto;
@@ -344,6 +379,16 @@
 
         @media (max-width: 767px) {
 
+            .journey-title2 {
+                padding: 9px 10px;
+                font-size: 22px;
+            }
+
+            .journey-title {
+                padding: 9px 10px;
+                font-size: 20px;
+            }
+
             /* Timeline spine */
             .timeline::before,
             .timeline-progress {
@@ -449,46 +494,8 @@
         }
     </style>
 
-    <section class="cta py-5 cm10">
-        <div class="container">
-            <div class="row justify-content-center text-center rounded-0">
+    @include('cta_common')
 
-                <div class="col-lg-10">
-                    <h2 class="cta-title mb-3">
-                        Wills Sterling Law is your trusted Will Lawyer in Sydney
-                    </h2>
-
-                    <p class="cta-subtitle mb-4">
-                        Contact us today and experience personalised and expert legal assistance
-                        to support all of your personal matters.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="row justify-content-center mt-3 g-3 rounded-0">
-
-                <div class="col-md-5 col-lg-4">
-                    <a href="{{ route('start.will') }}"
-                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Fill Out Our Form
-                    </a>
-                </div>
-
-
-                <div class="col-md-5 col-lg-4">
-                    <a href="tel:{{ $siteSetting->contact_phone ?? '' }}"
-                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Call
-                        @if ($siteSetting && $siteSetting->contact_phone)
-                            {{ $siteSetting->contact_phone }}
-                        @endif
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
 @endsection
 @push('scripts')

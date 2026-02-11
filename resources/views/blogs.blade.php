@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Insights')
+@section('meta_title', 'Insights | Will Writing & Estate Planning | Sterling Wills')
+@section('meta_description',
+    'Read expert insights on will writing & estate planning from Sterling Wills. Guidance on
+    wills, trusts, LPAs, and protecting your legacy.')
 
 @section('content')
 
@@ -35,14 +39,26 @@
 
                         <div class="feature-box flex-fill">
                             <h2 class="text-center ">Overview...</h2>
-                            <p>Every family’s situation is unique, and our case studies highlight how tailored estate and
-                                will planning can make a meaningful difference. From straightforward wills to complex estate
-                                and trust planning, these real-world examples show how we guide clients through every step
-                                with clarity and care.</p>
-                            <p>Each case demonstrates our structured approach, expert consultation, and long-term
-                                support—ensuring assets are protected, wishes are respected, and loved ones are supported.
-                                Explore these stories to see how thoughtful planning today can provide confidence, control,
-                                and peace of mind for the future.</p>
+                            <p>Welcome to the <b>Sterling Wills Insights</b> hub — your source for expert guidance,
+                                practical advice, and up-to-date information on <b>will writing, estate planning, trusts,
+                                    and lasting powers of attorney.</b> Whether you’re just beginning your planning journey
+                                or reviewing existing arrangements, our insights are designed to help you make informed
+                                decisions with confidence.</p>
+                            <p>
+                                Here you’ll find easy-to-understand articles, guides, and explanations covering key topics
+                                such as preparing a will, understanding estate taxes, choosing the right trust structure,
+                                and knowing when to set up lasting powers of attorney. Our content delivers clarity on
+                                complex legal topics, helping you stay informed about best practices and changes in
+                                legislation that may affect your plans.
+                            </p>
+                            <p>We believe that good estate planning begins with the right knowledge, so our insights are
+                                written with you in mind — practical, relevant, and focused on real-life needs. Each piece
+                                is created to empower you to take the next step with confidence and peace of mind.</p>
+                            <p>
+                                Bookmark this page and check back regularly for fresh updates and expert commentary. At
+                                Sterling Wills, we’re committed not only to providing professional services but also to
+                                equipping you with the understanding you need to protect what matters most.
+                            </p>
                         </div>
 
                     </div>
@@ -202,45 +218,6 @@
     </section>
 
 
-    <section class="cta py-5 cm10">
-        <div class="container">
-            <div class="row justify-content-center text-center rounded-0">
-
-                <div class="col-lg-10">
-                    <h2 class="cta-title mb-3">
-                        Wills Sterling Law is your trusted Will Lawyer in Sydney
-                    </h2>
-
-                    <p class="cta-subtitle mb-4">
-                        Contact us today and experience personalised and expert legal assistance
-                        to support all of your personal matters.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="row justify-content-center mt-3 g-3 rounded-0">
-
-                <div class="col-md-5 col-lg-4">
-                    <a href="{{ route('start.will') }}"
-                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Fill Out Our Form
-                    </a>
-                </div>
-
-                <div class="col-md-5 col-lg-4">
-                    <a href="tel:{{ $siteSetting->contact_phone ?? '' }}"
-                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Call
-                        @if ($siteSetting && $siteSetting->contact_phone)
-                            {{ $siteSetting->contact_phone }}
-                        @endif
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
+    @include('cta_common')
 
 @endsection

@@ -46,7 +46,9 @@ class ServiceController extends Controller
             $service->name = $request->name;
             $service->slug = Str::slug($request->name);
             $service->description = preg_replace('/[^\x20-\x7E]/u', '', $request->description);
-
+            $service->meta_title    = $request->meta_title;
+            $service->meta_keywords = $request->meta_keywords;
+            $service->meta_desc     = $request->meta_desc;
             // /** Upload Path */
             $destinationPath = public_path('storage/images/services/');
             if (!file_exists($destinationPath)) {
@@ -173,6 +175,9 @@ class ServiceController extends Controller
             $service->name = $request->name;
             $service->slug = Str::slug($request->name);
             $service->description = preg_replace('/[^\x20-\x7E]/u', '', $request->description);
+            $service->meta_title    = $request->meta_title;
+            $service->meta_keywords = $request->meta_keywords;
+            $service->meta_desc     = $request->meta_desc;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/services/');

@@ -27,8 +27,21 @@
                     {{ session('error') }}
                 </div>
             @endif
-            <div class="card-header">
-                <i class="fas fa-table me-1"></i>
+            <div class="card-header d-flex">
+                <div class="tab-iocn">
+                    <i class="fas fa-table me-1"></i>
+                </div>
+
+                <div class="toogle-bar ms-auto">
+                    <b>On Page: </b> Hide
+                    <label class="switch my-1" title="Show on Page">
+                        <input type="checkbox" id="accessToggle"
+                            onchange="accessUpdate('{{ route('admin.change.access') }}','partner')"
+                            {{ $setting->partner_show ? 'checked' : '' }}>
+                        <span class="slider"></span>
+                    </label>
+                    Show
+                </div>
             </div>
             <div class="card-body">
 

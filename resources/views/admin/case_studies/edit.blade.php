@@ -114,10 +114,34 @@
                             <label class="form-label fw-semibold">
                                 Long Decription <span class="text-danger">*</span>
                             </label>
-                            <textarea name="long_desc" rows="5" class="form-control tinymce-editor" placeholder="Description">{{ optional($cs)->long_desc ?? old('long_desc') }}</textarea>
+                            <textarea name="long_desc" rows="5" class="form-control tinymce-editor border-secondary" placeholder="Description">{{ optional($cs)->long_desc ?? old('long_desc') }}</textarea>
+                        </div>
+
+                        <!-- Meta Title -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">
+                                Meta Title
+                            </label>
+                            <input type="text" class="form-control" name="meta_title"
+                                value="{{ optional($cs)->meta_title ?? old('meta_title') }}" placeholder="Meta title">
+                        </div>
+                        <!-- Meta Desc -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">
+                                Meta Description
+                            </label>
+                            <textarea name="meta_desc" id="meta_desc" cols="" class="form-control" rows="5"
+                                placeholder="Meta Description" >{{ optional($cs)->meta_desc ?? old('meta_desc') }}</textarea>
+                        </div>
+                        <!-- Meta Keys -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">
+                                Meta Keywords
+                            </label>
+                            <textarea name="meta_keywords" id="meta_keywords" cols="" class="form-control" rows="5"
+                                placeholder="Meta keywords" >{{ optional($cs)->meta_keywords ?? old('meta_keywords') }}</textarea>
                         </div>
                     </div>
-
                     <!-- Actions -->
                     <div class="mt-4 d-flex justify-content-end gap-2">
                         <a href="{{ route('admin.case-studies.index') }}" class="btn btn-light">

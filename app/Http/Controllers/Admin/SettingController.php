@@ -276,4 +276,25 @@ class SettingController extends Controller
         $contacts = GetInTouch::orderByDesc('id')->get();
         return view('admin.common.contacts', compact('contacts'));
     }
+
+
+    public function chnageAccess(Request $request)
+    {
+        $status = $request->status;
+        $for = $request->change_for;
+        // return response()->json($request->all());
+        DB::beginTransaction();
+        try {
+            $setting = SiteSetting::find(1);
+            if ($request->change_for === 'partner') {
+                $setting->partner_show = $status;
+            }
+            $setting->save();
+            DB::commit();
+            return response()->json(['status' => true, 'message' => 'Access Updated Successfully', 'set' => $setting]);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json(['status' => false, 'message' => 'Access Update failed: ' . $th->getMessage()]);
+        }
+    }
 }

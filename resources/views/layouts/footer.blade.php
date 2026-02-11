@@ -64,6 +64,7 @@
 
             <div class="col-md-3 col-xs-12 mb-4 mb-md-0">
 
+                <h6 class="footer-title">Accreditations</h6>
                 <!-- Row 1: Compliance logos -->
                 <div class="footer-logos mb-4">
                     <div class="logo-box">
@@ -141,8 +142,12 @@
 
             </div>
             <div class="col-md-12 col-xs-12 mb-4 mb-md-0 mt-4 text-center">
-                <p class="text-white">Accredited Member of the Society of Will Writers (SWW)</p>
-                <p class="text-white"> ‘The Sterling Wills’ is a trading name of Sterling Wills & Estate Planning LTD
+                <p class="text-white mb-1">Accredited Member of the Society of Will Writers (SWW)</p>
+                <p class="text-white mb-1">Sterling Wills & Estate Planning Ltd is registered in England and Wales.</p>
+                <p class="text-white mb-1"> The Sterling Wills” is a trading name of Sterling Wills & Estate Planning Ltd.
+                </p>
+                <p class="text-white mb-1">
+                    Calls may be recorded for training and monitoring purposes.
                 </p>
             </div>
         </div>

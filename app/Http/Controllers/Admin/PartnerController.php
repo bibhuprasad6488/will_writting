@@ -22,7 +22,8 @@ class PartnerController extends Controller
 
             return $p;
         });
-        return view('admin.partners.list', compact('partners'));
+        $setting = \App\Models\SiteSetting::find(1);
+        return view('admin.partners.list', compact('partners', 'setting'));
     }
 
     /**

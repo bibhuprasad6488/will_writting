@@ -43,7 +43,52 @@
     @if (config('database.connections.mysql.username') === 'root')
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @endif
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+        }
 
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #aa2c2c;
+            transition: 0.4s;
+            border-radius: 25px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 19px;
+            width: 19px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #4caf50;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(25px);
+        }
+    </style>
 </head>
 
 <body>
@@ -166,6 +211,41 @@
             });
         });
     </script>
+    <script>
+        function accessUpdate(act, type_for) {
+            const toggleSwitch = document.getElementById(`accessToggle`);
+            const status = toggleSwitch.checked ? 1 : 0; // Determine status (1 for active, 0 for inactive)
+            // console.log(status);
+            // return false;
+            $.ajax({
+                url: act,
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                        'content') // CSRF token for security
+                },
+                data: {
+                    status: status, // Send the Status to the server
+                    change_for: type_for, // Send the Status to the server
+                },
+                success: function(resp) {
+                    // console.log(resp);
+                    if (resp.status) {
+                        alert(resp.message);
+                        window.location.reload();
+                    } else {
+                        session.error(resp.message, '');
+                    }
+
+                },
+                error: function(e) {
+                    toastr.error('Something went wrong. Please try again later!!',
+                        ''); // Handle AJAX error
+                }
+            });
+
+        }
+    </script>
 
     <script>
         window.onload = function() {
@@ -179,7 +259,7 @@
             }
         };
     </script>
-    <!-- Stack for page-level scripts -->
+
     @stack('scripts')
 
 

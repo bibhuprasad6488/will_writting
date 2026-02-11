@@ -1,8 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Home')
-@section('meta_title', $home_page_data->meta_title ?? '')
+@section('meta_title', $home_page_data->meta_title ?? 'Sterling Wills | Clear, Fixed-Fee Wills & Estate Planning')
+@section('meta_description',
+    $home_page_data->meta_desc ??
+    'Protect what matters most with Sterling Wills. Clear advice,
+    fixed fees, and expert guidance to help you create a legally sound will with confidence.')
 @section('meta_keyword', $home_page_data->meta_keyword ?? '')
-@section('meta_description', $home_page_data->meta_desc ?? '')
 @section('content')
     <!-- HERO -->
     <div id="intro-example" class="text-center">
@@ -13,10 +16,11 @@
 
         <div class="mask">
             <div class="text-white">
-                <h1 class="mb-5 banner-title">Protect your family’s future with a professionally written Will.</h1>
+                <h1 class="mt-5 banner-title">Protect your family’s future with a professionally written Will.</h1>
                 <h4 class="my-4 banner-subtitle">Professional Will Writing Services You Can Trust</h4>
 
-                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('service.lists') }}" role="button">View Details..</a>
+                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('service.lists') }}" role="button">View
+                    Details..</a>
 
                 <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('contact') }}" role="button">Contact
                     us today !</a>
@@ -29,10 +33,10 @@
 
     <section class="section about_us">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4 py-6">
 
                 <!-- LEFT IMAGE BOX -->
-                <div class="col-md-6">
+                <div class="col-md-6 px-5">
                     <div class="feature-box h-100">
                         <img src="{{ asset('assets/images/about_us.png') }}" alt="Will Writing"
                             class="img-fluid feature-image">
@@ -40,7 +44,7 @@
                 </div>
 
                 <!-- RIGHT TEXT BOXES -->
-                <div class="col-md-6">
+                <div class="col-md-6 px-5">
                     <div class="d-flex flex-column h-100 gap-4">
 
                         <div class="feature-box flex-fill">
@@ -65,7 +69,7 @@
     </section>
 
 
-    <section class="section">
+    <section>
         <div class="container">
             <h2 class="text-center mb-5 maastrix">Our Services</h2>
             <div class="row g-4">
@@ -96,46 +100,7 @@
         </div>
     </section>
 
-    <section class="cta py-5 cm10">
-        <div class="container">
-            <div class="row justify-content-center text-center">
-
-                <div class="col-lg-10">
-                    <h2 class="cta-title mb-3">
-                        Reeve Law is your trusted Will Lawyer in Sydney
-                    </h2>
-
-                    <p class="cta-subtitle mb-4">
-                        Contact us today and experience personalised and expert legal assistance
-                        to support all of your personal matters.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="row justify-content-center mt-3 g-3">
-
-                <div class="col-md-5 col-lg-4">
-                    <a href="{{ route('start.will') }}"
-                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Fill Out Our Form
-                    </a>
-                </div>
-
-
-                <div class="col-md-5 col-lg-4">
-                    <a href="tel:{{ $siteSetting->contact_phone ?? '' }}"
-                        class="btn btn-light w-100 py-3 rounded-0 text-uppercase fw-semibold">
-                        Call
-                        @if ($siteSetting && $siteSetting->contact_phone)
-                            {{ $siteSetting->contact_phone }}
-                        @endif
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
+    @include('cta_common')
 
 
     {{-- <section class="section guided_journey pb-5">
@@ -195,19 +160,20 @@
             <button class="scroll-btn right" onclick="scrollTestimonials(1)">&#10095;</button>
         </div>
     </section>
+    @if ($siteSetting->partner_show)
+        <div class="container partner">
+            <h2 class="text-center mb-5 maastrix">Partners list</h2>
 
-    <div class="container partner">
-        <h2 class="text-center mb-5 maastrix">Partners list</h2>
-
-        <div class="partner-marquee">
-            <div class="partner-track">
-                @foreach ($partners as $p)
-                    <span class="partner-card {{ $loop->iteration }}"><img src="{{ $p->logo_path }}"
-                            alt="{{ $p->name }}"></span>
-                @endforeach
+            <div class="partner-marquee">
+                <div class="partner-track">
+                    @foreach ($partners as $p)
+                        <span class="partner-card {{ $loop->iteration }}"><img src="{{ $p->logo_path }}"
+                                alt="{{ $p->name }}"></span>
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
+    @endif
 @endsection
 @push('scripts')
     <script>
