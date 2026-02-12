@@ -106,6 +106,21 @@
             @yield('content')
         </main>
     </div>
+
+    <div class="sticky-icons d-flex flex-column gap-1">
+        <div>
+            <a href="tel:{{ $siteSetting->call_wp_number ?? '+447555170449' }}" title="Call Us">
+                <img src="{{ asset('assets/images/call.png') }}" width="70" alt="Call" class="mb-0">
+            </a>
+        </div>
+        <div>
+            <a href="https://api.whatsapp.com/send?phone={{ $siteSetting->call_wp_number ?? '+447555170449' }}&text={{ $siteSetting->wp_message ?? 'Hi' }}"
+                target="_blank" title="WhatsApp Us">
+                <img src="{{ asset('assets/images/wp.png') }}" width="70" alt="WP">
+            </a>
+
+        </div>
+    </div>
     @include('layouts.footer')
 
     <!-- jQuery FIRST -->
@@ -115,6 +130,8 @@
     <script src="{{ asset('assets/js/scroll.js') }}"></script>
     <script src="{{ asset('assets/js/testimonial.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/timeline.js') }}"></script> --}}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
     <script>
         window.onload = function() {

@@ -24,6 +24,20 @@ body {
     line-height: 24px !important;
 }
 
+.sticky-icons {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+}
+
+.sticky-icons img {
+    filter: none;
+}
+
+.g-recaptcha iframe {
+    filter: none;
+}
+
 h1,
 h2,
 h3,

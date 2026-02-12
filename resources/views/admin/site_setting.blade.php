@@ -62,6 +62,23 @@
                                 </div>
                             </div>
                             <div class="form-group row  mb-2">
+                                <label for=""
+                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Call/Whatsapp No
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="call_wp_number" id="call_wp_number" class="form-control"
+                                        value="{{ optional($setting)->call_wp_number }}">
+                                </div>
+                            </div>
+                            <div class="form-group row  mb-2">
+                                <label for=""
+                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Whatsapp Message
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea name="wp_message" id="wp_message" class="form-control" rows="3">{{ optional($setting)->wp_message }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row  mb-2">
                                 <label for="firstname" class="d-flex justify-content-end col-md-3 col-sm-3 col-xs-12">
                                     Email ID </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -82,25 +99,29 @@
                                     class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Logo</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="file" name="site_logo" id="site_logo" class="form-control"
-                                        accept=".jpg,.jpeg,.png,.webp" onchange="previewSiteLogoImage(event)" @if (!$setting && !$setting->site_logo) required @endif>
+                                        accept=".jpg,.jpeg,.png,.webp" onchange="previewSiteLogoImage(event)"
+                                        @if (!$setting && !$setting->site_logo) required @endif>
                                     <img @if ($setting && $setting->site_logo) src="{{ $setting->site_logo }}"
                                     @else style="display: none;" @endif
                                         alt="Site Logo" width="150" id="siteLogoPreview">
                                 </div>
                             </div>
                             <div class="form-group row  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Footer
+                                <label for=""
+                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Footer
                                     Logo</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="file" name="footer_logo" id="footer_logo" class="form-control"
-                                        onchange="previewFooterLogoImage(event)" @if (!$setting && !$setting->footer_logo) required @endif>
+                                        onchange="previewFooterLogoImage(event)"
+                                        @if (!$setting && !$setting->footer_logo) required @endif>
                                     <img @if ($setting && $setting->footer_logo) src="{{ $setting->footer_logo }}"
                                     @else style="display: none;" @endif
                                         alt="Site Logo" class="bg-gray" width="150" id="footerLogoPreview">
                                 </div>
                             </div>
                             <div class="form-group row  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Footer
+                                <label for=""
+                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Footer
                                     Logo One</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="file" name="footer_logo_one" id="footer_logo_one"
@@ -231,8 +252,8 @@
                                     Email
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="smtp_from_email" id="smtp_from_email" class="form-control"
-                                        value="{{ optional($setting)->smtp_from_email }}">
+                                    <input type="text" name="smtp_from_email" id="smtp_from_email"
+                                        class="form-control" value="{{ optional($setting)->smtp_from_email }}">
                                 </div>
                             </div>
 

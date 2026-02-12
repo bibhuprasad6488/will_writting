@@ -143,6 +143,8 @@ class SettingController extends Controller
             $setting->alt_email = $request->alt_email;
             $setting->contact_phone = $request->contact_phone;
             $setting->alt_phone = $request->alt_phone;
+            $setting->call_wp_number = $request->call_wp_number;
+            $setting->wp_message = $request->wp_message;
             $setting->copyright = $request->copyright;
             $setting->site_desc = $request->site_desc;
             $setting->site_map_key = $request->site_map_key;

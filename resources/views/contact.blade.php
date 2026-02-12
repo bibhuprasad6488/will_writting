@@ -38,9 +38,12 @@
                     </h2>
 
                     <p class="mb-4 fs-5">
-                        Thank you for considering <b>Sterling Wills & Estate Planning.</b> We’re here to make connecting with us as
-                        simple and stress-free as possible. Whether you have questions about <b>will writing, estate planning,
-                        trusts</b>, or <b>lasting powers of attorney</b>, or you’re ready to start your planning journey, our friendly
+                        Thank you for considering <b>Sterling Wills & Estate Planning.</b> We’re here to make connecting
+                        with us as
+                        simple and stress-free as possible. Whether you have questions about <b>will writing, estate
+                            planning,
+                            trusts</b>, or <b>lasting powers of attorney</b>, or you’re ready to start your planning
+                        journey, our friendly
                         team is ready to help.
                     </p>
                 </div>
@@ -109,7 +112,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('contact.submit') }}" method="post" class="mt-4">
+                    <form action="{{ route('contact.submit') }}" method="post" class="mt-4" id="contactForm">
                         @csrf
 
                         <div class="mb-3">
@@ -130,6 +133,13 @@
                         <div class="mb-4">
                             <textarea name="ct_message" rows="5" class="form-control border-secondary rounded-0" placeholder="Your message"
                                 required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="g-recaptcha" data-sitekey="{{ config('app.recaptcha_site_key') }}"></div>
+                            <small id="captcha-error" class="text-danger d-none">
+                                Please verify that you are not a robot.
+                            </small>
                         </div>
 
                         <button type="submit" class="btn btn-secondary fw-bold px-5 py-2 rounded-0">
@@ -154,6 +164,21 @@
     <script>
         $(document).on('input', '.numeric-only', function() {
             this.value = this.value.replace(/\D/g, '');
+        });
+    </script>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+
+            var response = grecaptcha.getResponse();
+            var errorBox = document.getElementById('captcha-error');
+
+            if (response.length === 0) {
+                e.preventDefault(); // Stop form submission
+                errorBox.classList.remove('d-none');
+            } else {
+                errorBox.classList.add('d-none');
+            }
         });
     </script>
 @endpush
