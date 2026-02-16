@@ -1,62 +1,63 @@
+.testimonial-scroll {
+    display: flex;
+    gap: 3rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
 
-        .testimonial-scroll {
-            display: flex;
-            gap: 3rem;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 10px 0;
-        }
+.testimonial-scroll::-webkit-scrollbar {
+    display: none;
+}
 
-        .testimonial-scroll::-webkit-scrollbar {
-            display: none;
-        }
+.testimonial-card {
+    flex: 0 0 48%;
+    padding: 0 30px;
+}
 
-        .testimonial-card {
-            flex: 0 0 48%;
-            padding: 0 30px;
-        }
-        .testimonial-card .card{
-            border: none;;
-        }
+.testimonial-card .card {
+    border: none;
+    ;
+}
 
-        @media (max-width: 991px) {
-            .testimonial-card {
-                flex: 0 0 70%;
-            }
-        }
+@media (max-width: 991px) {
+    .testimonial-card {
+        flex: 0 0 70%;
+    }
+}
 
-        @media (max-width: 575px) {
-            .testimonial-card {
-                flex: 0 0 90%;
-            }
-        }
+@media (max-width: 575px) {
+    .testimonial-card {
+        flex: 0 0 90%;
+    }
+}
 
-        /* Arrow buttons */
-        .scroll-btn {
-            position: absolute;
-            top: 55%;
-            transform: translateY(-50%);
-            background: #000;
-            color: #fff;
-            border: none;
-            width: 42px;
-            height: 42px;
-            font-size: 22px;
-            cursor: pointer;
-            z-index: 10;
-            opacity: 0.8;
-            border-radius: 50%;
-            background: #ccc;
-        }
+/* Arrow buttons */
+.scroll-btn {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    background: #000;
+    color: #fff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.8;
+    border-radius: 50%;
+    background: #ccc;
+}
 
-        .scroll-btn.left {
-            left: -33px;
-        }
+.scroll-btn.left {
+    left: 0px;
+}
 
-        .scroll-btn.right {
-            right: -33px;
-        }
+.scroll-btn.right {
+    right: 0px;
+}
 
-        .scroll-btn:hover {
-            opacity: 1;
-        }
+.scroll-btn:hover {
+    opacity: 1;
+}

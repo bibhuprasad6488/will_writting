@@ -48,7 +48,7 @@ h6 {
 }
 
 .mobile_menu {
-    margin-right: 25px;
+    margin-right: 0;
 }
 
 img {
@@ -834,6 +834,17 @@ marquee .partner-card img {
 }
 
 @media (max-width: 767.98px) {
+
+    .sticky-icons img {
+        width: 40px;
+        height: auto;
+
+    }
+
+    .sticky-icons {
+        right: 5px;
+    }
+
     .banner-title {
         font-size: 30px;
     }
