@@ -57,7 +57,7 @@
                                 <td>{{ Str::limit($price->pricing_text, 100) }}</td>
                                 <td>{{ $price->category->name }}</td>
                                 <td><b>{{ $price->price ? '£ ' . $price->price : '' }}</b></td>
-                                <td>{{ $price->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($price->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.pricings.edit', $price->pricing_cat_id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>

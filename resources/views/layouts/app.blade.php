@@ -19,7 +19,7 @@
     <meta name="title" content="@yield('meta_title', '')">
     <meta name="keywords" content="@yield('meta_keyword', '')">
     <meta name="description" content="@yield('meta_description', '')">
-
+    <link rel="canonical" href="{{ url()->current() }}" />
     <!-- Favicons -->
     <link
         href="@if ($siteSetting) {{ asset('storage/images/settings/' . $siteSetting->favicon) }} @endif"
@@ -37,6 +37,26 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/testimonial.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/timeline.css') }}">
+
+    <meta property="og:title" content="@yield('meta_title', '')" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:image" content="{{ asset('storage/images/settings/' . $siteSetting->favicon) }}" />
+
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "name": "{{ $siteSetting->site_title }}",
+        "url": "{{ url('/') }}",
+        "image": "{{ asset('storage/images/settings/' . $siteSetting->site_logo) }}",
+        "telephone": "{{ $siteSetting->contact_phone }}",
+        "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "UK"
+        }
+        }
+</script>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])

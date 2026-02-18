@@ -184,6 +184,8 @@ class HomeController extends Controller
             return back()->with('error', 'CAPTCHA verification failed. Please try again.');
         }
 
+        $siteSetting = SiteSetting::find(1);
+
         DB::beginTransaction();
         try {
             $c = new GetInTouch();
@@ -194,8 +196,10 @@ class HomeController extends Controller
             $c->ip_address = request()->ip();
             $c->save();
 
+            $adminEmail = $siteSetting->contact_email ?? $siteSetting->alt_email;
             $internalRecipients = [
                 'bibhuprasad.maastrix@gmail.com',
+                $adminEmail
             ];
 
             $internalSubject = "New Contact Requested: {$c->ct_name}";

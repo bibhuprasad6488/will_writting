@@ -63,7 +63,7 @@
                                 <td>
                                     <img src="{{ $p->logo_path }}" alt="{{ $p->name }}" width="150" class="rounded">
                                 </td>
-                                <td>{{ $p->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($p->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.partners.edit', $p->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>

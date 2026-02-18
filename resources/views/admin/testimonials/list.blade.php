@@ -81,7 +81,7 @@
 
                                     {{ Str::limit($t->testimonial_text, 100) }}
                                 </td>
-                                <td>{{ $t->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($t->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.testimonials.edit', $t->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>

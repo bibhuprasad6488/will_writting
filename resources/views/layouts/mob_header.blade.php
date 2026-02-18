@@ -32,6 +32,9 @@
 
                 <ul class="collapse list-unstyled mt-2" id="aboutSubMenu">
                     <li class="py-1">
+                        <a class="nav-link fs-6" href="{{ route('story') }}">Our Story</a>
+                    </li>
+                    <li class="py-1">
                         <a class="nav-link fs-6" href="{{ route('journey') }}">Guided Journey</a>
                     </li>
                     <li class="py-1">

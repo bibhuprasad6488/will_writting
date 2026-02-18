@@ -42,15 +42,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($topics as $s)
+                        @foreach ($topics as $t)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><b>{{ $s->name }}</b></td>
-                                <td>{{ $s->created_at }}</td>
+                                <td><b>{{ $t->name }}</b></td>
+                                <td>{{ $t->created_at }}{{ \Carbon\Carbon::parse($t->created_at)->format('d-m-Y') }}</td>
                                 <td>
-                                    <a href="{{ route('admin.topics.edit', $s->id) }}"
+                                    <a href="{{ route('admin.topics.edit', $t->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>
-                                    <form action="{{ route('admin.topics.destroy', $s->id) }}" method="POST"
+                                    <form action="{{ route('admin.topics.destroy', $t->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')

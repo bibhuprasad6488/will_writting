@@ -125,6 +125,23 @@ class SettingController extends Controller
         return view('admin.site_setting', compact('setting'));
     }
 
+    public function update(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $admin = Admin::find($id);
+            $admin->name = $request->name;
+            $admin->email = $request->email;
+            $admin->save();
+
+            DB::commit();
+            return back()->with('success', 'Profile Updated Successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->with('error', 'Profile Update failed Error: ' . $th->getMessage());
+        }
+    }
+
     public function updateSiteSetting(Request $request)
     {
         $request->validate([

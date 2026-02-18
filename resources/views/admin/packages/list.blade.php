@@ -55,7 +55,7 @@
                                 <td>{{ $package->package_title }}</td>
                                 <td>{{ Str::limit($package->package_text, 100) }}</td>
                                 <td><b>{{ $package->price ? '£ ' . $package->price : '' }}</b></td>
-                                <td>{{ $package->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($package->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.packages.edit', $package->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>

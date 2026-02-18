@@ -40,7 +40,7 @@
                                 <td>{{ $w->full_name }}</td>
                                 <td>{{ $w->email }}</td>
                                 <td>{{ $w->postcode }}</td>
-                                <td>{{ $w->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($w->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.wills.list.show', $w->id) }}"
                                         class="btn btn-sm btn-secondary">View Details</a>

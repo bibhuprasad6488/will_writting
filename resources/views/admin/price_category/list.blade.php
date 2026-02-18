@@ -50,7 +50,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td><b>{{ $pc->name }}</b></td>
                                 <td>{{ $pc->desctiption }}</td>
-                                <td>{{ $pc->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($pc->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.price-categories.edit', $pc->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>

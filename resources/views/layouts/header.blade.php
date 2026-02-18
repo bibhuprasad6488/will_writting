@@ -29,6 +29,9 @@
                     </a>
                     <ul class="dropdown-menu shadow-sm rounded-0" aria-labelledby="aboutDropdown" style="background: rgba(0, 0, 0, 0.5);">
                         <li>
+                            <a class="dropdown-item" href="{{ route('story') }}">Our Story</a>
+                        </li>
+                        <li>
                             <a class="dropdown-item" href="{{ route('journey') }}">Guided Journey</a>
                         </li>
                         <li>

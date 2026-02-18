@@ -41,7 +41,7 @@
                                 <td>{{ $contact->ct_email }}</td>
                                 <td>{{ $contact->ct_phone }}</td>
                                 <td>{{ Str::limit($contact->ct_message, 100) }}</td>
-                                <td>{{ $contact->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($contact->created_at)->format('d-m-Y') }}</td>
                             </tr>
                         @endforeach
                     </tbody>

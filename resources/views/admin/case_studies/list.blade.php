@@ -60,7 +60,7 @@
                                 <td><b>{{ $cs->title }}</b></td>
                                 <td>{{ $cs->topic->name }}</td>
                                 <td>{{ Str::limit($cs->short_desc, 50, '...') }}</td>
-                                <td>{{ $cs->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($cs->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.case-studies.edit', $cs->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>

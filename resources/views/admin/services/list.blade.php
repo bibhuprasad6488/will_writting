@@ -50,7 +50,7 @@
                                 <td>
                                     <img src="{{ $s->service_image }}" alt="{{ $s->name }}" width="80" class="rounded">
                                 </td>
-                                <td>{{ $s->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($s->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('admin.services.edit', $s->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>
