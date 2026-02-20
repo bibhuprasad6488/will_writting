@@ -36,21 +36,7 @@
                     <div class="d-flex flex-column h-100 gap-4">
 
                         <div class="feature-box flex-fill">
-                            <h2 class="text-center">How the journey works...</h2>
-                            <p>The Sterling Wills journey is designed to make <b>will writing and estate planning</b>,
-                                structured, and completely stress-free. From your first conversation with us, we take the
-                                time to understand your personal circumstances, family needs, and long-term wishes, ensuring
-                                you receive the right guidance from the very start. </p>
-                            <p>Whether you require a <b>professionally drafted will, trust planning, estate planning</b>, or
-                                <b>lasting power of attorney</b>, we guide you through each stage with expert care. We help
-                                you gather the necessary information, prepare your legal documents with precision, and
-                                ensure everything is completed correctly, legally compliant, and properly signed.
-                            </p>
-                            <p>Once finalised, your documents are <b>securely stored</b>, with ongoing support available
-                                should your circumstances change. Our step-by-step approach ensures your wishes are clearly
-                                recorded and protected for the future, giving you complete peace of mind. With Sterling
-                                Wills, your <b>assets, family, and legacy</b> are safeguarded with clarity, care, and
-                                confidence.</p>
+                            {!! $journey->journey_desc !!}
                         </div>
 
                     </div>
@@ -118,7 +104,7 @@
             <div class="row">
                 <div class="col-md-8 mx-auto">
                     <div class="journey-title">
-                        <span>Start your will-writing journey with Sterling Wills</span>
+                        <span>{{ $journey->step_title }}</span>
                     </div>
                 </div>
             </div>
@@ -129,58 +115,49 @@
             <ul>
                 <li>
                     <div class="content">
-                        <h3>Getting Started </h3>
-                        <p>(Analysis + Choosing the right service)</p>
-                        <p>Kick off your estate planning journey by understanding your needs and choosing the right service.
-                            Whether it’s will writing, trust setup, or estate planning, our guided approach ensures you make
-                            informed decisions that protect your assets and secure your family’s future.</p>
+                        <h3>{{ $journey->step_title_one }} </h3>
+                        <p>{{ $journey->step_sub_title_one }}</p>
+                        <p>{{ $journey->step_desc_one }}</p>
                     </div>
                     <div class="time">
                         <!-- <h4>January 2018</h4> -->
-                        <img src="{{ asset('assets/images/step1.jpg') }}" class="img-fluid step-img" alt="Consultation">
+                        <img src="{{ $journey->step_img_one }}" class="img-fluid step-img" alt="Consultation">
                     </div>
                 </li>
 
                 <li>
                     <div class="content">
-                        <h3>Provide Your Information </h3>
-                        <p>(Fact finding + Review)</p>
-                        <p>Share all necessary details about your assets, family, and personal wishes. Our experts carefully
-                            review the information to ensure nothing is missed, creating a complete and accurate picture.
-                            This step ensures your estate plan is fully tailored to your circumstances and long-term goals.
-                        </p>
+                        <h3>{{ $journey->step_title_two }} </h3>
+                        <p>{{ $journey->step_sub_title_two }}</p>
+                        <p>{{ $journey->step_desc_two }}</p>
                     </div>
                     <div class="time">
                         <!-- <h4>February 2018</h4> -->
-                        <img src="{{ asset('assets/images/step2.jpg') }}" class="img-fluid step-img" alt="Consultation">
+                        <img src="{{ $journey->step_img_two }}" class="img-fluid step-img" alt="Consultation">
                     </div>
                 </li>
 
                 <li>
                     <div class="content">
-                        <h3>We Prepare Your Will </h3>
-                        <p>(Document preparation + Signing)</p>
-                        <p>We draft your will or legal documents in line with your instructions. Our team ensures every
-                            detail is precise, then guides you through the signing process to make it legally binding. This
-                            step gives you confidence that your wishes will be followed exactly as intended.</p>
+                        <h3>{{ $journey->step_title_three }} </h3>
+                        <p>{{ $journey->step_sub_title_three }}</p>
+                        <p>{{ $journey->step_desc_three }}</p>
                     </div>
                     <div class="time">
                         <!-- <h4>March 2018</h4> -->
-                        <img src="{{ asset('assets/images/step3.jpg') }}" class="img-fluid step-img" alt="Consultation">
+                        <img src="{{ $journey->step_img_three }}" class="img-fluid step-img" alt="Consultation">
                     </div>
                 </li>
 
                 <li>
                     <div class="content">
-                        <h3>Storage and Ongoing Support </h3>
-                        <p>(Secure storage + Ongoing support)</p>
-                        <p>Once your documents are prepared, we securely store them and provide ongoing support. Updates and
-                            guidance are available whenever your circumstances change, ensuring your estate plan remains
-                            effective and your family’s future is always protected.</p>
+                        <h3>{{ $journey->step_title_four }} </h3>
+                        <p>{{ $journey->step_sub_title_four }}</p>
+                        <p>{{ $journey->step_desc_four }}</p>
                     </div>
                     <div class="time">
                         <!-- <h4>April 2018</h4> -->
-                        <img src="{{ asset('assets/images/step4.jpg') }}" class="img-fluid step-img" alt="Consultation">
+                        <img src="{{ $journey->step_img_four }}" class="img-fluid step-img" alt="Consultation">
                     </div>
                 </li>
 
@@ -191,7 +168,7 @@
             <div class="row">
                 <div class="col-md-5 mx-auto">
                     <div class="journey-title2">
-                        <span>Peace of Mind & Legacy Assurance</span>
+                        <span>{{ $journey->step_sub_title }}</span>
                     </div>
                 </div>
             </div>

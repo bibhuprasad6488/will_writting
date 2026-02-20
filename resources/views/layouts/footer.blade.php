@@ -14,10 +14,7 @@
                             @endif
                         </a>
                     </p>
-                    <p>At Sterling Wills, we pride ourselves on providing clear, professional will writing services
-                        designed
-                        to give our clients peace of mind. Our approach is built on trust, experience, and a genuine
-                        commitment to protecting what matters most to you and your family.</p>
+                    <p>{{ $siteSetting->footer_text_one }}</p>
                 </div>
             </div>
 
@@ -142,13 +139,7 @@
 
             </div>
             <div class="col-md-12 col-xs-12 mb-4 mb-md-0 mt-4 text-center">
-                <p class="text-white mb-3">Accredited Member of the Society of Will Writers (SWW)</p>
-                <p class="text-white mb-3">Sterling Wills & Estate Planning Ltd is registered in England and Wales.</p>
-                <p class="text-white mb-3"> The Sterling Wills” is a trading name of Sterling Wills & Estate Planning Ltd.
-                </p>
-                <p class="text-white mb-3">
-                    Calls may be recorded for training and monitoring purposes.
-                </p>
+                {!! $siteSetting->footer_text_two !!}
             </div>
         </div>
 

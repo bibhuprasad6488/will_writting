@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Our Story')
-@section('meta_title', 'Sterling Wills | Professional Will Writing & Estate Planning Services UK')
-@section('meta_description', 'Sterling Wills provides professional will writing, estate planning, lasting power of
-    attorney and inheritance planning services across the UK. Protect your family and secure your legacy today.')
+@section('meta_title', $story->meta_title)
+@section('meta_description', $story->meta_desc)
 
 @section('content')
 
@@ -29,82 +28,48 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-
-                    <h2 class="fw-bold mb-3">
-                        About Sterling Wills
-                    </h2>
-                    {{-- <h4>Sterling Wills & Estate Planning was born from experience — not theory.</h4> --}}
-
-                    <p class=" mb-3">
-                        We recognised that many individuals and families delay putting proper arrangements in place — often
-                        due to confusion, cost concerns, or uncertainty about the process.
-                    </p>
-                    <p class=" mb-3">
-                        Without a legally valid will, loved ones can face unnecessary stress, financial complications, and
-                        delays during an already difficult time.
-                    </p>
-                    <p class=" mb-3">
-                        Our goal is simple: to make estate planning straightforward, accessible, and legally robust — giving
-                        clients confidence that their wishes will be respected and their families protected.
-                    </p>
-
-                    <h2 class="fw-bold my-3"> Why We Founded Sterling Wills </h2>
-                    <p class=" mb-3">
-                        Across the UK, millions of adults do not have an up-to-date will. Many are unaware of how intestacy
-                        laws determine the distribution of assets, or how failing to plan can affect children, property
-                        ownership, and inheritance tax liabilities.
-                    </p>
-                    <p class=" mb-3">
-                        We believe estate planning should not be reserved for the wealthy. It is an essential safeguard for
-                        anyone who owns property, has savings, runs a business, or wants to protect their family’s future.
-                    </p>
-
+                    {!! $story->story_desc_one !!}
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="bg_grey page py-2 mt-3 cm10">
-        <div class="container">
-            <div class="row gx-5 justify-content-between">
-                <div class="col-md-12">
-                    <h2 class="fw-bold text-center pb-4 mb-3 maastrix">Our Approach</h2>
-                </div>
-                <div class="col-sm-4 col-xs-12">
-                    <div class="card rounded-0 border-0">
-                        <div class="card-body">
-                            <h3 class="fw-bold mb-3">Clear Advice</h3>
-                            <p class=" mb-0">We explain wills and estate planning in plain English, avoiding unnecessary
-                                legal
-                                jargon. Our clients understand their options before making decisions.</p>
-                        </div>
+    @if ($story->ap_title_one && $story->ap_desc_one)
+        <section class="bg_grey page py-2 mt-3 cm10">
+            <div class="container">
+                <div class="row gx-5 justify-content-between">
+                    <div class="col-md-12">
+                        <h2 class="fw-bold text-center pb-4 mb-3 maastrix">Our Approach</h2>
                     </div>
-
-                </div>
-                <div class="col-sm-4 col-xs-12">
-                    <div class="card rounded-0 border-0">
-                        <div class="card-body">
-                            <h3 class="fw-bold mb-3">Professional Standards</h3>
-                            <p class=" mb-0">Every document is prepared with care, accuracy, and compliance in mind. We
-                                work to
-                                high professional standards to ensure your wishes are legally enforceable.</p>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="card rounded-0 border-0">
+                            <div class="card-body">
+                                <h3 class="fw-bold mb-3">{{ $story->ap_title_one ?? '' }}</h3>
+                                <p class=" mb-0">{{ $story->ap_desc_one ?? '' }}</p>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
-                <div class="col-sm-4 col-xs-12">
-                    <div class="card rounded-0 border-0">
-                        <div class="card-body">
-                            <h3 class="fw-bold mb-3">Practical Protection</h3>
-                            <p class=" mb-0">Estate planning is more than paperwork — it is about protecting assets,
-                                minimising inheritance tax where possible, and ensuring loved ones are provided for
-                                according to your wishes.</p>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="card rounded-0 border-0">
+                            <div class="card-body">
+                                <h3 class="fw-bold mb-3">{{ $story->ap_title_two ?? '' }}</h3>
+                                <p class=" mb-0">{{ $story->ap_desc_two ?? '' }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="card rounded-0 border-0">
+                            <div class="card-body">
+                                <h3 class="fw-bold mb-3">{{ $story->ap_title_three ?? '' }}</h3>
+                                <p class=" mb-0">{{ $story->ap_desc_three ?? '' }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <!-- FULL WIDTH IMAGE -->
     {{-- <section class="cta">
@@ -117,51 +82,9 @@
     <section class="py-5 mb-6 cm10">
         <div class="container">
             <div class="row gx-2 justify-content-between">
-
                 <!-- Left -->
                 <div class="col-md-12">
-                    {{-- <div class="text-center">
-                        <i class="fa fa-user-secret fa-4x mb-3 text-secondary"></i>
-                    </div> --}}
-                    <h2 class="fw-bold fs-3 mb-3">
-                        Planning for Every Stage of Life
-                    </h2>
-                    <p class="mb-3">Life changes — marriage, children, property purchases, business ownership, and
-                        retirement all affect your estate planning needs.</p>
-                    <p class="mb-2">Sterling Wills supports clients at every stage, whether you are:</p>
-                    <ul class="">
-                        <li>
-                            Creating your first will</li>
-                        <li>
-                            Updating an existing will</li>
-                        <li>
-                            Setting up a Lasting Power of Attorney</li>
-                        <li>
-                            Planning to reduce inheritance tax exposure</li>
-                        <li>
-                            Protecting property for future generations</li>
-                    </ul>
-                    <p>We aim to provide long-term solutions that offer clarity and peace of mind. </p>
-                </div>
-
-                <!-- Right -->
-                <div class="col-md-12 my-4">
-                    {{-- <div class="text-center">
-                        <i class="fa fa-podcast fa-4x mb-3 text-secondary"></i>
-                    </div> --}}
-                    <h2 class="fw-bold fs-3 mb-3">
-                        Our Commitment
-                    </h2>
-
-                    <p>
-                        We are committed to making professional will writing and estate planning services in the UK
-                        accessible, transparent, and reliable.
-                    </p>
-                    <p class="mb-0">Good planning removes uncertainty.</p>
-                    <p class="mb-0">Proper documentation protects your legacy.</p>
-                    <p class="mb-3">Clear advice protects the people who matter most.</p>
-                    <p>If you are ready to take the first step toward securing your estate, Sterling Wills is here to help.
-                    </p>
+                    {!! $story->story_desc_two !!}
                 </div>
 
                 <!-- Full width -->

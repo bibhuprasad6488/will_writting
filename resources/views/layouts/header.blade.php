@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark tbb2 fixed-top">
     <div class="container">
+        @php
+            $services = \App\Models\Service::where('status', 1)->get();
+        @endphp
         <a class="navbar-brand" href="{{ route('home') }}">
             @if ($siteSetting && $siteSetting->site_logo)
                 <img src="{{ asset('storage/images/settings/' . $siteSetting->site_logo) }}"
@@ -27,7 +30,8 @@
                         aria-expanded="false">
                         About Us
                     </a>
-                    <ul class="dropdown-menu shadow-sm rounded-0" aria-labelledby="aboutDropdown" style="background: rgba(0, 0, 0, 0.5);">
+                    <ul class="dropdown-menu shadow-sm rounded-0" aria-labelledby="aboutDropdown"
+                        style="background: rgba(0, 0, 0, 0.5);">
                         <li>
                             <a class="dropdown-item" href="{{ route('story') }}">Our Story</a>
                         </li>
@@ -40,8 +44,26 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link {{ request()->routeIs(['service.lists']) ? 'active' : '' }}"
-                        href="{{ route('service.lists') }}">Services</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs(['service.lists', 'service.details.*']) ? 'active' : '' }}"
+                        href="{{ route('service.lists') }}" id="serviceDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Services
+                    </a>
+                    <ul class="dropdown-menu shadow-sm rounded-0" aria-labelledby="serviceDropdown"
+                        style="background: rgba(0, 0, 0, 0.5);">
+                        @foreach ($services as $s)
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('service.details', $s->slug) }}">{{ $s->name }}</a>
+                            </li>
+                        @endforeach
+
+                    </ul>
+                </li>
+
+                {{-- <li class="nav-item"><a class="nav-link {{ request()->routeIs(['service.lists']) ? 'active' : '' }}"
+                        href="{{ route('service.lists') }}">Services</a></li> --}}
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs(['price-lists']) ? 'active' : '' }}"
                         href="{{ route('price-lists') }}">Pricing</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs(['blogs']) ? 'active' : '' }}"

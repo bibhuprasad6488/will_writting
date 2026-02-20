@@ -93,6 +93,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/privacy-policy-store', [SettingController::class, 'privacyPolicyStore'])->name('privacy.policy.store');
         Route::get('/terms-of-business', [SettingController::class, 'termOfBusiness'])->name('term.business');
         Route::post('/terms-of-business-store', [SettingController::class, 'termOfBusinessStore'])->name('term.business.store');
+        Route::get('/story', [SettingController::class, 'ourStory'])->name('our.story');
+        Route::post('/story-store', [SettingController::class, 'ourStoryStore'])->name('our.story.store');
+        Route::get('/guided-journey', [SettingController::class, 'guidedJourney'])->name('guided.journey');
+        Route::post('/guided-journey-store', [SettingController::class, 'guidedJourneyStore'])->name('guided.journey.store');
+        Route::get('/protect', [SettingController::class, 'protection'])->name('protect');
+        Route::post('/protect-store', [SettingController::class, 'protectionStore'])->name('protect.store');
+        Route::get('/witnesses', [SettingController::class, 'witnesses'])->name('witnesses');
+        Route::post('/witnesses-store', [SettingController::class, 'witnessesStore'])->name('witnesses.store');
     });
 });
 

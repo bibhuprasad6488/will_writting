@@ -8,20 +8,11 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="fw-bold">Protection</h1>
-                    <h4 class="mt-3">Safeguarding Your Family’s Future</h4>
-                    <p class="mt-3">
-                        At Sterling Wills, we believe that protecting your family and financial security is just as important as preparing your will. That’s why we work in partnership with <b>independent protection specialists </b> offer you tailored advice on financial protection solutions that may help provide peace of mind.
-                    </p>
-
-                    <ul class="list-unstyled mt-4">
-                        <li>✔ Qualified & Experienced Advisers</li>
-                        <li>✔ Independent & FCA Regulated</li>
-                    </ul>
+                    {!! $protect->p_desc !!}
                 </div>
                 <div class="col-lg-6 text-center">
                     <!-- Replace with your image -->
-                    <img src="{{ asset('assets/images/protection.png') }}" class="img-fluid rounded" alt="Protection">
+                    <img src="{{ $protect->p_image }}" class="img-fluid rounded" alt="Protection">
                 </div>
             </div>
         </div>
@@ -39,40 +30,40 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card text-center">
                         <div class="service-icon">
-                            <img src="{{ asset('assets/images/ps1.png') }}" alt="Life Insurance">
+                            <img src="{{ $protect->ps_img_one }}" alt="{{ $protect->ps_title_one }}">
                         </div>
-                        <h5 class="fw-bold">Life Insurance</h5>
-                        <p>Financial security for your loved ones.</p>
+                        <h5 class="fw-bold">{{ $protect->ps_title_one }}</h5>
+                        <p>{{ $protect->ps_desc_one }}</p>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card text-center">
                         <div class="service-icon">
-                            <img src="{{ asset('assets/images/ps2.png') }}" alt="Income Protection">
+                            <img src="{{ $protect->ps_img_two }}" alt="{{ $protect->ps_title_two }}">
                         </div>
-                        <h5 class="fw-bold">Income Protection</h5>
-                        <p>Safeguard your income if you’re unable to work.</p>
+                        <h5 class="fw-bold">{{ $protect->ps_title_two }}</h5>
+                        <p>{{ $protect->ps_desc_two }}</p>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card text-center">
                         <div class="service-icon">
-                            <img src="{{ asset('assets/images/ps3.png') }}" alt="Critical Illness Cover">
+                            <img src="{{ $protect->ps_img_three }}" alt="{{ $protect->ps_title_three }}">
                         </div>
-                        <h5 class="fw-bold">Critical Illness Cover</h5>
-                        <p>Support in case of serious illness.</p>
+                        <h5 class="fw-bold">{{ $protect->ps_title_three }}</h5>
+                        <p>{{ $protect->ps_desc_three }}</p>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card text-center">
                         <div class="service-icon">
-                            <img src="{{ asset('assets/images/ps4.png') }}" alt="Family Protection">
+                            <img src="{{ $protect->ps_img_four }}" alt="{{ $protect->ps_title_four }}">
                         </div>
-                        <h5 class="fw-bold">Family Protection</h5>
-                        <p>Comprehensive cover for your family’s future.</p>
+                        <h5 class="fw-bold">{{ $protect->ps_title_four }}</h5>
+                        <p>{{ $protect->ps_desc_four }}</p>
                     </div>
                 </div>
             </div>
@@ -86,15 +77,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <p class="mt-3 fs-5">
-                        All protection advice is provided by the independent specialists at Portman Rise. Experts you can
-                        trust.
+                        {{ $protect->pp_desc_one }}
                     </p>
 
                 </div>
                 <div class="col-lg-6 text-center border-secondary portman">
                     <!-- Replace with your image -->
-                    <img src="{{ asset('assets/images/Portman_Rise_Logo.svg') }}" class="img-fluid rounded border"
-                        alt="Protection">
+                    <img src="{{ $protect->pp_img }}" class="img-fluid rounded border" alt="Protection">
                 </div>
             </div>
         </div>
@@ -103,39 +92,41 @@
     <!-- HOW IT WORKS -->
     <section class="py-5">
         <div class="container">
-            <p class="mb-5">Our process starts with an <b>initial consultation</b> to understand your situation, followed by a referral to the regulated advisers at Portman Rise. They’ll provide <b>personalised, FCA-regulated advice </b> recommend protection solutions tailored to your needs.</p>
+            <p class="mb-5">Our process starts with an <b>initial consultation</b> to understand your situation, followed
+                by a referral to the regulated advisers at Portman Rise. They’ll provide <b>personalised, FCA-regulated
+                    advice </b> recommend protection solutions tailored to your needs.</p>
             <h2 class="text-center mb-5 fw-bold">How It Works</h2>
 
             <div class="row g-4">
                 <div class="col-md-3">
                     <div class="step-box text-center">
                         <strong>1</strong>
-                            <img src="{{ asset('assets/images/hw1.png') }}" height="100" alt="Life Insurance">
-                        <p class="mt-2">✔ Initial Consultation</p>
+                        <img src="{{ $protect->pw_img_one }}" height="100" alt="{{ $protect->pw_title_one }}">
+                        <p class="mt-2">✔ {{ $protect->pw_title_one }}</p>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="step-box text-center">
                         <strong>2</strong>
-                            <img src="{{ asset('assets/images/hw2.png') }}" height="100" alt="Life Insurance">
-                        <p class="mt-2">✔ Referred to Portman Rise</p>
+                        <img src="{{ $protect->pw_img_two }}" height="100" alt="{{ $protect->pw_title_two }}">
+                        <p class="mt-2">✔ {{ $protect->pw_title_two }}</p>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="step-box text-center">
                         <strong>3</strong>
-                            <img src="{{ asset('assets/images/hw3.png') }}" height="100" alt="Life Insurance" style="transform: rotateY(180deg)">
-                        <p class="mt-2">✔ Personalised Advice</p>
+                        <img src="{{ $protect->pw_img_three }}" height="100" alt="{{ $protect->pw_title_three }}">
+                        <p class="mt-2">✔ {{ $protect->pw_title_three }}</p>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="step-box text-center">
                         <strong>4</strong>
-                            <img src="{{ asset('assets/images/hw4.png') }}" height="100" alt="Life Insurance"  style="transform: rotateY(180deg)">
-                        <p class="mt-2">✔ Tailored Solutions</p>
+                        <img src="{{ $protect->pw_img_four }}" height="100" alt="{{ $protect->pw_title_four }}">
+                        <p class="mt-2">✔ {{ $protect->pw_title_four }}</p>
                     </div>
                 </div>
             </div>
@@ -146,18 +137,19 @@
     <section class="py-5">
         <div class="container">
             <div class="cta text-center py-4">
-                <h3 class="text-white">Speak to a Protection Adviser</h3>
+                <h3 class="text-white">{{ $protect->pcta_title }}</h3>
                 <span class="w-50">
                     <hr class="text-secondary">
                 </span>
-                <a href="{{ route('contact') }}" class="btn btn-light  rounded-0 text-uppercase fw-semibold mt-3 px-5">Get
-                    in
-                    Touch</a>
+                <a href="{{ route('contact') }}"
+                    class="btn btn-light  rounded-0 text-uppercase fw-semibold mt-3 px-5">{{ $protect->pcta_btn_text }}</a>
             </div>
 
             <div class="py-5">
                 <p>
-                    Please note that <b>Sterling Wills is not authorised or regulated by the Financial Conduct Authority (FCA)</b> and does not provide financial advice. All protection advice is provided independently by Portman Rise, who are FCA-regulated specialists.
+                    Please note that <b>Sterling Wills is not authorised or regulated by the Financial Conduct Authority
+                        (FCA)</b> and does not provide financial advice. All protection advice is provided independently by
+                    Portman Rise, who are FCA-regulated specialists.
                 </p>
                 <p class="fst-italic d-none">
                     All protection advice is provided by Portman Rise, independent and FCA regulated specialists.

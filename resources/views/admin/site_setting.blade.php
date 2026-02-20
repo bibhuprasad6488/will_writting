@@ -165,12 +165,27 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row  mb-2">
+                            <div class="form-group d-none row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
                                     Google Map Setting
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea name="site_map_key" id="site_map_key" class="form-control" rows="3" placeholder="Iframe link">{{ optional($setting)->site_map_key }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
+                                    Footer Text One</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea name="footer_text_one" id="footer_text_one" class="form-control" rows="3">{{ optional($setting)->footer_text_one }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-2">
+                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
+                                    Footer Text Two</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea name="footer_text_two" id="footer_text_two" class="form-control cont" rows="3">{{ optional($setting)->footer_text_two }}</textarea>
                                 </div>
                             </div>
 
@@ -183,7 +198,8 @@
                                         value="{{ optional($setting)->copyright }}" required>
                                 </div>
                             </div>
-                            <div class="form-group row mb-2">
+
+                            <div class="form-group d-none row mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
                                     Meta
                                     Description</label>
@@ -192,7 +208,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-2">
+                            <div class="form-group d-none row mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
                                     Meta
                                     Keywords</label>
@@ -200,7 +216,7 @@
                                     <textarea name="site_meta_key" id="site_meta_key" class="form-control" rows="3">{{ optional($setting)->site_meta_key }}</textarea>
                                 </div>
                             </div>
-                            <div class="form-group row  mb-2">
+                            <div class="form-group d-none row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">SMTP
                                     Host
                                 </label>
@@ -209,7 +225,7 @@
                                         value="{{ optional($setting)->smtp_host }}">
                                 </div>
                             </div>
-                            <div class="form-group row  mb-2">
+                            <div class="form-group d-none row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">SMTP
                                     Port
                                 </label>
@@ -218,7 +234,7 @@
                                         value="{{ optional($setting)->smtp_port }}">
                                 </div>
                             </div>
-                            <div class="form-group row  mb-2">
+                            <div class="form-group d-none row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">SMTP
                                     Username
                                 </label>
@@ -227,7 +243,7 @@
                                         value="{{ optional($setting)->smtp_username }}">
                                 </div>
                             </div>
-                            <div class="form-group row  mb-2">
+                            <div class="form-group d-none row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">SMTP
                                     Password
                                 </label>
@@ -236,7 +252,7 @@
                                         value="{{ optional($setting)->smt_password }}">
                                 </div>
                             </div>
-                            <div class="form-group row  mb-2">
+                            <div class="form-group d-none row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">SMTP
                                     From
                                     Name
@@ -246,7 +262,7 @@
                                         value="{{ optional($setting)->smtp_from_name }}">
                                 </div>
                             </div>
-                            <div class="form-group row  mb-2">
+                            <div class="form-group d-none row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">SMTP
                                     From
                                     Email
@@ -318,5 +334,30 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Loop through all elements with the class 'cont'
+            document.querySelectorAll(".cont").forEach(function(editor) {
+
+                // Initialize TinyMCE for each editor
+                tinymce.init({
+                    target: editor, // Use 'target' to bind TinyMCE to the specific element
+                    height: 300,
+                    plugins: 'advlist autolink link image lists charmap preview code fullscreen',
+                    toolbar: 'undo redo | blocks | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist blockquote | link image | code fullscreen ',
+
+                    // NEW: use "blocks" instead of "formatselect" in TinyMCE 6+
+                    block_formats: 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre; Blockquote=blockquote',
+
+                    setup: function(editorInstance) {
+                        // Sync content
+                        editorInstance.on('change', function() {
+                            editor.value = editorInstance.getContent();
+                        });
+                    }
+                });
+            });
+        });
     </script>
 @endpush

@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\CaseStudy;
 use App\Models\GetInTouch;
+use App\Models\GuidedJourney;
+use App\Models\OurStory;
 use App\Models\Partner;
 use App\Models\PricePackage;
 use App\Models\Pricing;
 use App\Models\PricingCategory;
 use App\Models\PrivacyPolicy;
+use App\Models\ProtectionPage;
 use App\Models\Service;
 use App\Models\SiteSetting;
 use App\Models\TermsOfBusiness;
 use App\Models\Testimonial;
 use App\Models\Topic;
 use App\Models\Will;
+use App\Models\WitnessesPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -88,7 +92,14 @@ class HomeController extends Controller
     public function guidedJourney()
     {
         $siteSetting = SiteSetting::find(1);
-        return view('journey', compact('siteSetting'));
+        $journey = GuidedJourney::find(1);
+        if ($journey) {
+            $journey->step_img_one = $journey->step_img_one ? asset('storage/images/journey/' . $journey->step_img_one) : '';
+            $journey->step_img_two = $journey->step_img_two ? asset('storage/images/journey/' . $journey->step_img_two) : '';
+            $journey->step_img_three = $journey->step_img_three ? asset('storage/images/journey/' . $journey->step_img_three) : '';
+            $journey->step_img_four = $journey->step_img_four ? asset('storage/images/journey/' . $journey->step_img_four) : '';
+        }
+        return view('journey', compact('siteSetting', 'journey'));
     }
 
     public function blogLists(Request $request)
@@ -288,15 +299,33 @@ class HomeController extends Controller
     }
     public function ourStory()
     {
-        return view('our_story');
+        $story = OurStory::find(1);
+        return view('our_story', compact('story'));
     }
     public function witnesses()
     {
-        return view('witness');
+        $witness = WitnessesPage::find(1);
+        if ($witness) {
+            $witness->w_img = $witness->w_img ? asset('storage/images/witnesses/' . $witness->w_img) : '';
+        }
+        return view('witness', compact('witness'));
     }
 
     public function protection()
     {
-        return view('protection');
+        $protect = ProtectionPage::find(1);
+        if ($protect) {
+            $protect->p_image = $protect->p_image ? asset('storage/images/protections/' . $protect->p_image) : '';
+            $protect->ps_img_one = $protect->ps_img_one ? asset('storage/images/protections/' . $protect->ps_img_one) : '';
+            $protect->ps_img_two = $protect->ps_img_two ? asset('storage/images/protections/' . $protect->ps_img_two) : '';
+            $protect->ps_img_three = $protect->ps_img_three ? asset('storage/images/protections/' . $protect->ps_img_three) : '';
+            $protect->ps_img_four = $protect->ps_img_four ? asset('storage/images/protections/' . $protect->ps_img_four) : '';
+            $protect->pp_img = $protect->pp_img ? asset('storage/images/protections/' . $protect->pp_img) : '';
+            $protect->pw_img_one = $protect->pw_img_one ? asset('storage/images/protections/' . $protect->pw_img_one) : '';
+            $protect->pw_img_two = $protect->pw_img_two ? asset('storage/images/protections/' . $protect->pw_img_two) : '';
+            $protect->pw_img_three = $protect->pw_img_three ? asset('storage/images/protections/' . $protect->pw_img_three) : '';
+            $protect->pw_img_four = $protect->pw_img_four ? asset('storage/images/protections/' . $protect->pw_img_four) : '';
+        }
+        return view('protection', compact('protect'));
     }
 }

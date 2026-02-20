@@ -17,13 +17,21 @@
                     CMS Management
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.privacy.policy', 'admin.term.business']) ? 'show' : '' }}"
+                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.privacy.policy', 'admin.term.business', 'admin.our.story', 'admin.guided.journey', 'admin.protect']) ? 'show' : '' }}"
                     id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ request()->routeIs(['admin.partners.*']) ? 'active' : '' }}"
                             href="{{ route('admin.partners.index') }}">Partners List</a>
                         <a class="nav-link {{ request()->routeIs(['admin.testimonials.*']) ? 'active' : '' }}"
                             href="{{ route('admin.testimonials.index') }}">Testimonials</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.our.story']) ? 'active' : '' }}"
+                            href="{{ route('admin.our.story') }}">Our Story</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.guided.journey']) ? 'active' : '' }}"
+                            href="{{ route('admin.guided.journey') }}">Guided Journey</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.protect']) ? 'active' : '' }}"
+                            href="{{ route('admin.protect') }}">Protection</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.witnesses']) ? 'active' : '' }}"
+                            href="{{ route('admin.witnesses') }}">Witnesses</a>
                         <a class="nav-link {{ request()->routeIs(['admin.privacy.policy']) ? 'active' : '' }}"
                             href="{{ route('admin.privacy.policy') }}">Privacy Policy</a>
                         <a class="nav-link {{ request()->routeIs(['admin.term.business']) ? 'active' : '' }}"

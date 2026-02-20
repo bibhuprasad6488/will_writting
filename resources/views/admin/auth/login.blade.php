@@ -44,12 +44,12 @@
                         @enderror
                     </div>
 
-                    <div class="mb-1 input-group">
+                    {{-- <div class="mb-1 input-group">
                         <div class="g-recaptcha" data-sitekey="{{ config('app.recaptcha_site_key') }}"></div>
                     </div>
                     <small id="captcha-error" class="text-danger d-none">
                         Please verify that you are not a robot.
-                    </small>
+                    </small> --}}
                     <div class="remember-me">
                         <input type="checkbox" id="rememberMe" name="remember" {{ old('remember') ? 'checked' : '' }}>
                         <label for="rememberMe">Remember Me</label>
