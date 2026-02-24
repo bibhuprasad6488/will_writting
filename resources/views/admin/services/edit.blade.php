@@ -92,7 +92,7 @@
                             </small>
                             <div class="border rounded p-2 w-100 text-center bg-light">
                                 <img id="imagePreview1"
-                                    @if (isset($service->banner_image)) src="{{ $service->banner_image }}" style="max-height: 120px; max-width:100%;" @else style="max-width:100%;max-height: 120px; display: none;" @endif >
+                                    @if (isset($service->banner_image)) src="{{ $service->banner_image }}" style="max-height: 120px; max-width:100%;" @else style="max-width:100%;max-height: 120px; display: none;" @endif>
                                 <div class="text-muted small mt-2">
                                     Banner Preview
                                 </div>
@@ -128,7 +128,7 @@
                             <label class="form-label fw-semibold">
                                 Description
                             </label>
-                            <textarea name="description" rows="4" class="form-control tinymce-editor" placeholder="Optional description">{{ optional($service)->description }}</textarea>
+                            <textarea name="description" rows="4" class="form-control" id="summernote" placeholder="Optional description">{{ optional($service)->description }}</textarea>
                         </div>
 
                         <!-- Meta Title -->
@@ -145,7 +145,7 @@
                                 Meta Description
                             </label>
                             <textarea name="meta_desc" id="meta_desc" cols="" class="form-control" rows="5"
-                                placeholder="Meta Description" >{{ optional($service)->meta_desc ?? old('meta_desc') }}</textarea>
+                                placeholder="Meta Description">{{ optional($service)->meta_desc ?? old('meta_desc') }}</textarea>
                         </div>
                         <!-- Meta Keys -->
                         <div class="col-md-4">
@@ -153,7 +153,7 @@
                                 Meta Keywords
                             </label>
                             <textarea name="meta_keywords" id="meta_keywords" cols="" class="form-control" rows="5"
-                                placeholder="Meta keywords" >{{ optional($service)->meta_keywords ?? old('meta_keywords') }}</textarea>
+                                placeholder="Meta keywords">{{ optional($service)->meta_keywords ?? old('meta_keywords') }}</textarea>
                         </div>
                     </div>
 

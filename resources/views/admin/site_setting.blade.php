@@ -175,6 +175,22 @@
                             </div>
                             <div class="form-group row mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
+                                    CTA Title </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="cta_title" id="cta_title" class="form-control"
+                                        value="{{ optional($setting)->cta_title }}" placeholder="CTA Title">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
+                                    CTA Sub Title</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="cta_sub_title" id="cta_sub_title" class="form-control"
+                                        value="{{ optional($setting)->cta_sub_title }}" placeholder="CTA Sub Title">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
                                     Footer Text One</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea name="footer_text_one" id="footer_text_one" class="form-control" rows="3">{{ optional($setting)->footer_text_one }}</textarea>
@@ -185,7 +201,7 @@
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
                                     Footer Text Two</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="footer_text_two" id="footer_text_two" class="form-control cont" rows="3">{{ optional($setting)->footer_text_two }}</textarea>
+                                    <textarea name="footer_text_two" id="cont" class="form-control" rows="3">{{ optional($setting)->footer_text_two }}</textarea>
                                 </div>
                             </div>
 
@@ -337,26 +353,14 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Loop through all elements with the class 'cont'
-            document.querySelectorAll(".cont").forEach(function(editor) {
-
-                // Initialize TinyMCE for each editor
-                tinymce.init({
-                    target: editor, // Use 'target' to bind TinyMCE to the specific element
-                    height: 300,
-                    plugins: 'advlist autolink link image lists charmap preview code fullscreen',
-                    toolbar: 'undo redo | blocks | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist blockquote | link image | code fullscreen ',
-
-                    // NEW: use "blocks" instead of "formatselect" in TinyMCE 6+
-                    block_formats: 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre; Blockquote=blockquote',
-
-                    setup: function(editorInstance) {
-                        // Sync content
-                        editorInstance.on('change', function() {
-                            editor.value = editorInstance.getContent();
-                        });
-                    }
-                });
+            $('#cont').summernote({
+                placeholder: 'Content',
+                tabsize: 2,
+                height: 300,
+                color: {
+                    background: '#ffffff',
+                    foreground: '#000000',
+                }
             });
         });
     </script>

@@ -236,6 +236,11 @@ iframe {
 
 .my_menu .nav-item a {
     padding: 20px;
+    font-size: 16px;
+}
+
+.my_menu .nav-item .dropdown-menu li .dropdown-item {
+    text-transform: capitalize;
 }
 
 .menu-btn {
@@ -784,6 +789,7 @@ marquee .partner-card img {
 /* Center About Us item and its submenu in mobile offcanvas */
 #mobileMenu .navbar-nav {
     align-items: center;
+    text-transform: capitalize;
 }
 
 #mobileMenu .nav-item {

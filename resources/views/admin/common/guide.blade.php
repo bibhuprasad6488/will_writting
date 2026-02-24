@@ -42,7 +42,7 @@
                             <label class="form-label fw-semibold">
                                 Overview
                             </label>
-                            <textarea name="journey_desc" rows="4" class="form-control cont" placeholder="Content">{{ $journey->journey_desc ?? old('journey_desc') }}</textarea>
+                            <textarea name="journey_desc" rows="4" class="form-control" id="summernote" placeholder="Content">{{ $journey->journey_desc ?? old('journey_desc') }}</textarea>
                         </div>
 
                     </div>

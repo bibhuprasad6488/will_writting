@@ -42,7 +42,7 @@
                             <label class="form-label fw-semibold">
                                 Main Description
                             </label>
-                            <textarea name="p_desc" rows="4" class="form-control cont" placeholder="Content">{{ $protect->p_desc ?? old('p_desc') }}</textarea>
+                            <textarea name="p_desc" rows="4" class="form-control" id="summernote" placeholder="Content">{{ $protect->p_desc ?? old('p_desc') }}</textarea>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">

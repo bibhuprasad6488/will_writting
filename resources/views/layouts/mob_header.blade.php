@@ -55,15 +55,15 @@
                     @foreach ($services as $s)
                         <li class="py-1">
                             <a class="nav-link fs-6"
-                                href="{{ route('service.details', $s->slug) }}">{{ $s->name }}</a>
+                                href="{{ route('service.details', $s->slug) }}">{{ strtolower($s->name) }}</a>
                         </li>
                     @endforeach
                 </ul>
             </li>
 
-            <li class="nav-item"><a class="nav-link" href="{{ route('service.lists') }}">Services</a></li>
+            {{-- <li class="nav-item"><a class="nav-link" href="{{ route('service.lists') }}">Services</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('price-lists') }}">Pricing</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('blogs') }}">Case Study</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('blogs') }}">Case Studies</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="#">Protection</a></li> --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
         </ul>

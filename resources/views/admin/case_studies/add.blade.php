@@ -108,7 +108,7 @@
                             <label class="form-label fw-semibold">
                                 Long Decription <span class="text-danger">*</span>
                             </label>
-                            <textarea name="long_desc" rows="5" class="form-control tinymce-editor" placeholder="Description">{{ old('long_desc') }}</textarea>
+                            <textarea name="long_desc" rows="5" class="form-control" id="summernote" placeholder="Description">{{ old('long_desc') }}</textarea>
                         </div>
                         <!-- Meta Title -->
                         <div class="col-md-4">

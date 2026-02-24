@@ -108,7 +108,7 @@
                             <label class="form-label fw-semibold">
                                 Description
                             </label>
-                            <textarea name="description" rows="4" class="form-control tinymce-editor" placeholder="Optional description">{{ old('description') }}</textarea>
+                            <textarea name="description" rows="4" class="form-control" id="summernote" placeholder="Optional description">{{ old('description') }}</textarea>
                         </div>
                         <!-- Meta Title -->
                         <div class="col-md-4">

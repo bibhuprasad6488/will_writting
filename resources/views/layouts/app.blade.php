@@ -164,6 +164,10 @@
                 }, 3000);
             }
         };
+
+        function redirectTo(url) {
+            window.location.href = url;
+        }
     </script>
     @stack('scripts')
 </body>

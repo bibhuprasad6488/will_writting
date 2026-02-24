@@ -17,7 +17,7 @@
                     CMS Management
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.privacy.policy', 'admin.term.business', 'admin.our.story', 'admin.guided.journey', 'admin.protect']) ? 'show' : '' }}"
+                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.privacy.policy', 'admin.term.business', 'admin.our.story', 'admin.guided.journey', 'admin.protect', 'admin.witnesses']) ? 'show' : '' }}"
                     id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ request()->routeIs(['admin.partners.*']) ? 'active' : '' }}"

@@ -39,6 +39,8 @@
     <script src="https://cdn.tiny.cloud/1/8b15k9216emgvtcy3gcsicn7efwutzm0ddo31se6ji9anpwc/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
 
+    <link href="{{ asset('admin/assets/summernote/summernote.min.css') }}" rel="stylesheet">
+
     <!-- Scripts -->
     @if (config('database.connections.mysql.username') === 'root')
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -116,6 +118,7 @@
     <!-- jQuery FIRST -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+    <script src="{{ asset('admin/assets/summernote/summernote.min.js') }}"></script>
     <!-- Toastr SECOND -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     {{-- {!! Toastr::message() !!} --}}
@@ -188,27 +191,32 @@
     @endif
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Loop through all elements with the class 'tinymce-editor'
-            document.querySelectorAll(".tinymce-editor").forEach(function(editor) {
-
-                // Initialize TinyMCE for each editor
-                tinymce.init({
-                    target: editor, // Use 'target' to bind TinyMCE to the specific element
-                    height: 500,
-                    plugins: 'advlist autolink link image lists charmap preview code fullscreen',
-                    toolbar: 'undo redo | blocks | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist blockquote | link image | code fullscreen ',
-
-                    // NEW: use "blocks" instead of "formatselect" in TinyMCE 6+
-                    block_formats: 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre; Blockquote=blockquote',
-
-                    setup: function(editorInstance) {
-                        // Sync content
-                        editorInstance.on('change', function() {
-                            editor.value = editorInstance.getContent();
-                        });
-                    }
-                });
+            $('#summernote').summernote({
+                placeholder: 'Content',
+                tabsize: 2,
+                height: 500
             });
+            // // Loop through all elements with the class 'tinymce-editor'
+            // document.querySelectorAll(".tinymce-editor").forEach(function(editor) {
+
+            //     // Initialize TinyMCE for each editor
+            //     tinymce.init({
+            //         target: editor, // Use 'target' to bind TinyMCE to the specific element
+            //         height: 500,
+            //         plugins: 'advlist autolink link image lists charmap preview code fullscreen',
+            //         toolbar: 'undo redo | blocks | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist blockquote | link image | code fullscreen ',
+
+            //         // NEW: use "blocks" instead of "formatselect" in TinyMCE 6+
+            //         block_formats: 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre; Blockquote=blockquote',
+
+            //         setup: function(editorInstance) {
+            //             // Sync content
+            //             editorInstance.on('change', function() {
+            //                 editor.value = editorInstance.getContent();
+            //             });
+            //         }
+            //     });
+            // });
         });
     </script>
     <script>

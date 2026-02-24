@@ -44,10 +44,10 @@
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" onclick="redirectTo('{{ route('service.lists') }}')">
                     <a class="nav-link dropdown-toggle {{ request()->routeIs(['service.lists', 'service.details.*']) ? 'active' : '' }}"
-                        href="{{ route('service.lists') }}" id="serviceDropdown" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                        href="{{ route('service.lists') }}" id="serviceDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Services
                     </a>
                     <ul class="dropdown-menu shadow-sm rounded-0" aria-labelledby="serviceDropdown"
@@ -55,10 +55,9 @@
                         @foreach ($services as $s)
                             <li>
                                 <a class="dropdown-item"
-                                    href="{{ route('service.details', $s->slug) }}">{{ $s->name }}</a>
+                                    href="{{ route('service.details', $s->slug) }}">{{ strtolower($s->name) }}</a>
                             </li>
                         @endforeach
-
                     </ul>
                 </li>
 
@@ -67,7 +66,7 @@
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs(['price-lists']) ? 'active' : '' }}"
                         href="{{ route('price-lists') }}">Pricing</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs(['blogs']) ? 'active' : '' }}"
-                        href="{{ route('blogs') }}">Case Study</a></li>
+                        href="{{ route('blogs') }}">Case Studies</a></li>
                 {{-- <li class="nav-item"><a class="nav-link" href="#">Protection</a></li> --}}
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs(['contact']) ? 'active' : '' }}"
                         href="{{ route('contact') }}">Contact</a></li>

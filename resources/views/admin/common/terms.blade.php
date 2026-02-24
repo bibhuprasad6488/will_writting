@@ -42,7 +42,7 @@
                             <label class="form-label fw-semibold">
                                 Contnt
                             </label>
-                            <textarea name="content" rows="4" class="form-control cont" placeholder="Content">{{ $term->content ?? old('content') }}</textarea>
+                            <textarea name="content" rows="4" class="form-control" id="cont" placeholder="Content">{{ $term->content ?? old('content') }}</textarea>
                         </div>
 
                     </div>
@@ -66,26 +66,10 @@
 @push('scripts')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Loop through all elements with the class 'cont'
-            document.querySelectorAll(".cont").forEach(function(editor) {
-
-                // Initialize TinyMCE for each editor
-                tinymce.init({
-                    target: editor, // Use 'target' to bind TinyMCE to the specific element
-                    height: 600,
-                    plugins: 'advlist autolink link image lists charmap preview code fullscreen',
-                    toolbar: 'undo redo | blocks | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist blockquote | link image | code fullscreen ',
-
-                    // NEW: use "blocks" instead of "formatselect" in TinyMCE 6+
-                    block_formats: 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre; Blockquote=blockquote',
-
-                    setup: function(editorInstance) {
-                        // Sync content
-                        editorInstance.on('change', function() {
-                            editor.value = editorInstance.getContent();
-                        });
-                    }
-                });
+            $('#cont').summernote({
+                placeholder: 'Content',
+                tabsize: 2,
+                height: 600
             });
         });
     </script>

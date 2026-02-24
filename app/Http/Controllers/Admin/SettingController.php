@@ -180,6 +180,8 @@ class SettingController extends Controller
             $setting->smtp_from_email = $request->smtp_from_email;
             $setting->footer_text_one = $request->footer_text_one;
             $setting->footer_text_two = $request->footer_text_two;
+            $setting->cta_title = $request->cta_title;
+            $setting->cta_sub_title = $request->cta_sub_title;
 
 
             // /** Upload Path */
@@ -374,14 +376,14 @@ class SettingController extends Controller
         DB::beginTransaction();
         try {
             $s =  OurStory::find(1) ?? new OurStory();
-            $s->story_desc_one = $request->story_desc_one;
+            $s->story_desc_one = $request->story_desc_one ? preg_replace('/[^\x20-\x7E]/u', '', $request->story_desc_one) : $s->story_desc_one;
             $s->ap_title_one = $request->ap_title_one;
             $s->ap_desc_one = $request->ap_desc_one;
             $s->ap_title_two = $request->ap_title_two;
             $s->ap_desc_two = $request->ap_desc_two;
             $s->ap_title_three = $request->ap_title_three;
             $s->ap_desc_three = $request->ap_desc_three;
-            $s->story_desc_two = $request->story_desc_two;
+            $s->story_desc_two = $request->story_desc_two ? preg_replace('/[^\x20-\x7E]/u', '', $request->story_desc_two) : $s->story_desc_two;
             $s->meta_title = $request->meta_title;
             $s->meta_desc = $request->meta_desc;
             $s->save();
@@ -411,7 +413,7 @@ class SettingController extends Controller
         try {
             $j =  GuidedJourney::find(1) ?? new GuidedJourney();
 
-            $j->journey_desc = $request->journey_desc;
+            $j->journey_desc = $request->journey_desc ? preg_replace('/[^\x20-\x7E]/u', '', $request->journey_desc) : $j->journey_desc;
             $j->step_title = $request->step_title;
             $j->step_sub_title = $request->step_sub_title;
             $j->step_title_one = $request->step_title_one;
@@ -541,7 +543,7 @@ class SettingController extends Controller
         try {
             $p =  ProtectionPage::find(1) ?? new ProtectionPage();
 
-            $p->p_desc = $request->p_desc;
+            $p->p_desc = $request->p_desc ? preg_replace('/[^\x20-\x7E]/u', '', $request->p_desc) : $p->p_desc;
             $p->ps_title_one = $request->ps_title_one;
             $p->ps_desc_one = $request->ps_desc_one;
             $p->ps_title_two = $request->ps_title_two;
@@ -771,9 +773,9 @@ class SettingController extends Controller
         DB::beginTransaction();
         try {
             $w = WitnessesPage::find(1) ?? new WitnessesPage();
-            $w->w_desc_one = $request->w_desc_one;
-            $w->w_desc_two = $request->w_desc_two;
-            $w->w_desc_three = $request->w_desc_three;
+            $w->w_desc_one = $request->w_desc_one ? preg_replace('/[^\x20-\x7E]/u', '', $request->w_desc_one) : $w->w_desc_one;
+            $w->w_desc_two = $request->w_desc_two ? preg_replace('/[^\x20-\x7E]/u', '', $request->w_desc_two) : $w->w_desc_two;
+            $w->w_desc_three = $request->w_desc_three ? preg_replace('/[^\x20-\x7E]/u', '', $request->w_desc_three) : $w->w_desc_three;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/witnesses/');
@@ -808,6 +810,4 @@ class SettingController extends Controller
             return back()->with('error', 'Content Saved failed Error: ' . $th->getMessage());
         }
     }
-
-
 }

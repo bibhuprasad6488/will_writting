@@ -114,7 +114,7 @@
                             <label class="form-label fw-semibold">
                                 Long Decription <span class="text-danger">*</span>
                             </label>
-                            <textarea name="long_desc" rows="5" class="form-control tinymce-editor border-secondary" placeholder="Description">{{ optional($cs)->long_desc ?? old('long_desc') }}</textarea>
+                            <textarea name="long_desc" rows="5" class="form-control border-secondary" id="summernote"placeholder="Description">{{ optional($cs)->long_desc ?? old('long_desc') }}</textarea>
                         </div>
 
                         <!-- Meta Title -->

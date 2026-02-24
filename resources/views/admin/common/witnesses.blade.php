@@ -42,19 +42,19 @@
                             <label class="form-label fw-semibold">
                                 Main Description
                             </label>
-                            <textarea name="w_desc_one" rows="4" class="form-control cont" placeholder="Content">{{ $witness->w_desc_one ?? old('w_desc_one') }}</textarea>
+                            <textarea name="w_desc_one" rows="4" class="form-control" id="cont" placeholder="Content">{{ $witness->w_desc_one ?? old('w_desc_one') }}</textarea>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
                                 Second Description
                             </label>
-                            <textarea name="w_desc_two" rows="4" class="form-control cont" placeholder="Content">{{ $witness->w_desc_two ?? old('w_desc_two') }}</textarea>
+                            <textarea name="w_desc_two" rows="4" class="form-control" id="cont1" placeholder="Content">{{ $witness->w_desc_two ?? old('w_desc_two') }}</textarea>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
                                 Third Description
                             </label>
-                            <textarea name="w_desc_three" rows="4" class="form-control cont" placeholder="Content">{{ $witness->w_desc_three ?? old('w_desc_three') }}</textarea>
+                            <textarea name="w_desc_three" rows="4" class="form-control" id="cont2" placeholder="Content">{{ $witness->w_desc_three ?? old('w_desc_three') }}</textarea>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Approach -->
                     <div class="col-md-6 d-none">
                         <div class="card border-0">
@@ -119,26 +119,20 @@
 @push('scripts')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Loop through all elements with the class 'cont'
-            document.querySelectorAll(".cont").forEach(function(editor) {
-
-                // Initialize TinyMCE for each editor
-                tinymce.init({
-                    target: editor, // Use 'target' to bind TinyMCE to the specific element
-                    height: 400,
-                    plugins: 'advlist autolink link image lists charmap preview code fullscreen',
-                    toolbar: 'undo redo | blocks | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist blockquote | link image | code fullscreen ',
-
-                    // NEW: use "blocks" instead of "formatselect" in TinyMCE 6+
-                    block_formats: 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre; Blockquote=blockquote',
-
-                    setup: function(editorInstance) {
-                        // Sync content
-                        editorInstance.on('change', function() {
-                            editor.value = editorInstance.getContent();
-                        });
-                    }
-                });
+            $('#cont').summernote({
+                placeholder: 'Content',
+                tabsize: 2,
+                height: 300
+            });
+            $('#cont1').summernote({
+                placeholder: 'Content',
+                tabsize: 2,
+                height: 300
+            });
+            $('#cont2').summernote({
+                placeholder: 'Content',
+                tabsize: 2,
+                height: 300
             });
         });
     </script>

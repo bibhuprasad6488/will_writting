@@ -1,14 +1,16 @@
 <section class="cta py-5 cm10">
     <div class="container">
         <div class="row justify-content-center text-center">
-
+            @php
+                $siteSetting = \App\Models\SiteSetting::find(1);
+            @endphp
             <div class="col-lg-10">
                 <h2 class="cta-title mb-3">
-                    Protect what matters most — create your will with Sterling Wills
+                    {{ $siteSetting->cta_title ?? 'Get Started with a Will Today' }}
                 </h2>
 
                 <p class="cta-subtitle mb-4">
-                    <i>Clear advice, fixed fees, and complete peace of mind. Contact us today.</i>
+                    <i>{{ $siteSetting->cta_sub_title ?? 'Clear advice, fixed fees, and complete peace of mind. Contact us today.' }}</i>
                 </p>
             </div>
 
