@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-sm-4 col-xs-12">
                         <div class="card rounded-0 border-0">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <h3 class="fw-bold mb-3">{{ $story->ap_title_one ?? '' }}</h3>
                                 <p class=" mb-0">{{ $story->ap_desc_one ?? '' }}</p>
                             </div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-sm-4 col-xs-12">
                         <div class="card rounded-0 border-0">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <h3 class="fw-bold mb-3">{{ $story->ap_title_two ?? '' }}</h3>
                                 <p class=" mb-0">{{ $story->ap_desc_two ?? '' }}</p>
                             </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-sm-4 col-xs-12">
                         <div class="card rounded-0 border-0">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <h3 class="fw-bold mb-3">{{ $story->ap_title_three ?? '' }}</h3>
                                 <p class=" mb-0">{{ $story->ap_desc_three ?? '' }}</p>
                             </div>
