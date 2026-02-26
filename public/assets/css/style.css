@@ -14,6 +14,20 @@
     font-display: swap;
 }
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Box model consistency */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 
 body {
@@ -871,5 +885,12 @@ marquee .partner-card img {
 
     .footer_2nd {
         padding-left: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar-brand img {
+        width: 210px;
+        height: auto;
     }
 }

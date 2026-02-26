@@ -34,7 +34,7 @@
                     <h2 class="text-center text-uppercase">{{ $service->name }}</h2>
                 </div>
                 <!-- LEFT TEXT BOXES -->
-                <div class="col-sm-3 col-xs-12">
+                <div class="col-sm-3 col-xs-12 mb-5 pb-5">
                     <div class="d-flex flex-column h-100 p-2" style="border: 2px solid gray; height:max-content !important;">
 
                         <div class="feature-box flex-fill">
