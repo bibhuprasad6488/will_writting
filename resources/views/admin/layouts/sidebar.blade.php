@@ -3,6 +3,12 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 {{-- <div class="sb-sidenav-menu-heading">Core</div> --}}
+                <a class="nav-link active text-center" href="{{ route('admin.dashboard') }}">
+                    <div>
+                        Welcome,
+                        {{ Auth::guard('admin')->user()->name ? Auth::guard('admin')->user()->name : '' }}
+                    </div>
+                </a>
                 <a class="nav-link {{ request()->routeIs(['admin.dashboard']) ? 'active' : '' }}"
                     href="{{ route('admin.dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
