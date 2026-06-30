@@ -843,18 +843,131 @@ marquee .partner-card img {
 }
 
 
-@media (max-width: 991px) {
-    .offcanvas {
-        width: 100vw !important;
+@media (min-width: 250px) and (max-width: 349px) {
+    .services {
+        height: 50vh;
     }
 
-    .footer_2nd {
-        padding-left: 30px;
+    .services .mask {
+        padding: 87px 0 15px;
+    }
+
+    .services .banner-title {
+        font-size: 30px;
+    }
+
+    .services .banner-subtitle {
+        font-size: 20px;
+    }
+
+    .services .mask .inner-page-title {
+        font-size: 30px;
+    }
+
+    #intro-example {
+        height: max-content;
+    }
+
+    #intro-example .mask {
+        margin-top: 50px;
+    }
+
+    #intro-example .banner-title {
+        font-size: 25px;
+        margin-top: 0 !important;
+    }
+
+    #intro-example .banner-subtitle {
+        font-size: 20px;
+    }
+
+    #intro-example .btn-light {
+        font-size: 14px;
     }
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 350px) and (max-width: 449px) {
+    .navbar-brand img {
+        width: 210px;
+        height: auto;
+    }
 
+    .services {
+        height: 50vh;
+    }
+
+    .services .mask {
+        padding: 87px 0 15px;
+    }
+
+    .services .banner-title {
+        font-size: 30px;
+    }
+
+    .services .banner-subtitle {
+        font-size: 20px;
+    }
+
+    .services .mask .inner-page-title {
+        font-size: 30px;
+    }
+
+    #intro-example {
+        height: max-content;
+    }
+
+    #intro-example .mask {
+        margin-top: 50px;
+    }
+
+    #intro-example .banner-title {
+        font-size: 25px;
+        margin-top: 0 !important;
+    }
+
+    #intro-example .banner-subtitle {
+        font-size: 20px;
+    }
+
+    #intro-example .btn-light {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 450px) and (max-width: 549px) {
+    #intro-example {
+        height: max-content;
+    }
+
+    #intro-example .mask {
+        margin-top: 70px;
+    }
+
+    #intro-example .banner-title {
+        font-size: 32px;
+        margin-top: 0 !important;
+    }
+
+    #intro-example .banner-subtitle {
+        font-size: 22px;
+    }
+
+    #intro-example .btn-light {
+        font-size: 15px;
+    }
+
+    .services {
+        height: 55vh;
+    }
+
+    .services .mask {
+        margin-top: 45px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 649px) {}
+
+@media (min-width: 650px) and (max-width: 767px) {
     .sticky-icons img {
         width: 40px;
         height: auto;
@@ -888,9 +1001,28 @@ marquee .partner-card img {
     }
 }
 
-@media (max-width: 400px) {
-    .navbar-brand img {
-        width: 210px;
-        height: auto;
+@media (min-width: 768px) and (max-width: 990px) {}
+
+@media (min-width: 991px) and (max-width: 1023px) {
+    .offcanvas {
+        width: 100vw !important;
+    }
+
+    .footer_2nd {
+        padding-left: 30px;
     }
 }
+
+@media (min-width: 1024px) and (max-width: 1349px) {}
+
+
+@media (min-width: 1024px) {}
+
+
+/* --- Responsive Adaptations for Smaller Screens --- */
+@media (max-width: 900px) {}
+
+/* Responsive Breakdowns for Tablet/Mobile viewports */
+@media (max-width: 1024px) {}
+
+@media (min-width: 1350px) and (max-width: 1515px) {}

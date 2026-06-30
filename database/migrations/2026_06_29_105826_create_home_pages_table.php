@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contact_us_pages', function (Blueprint $table) {
+        Schema::create('home_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('page_title')->default('Contact Us');
+            $table->string('banner_title')->nullable();
+            $table->string('banner_sub_title')->nullable();
             $table->string('banner_image')->nullable();
-            $table->longText('page_desc')->nullable();
-            $table->longText('c_form_desc')->nullable();
-            $table->longText('c_img')->nullable();
+            $table->string('banner_btn_one_text')->nullable();
+            $table->string('banner_btn_two_text')->nullable();
+            $table->string('ww_image')->nullable();
+            $table->longText('ww_desc')->nullable();
             $table->text('meta_title')->nullable();
             $table->longText('meta_desc')->nullable();
             $table->longText('meta_key')->nullable();
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contact_us_pages');
+        Schema::dropIfExists('home_pages');
     }
 };

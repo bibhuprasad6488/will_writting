@@ -776,6 +776,8 @@ class SettingController extends Controller
             $w->w_desc_one = $request->w_desc_one ? preg_replace('/[^\x20-\x7E]/u', '', $request->w_desc_one) : $w->w_desc_one;
             $w->w_desc_two = $request->w_desc_two ? preg_replace('/[^\x20-\x7E]/u', '', $request->w_desc_two) : $w->w_desc_two;
             $w->w_desc_three = $request->w_desc_three ? preg_replace('/[^\x20-\x7E]/u', '', $request->w_desc_three) : $w->w_desc_three;
+            $w->meta_title = $request->meta_title;
+            $w->meta_desc = $request->meta_desc;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/witnesses/');

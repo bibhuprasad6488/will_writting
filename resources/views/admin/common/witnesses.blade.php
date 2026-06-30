@@ -72,7 +72,7 @@
 
 
                     <!-- Approach -->
-                    <div class="col-md-6 d-none">
+                    <div class="col-md-6 ">
                         <div class="card border-0">
                             <div class="card-header border-0 fw-bold">
                                 Meta Title
@@ -87,7 +87,7 @@
                     </div>
 
                     <!-- Approach -->
-                    <div class="col-md-6 d-none">
+                    <div class="col-md-6 ">
                         <div class="card border-0">
                             <div class="card-header border-0 fw-bold">
                                 Meta Description

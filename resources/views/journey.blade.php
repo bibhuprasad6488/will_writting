@@ -15,7 +15,7 @@
 
             <!-- Overlay (optional dark mask) -->
             <div class="mask">
-                <div class="text-white">
+                <div class="text-white text-center">
                     <h2 class="mb-3 inner-page-title">Your Guided Will Experience</h2>
                     <p><b>Expert support at each step to ensure your wishes are clearly recorded and protected.</b></p>
                 </div>

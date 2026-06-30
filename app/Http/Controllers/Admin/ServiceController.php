@@ -57,76 +57,18 @@ class ServiceController extends Controller
 
             if ($request->hasFile('service_image')) {
                 $file = $request->file('service_image');
-                $extension = strtolower($file->getClientOriginalExtension());
+                $imageName = 'service_image_' . time() . '_' . $file->getClientOriginalName();
 
-                // Always store as .webp
-                $imageName = Str::slug($request->name) . '_' . time() . '.webp';
-                $fullPath = $destinationPath . $imageName;
-
-                /** If already WebP → move directly */
-                if ($extension === 'webp') {
-                    $file->move($destinationPath, $imageName);
-                } else {
-                    /** Convert to WebP */
-                    switch ($extension) {
-                        case 'jpg':
-                        case 'jpeg':
-                            $image = imagecreatefromjpeg($file->getRealPath());
-                            break;
-
-                        case 'png':
-                            $image = imagecreatefrompng($file->getRealPath());
-                            imagepalettetotruecolor($image);
-                            imagealphablending($image, true);
-                            imagesavealpha($image, true);
-                            break;
-
-                        default:
-                            throw new \Exception('Unsupported image format');
-                    }
-
-                    imagewebp($image, $fullPath, 80);
-                    imagedestroy($image);
-                }
-
+                $file->move($destinationPath, $imageName);
                 $service->service_image = $imageName;
             }
 
             // Banner Image Upload
             if ($request->hasFile('banner_image')) {
                 $file = $request->file('banner_image');
-                $extension = strtolower($file->getClientOriginalExtension());
+                $imageName = 'banner_image_' . time() . '_' . $file->getClientOriginalName();
 
-                // Always store as .webp
-                $imageName = Str::slug($request->name) . '_banner_' . time() . '.webp';
-                $fullPath = $destinationPath . $imageName;
-
-                /** If already WebP → move directly */
-                if ($extension === 'webp') {
-                    $file->move($destinationPath, $imageName);
-                } else {
-                    /** Convert to WebP */
-                    switch ($extension) {
-                        case 'jpg':
-                        case 'jpeg':
-                            $image = imagecreatefromjpeg($file->getRealPath());
-                            break;
-
-                        case 'png':
-                            $image = imagecreatefrompng($file->getRealPath());
-                            imagepalettetotruecolor($image);
-                            imagealphablending($image, true);
-                            imagesavealpha($image, true);
-                            break;
-
-                        default:
-                            throw new \Exception('Unsupported image format');
-                    }
-
-                    imagewebp($image, $fullPath, 80);
-                    imagedestroy($image);
-                }
-
+                $file->move($destinationPath, $imageName);
                 $service->banner_image = $imageName;
             }
 
@@ -187,13 +129,8 @@ class ServiceController extends Controller
 
             if ($request->hasFile('service_image')) {
                 $file = $request->file('service_image');
-                $extension = strtolower($file->getClientOriginalExtension());
+                $imageName = 'service_image_' . time() . '_' . $file->getClientOriginalName();
 
-                // Always store as .webp
-                $imageName = Str::slug($request->name) . '_' . time() . '.webp';
-                $fullPath = $destinationPath . $imageName;
-
-                // Delete old file first
                 if (!empty($service->service_image)) {
                     $oldFilePath = $destinationPath . $service->service_image;
                     if (file_exists($oldFilePath)) {
@@ -201,45 +138,15 @@ class ServiceController extends Controller
                     }
                 }
 
-                /** If already WebP → move directly */
-                if ($extension === 'webp') {
-                    $file->move($destinationPath, $imageName);
-                } else {
-                    /** Convert to WebP */
-                    switch ($extension) {
-                        case 'jpg':
-                        case 'jpeg':
-                            $image = imagecreatefromjpeg($file->getRealPath());
-                            break;
-
-                        case 'png':
-                            $image = imagecreatefrompng($file->getRealPath());
-                            imagepalettetotruecolor($image);
-                            imagealphablending($image, true);
-                            imagesavealpha($image, true);
-                            break;
-
-                        default:
-                            throw new \Exception('Unsupported image format');
-                    }
-
-                    imagewebp($image, $fullPath, 80);
-                    imagedestroy($image);
-                }
-
+                $file->move($destinationPath, $imageName);
                 $service->service_image = $imageName;
             }
 
             // Banner Image Upload
             if ($request->hasFile('banner_image')) {
                 $file = $request->file('banner_image');
-                $extension = strtolower($file->getClientOriginalExtension());
+                $imageName = 'banner_image_' . time() . '_' . $file->getClientOriginalName();
 
-                // Always store as .webp
-                $imageName = Str::slug($request->name) . '_banner_' . time() . '.webp';
-                $fullPath = $destinationPath . $imageName;
-
-                // Delete old file first
                 if (!empty($service->banner_image)) {
                     $oldFilePath = $destinationPath . $service->banner_image;
                     if (file_exists($oldFilePath)) {
@@ -247,35 +154,9 @@ class ServiceController extends Controller
                     }
                 }
 
-                /** If already WebP → move directly */
-                if ($extension === 'webp') {
-                    $file->move($destinationPath, $imageName);
-                } else {
-                    /** Convert to WebP */
-                    switch ($extension) {
-                        case 'jpg':
-                        case 'jpeg':
-                            $image = imagecreatefromjpeg($file->getRealPath());
-                            break;
-
-                        case 'png':
-                            $image = imagecreatefrompng($file->getRealPath());
-                            imagepalettetotruecolor($image);
-                            imagealphablending($image, true);
-                            imagesavealpha($image, true);
-                            break;
-
-                        default:
-                            throw new \Exception('Unsupported image format');
-                    }
-
-                    imagewebp($image, $fullPath, 80);
-                    imagedestroy($image);
-                }
-
+                $file->move($destinationPath, $imageName);
                 $service->banner_image = $imageName;
             }
-
             $service->save();
             DB::commit();
             return redirect()->route('admin.services.index')

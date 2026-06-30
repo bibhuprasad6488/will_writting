@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Contact Us')
-@section('meta_title', 'Contact Sterling Wills | Will Writing & Estate Planning')
+@section('meta_title', optional($contactPage)->meta_title ?? 'Contact Sterling Wills | Will Writing & Estate Planning')
 @section('meta_description',
+    optional($contactPage)->meta_desc ??
     'Contact Sterling Wills for expert will writing & estate planning advice. Our friendly team
     is here to help with wills, trusts, and LPAs.')
 
@@ -13,12 +14,13 @@
             {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+            <img src="{{ optional($contactPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
+                alt="Sterling Wills & Estate Planning">
 
             <!-- Overlay (optional dark mask) -->
             <div class="mask">
                 <div class="text-white">
-                    <h2 class="mb-3 inner-page-title">Contact Us</h2>
+                    <h2 class="mb-3 inner-page-title">{{ optional($contactPage)->page_title }}</h2>
                     <p></p>
                 </div>
             </div>
@@ -33,19 +35,7 @@
         <div class="container">
             <div class="row justify-content-center  rounded-0">
                 <div class="col-lg-12">
-                    <h2 class="mb-3">
-                        Wills Sterling is your trusted Will Lawyer
-                    </h2>
-
-                    <p class="mb-4 fs-5">
-                        Thank you for considering <b>Sterling Wills & Estate Planning.</b> We’re here to make connecting
-                        with us as
-                        simple and stress-free as possible. Whether you have questions about <b>will writing, estate
-                            planning,
-                            trusts</b>, or <b>lasting powers of attorney</b>, or you’re ready to start your planning
-                        journey, our friendly
-                        team is ready to help.
-                    </p>
+                    {!! optional($contactPage)->page_desc !!}
                 </div>
 
             </div>

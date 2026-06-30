@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Start Your Wills')
+@section('title', optional($startYourWills)->meta_title ?? 'Start Your Wills')
+@section('meta_title', optional($startYourWills)->meta_title)
+@section('meta_description', optional($startYourWills)->meta_desc)
 
 @section('content')
 
@@ -9,11 +11,12 @@
             {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+            <img src="{{ optional($startYourWills)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
+                alt="Sterling Wills & Estate Planning">
 
             <div class="mask">
                 <div class="text-white">
-                    <h2 class="mb-3 inner-page-title">Start Your Will</h2>
+                    <h2 class="mb-3 inner-page-title">{{ optional($startYourWills)->banner_title }}</h2>
                 </div>
             </div>
         </div>

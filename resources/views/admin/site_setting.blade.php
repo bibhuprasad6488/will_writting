@@ -8,7 +8,7 @@
             <li class="breadcrumb-item ">Site Setting</li>
         </ol>
         <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-12">
                 <div class="card">
                     @if (session('success'))
                         <div class="alert alert-success mx-4 mt-3 rounded-3 shadow-sm" id="success-alert">
@@ -27,7 +27,7 @@
                             <br />
 
                             <div class="form-group row  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
+                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Meta
                                     Title <span>*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
+                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Meta
                                     Desctiption</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea name="site_desc" id="site_desc" class="form-control" rows="3">{{ optional($setting)->site_desc }}</textarea>

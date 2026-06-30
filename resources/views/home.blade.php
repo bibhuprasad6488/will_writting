@@ -1,28 +1,29 @@
 @extends('layouts.app')
-@section('title', 'Home')
-@section('meta_title', $home_page_data->meta_title ?? 'Sterling Wills | Clear, Fixed-Fee Wills & Estate Planning')
+@section('title', $siteSetting->site_title ?? 'Home')
+@section('meta_title', $siteSetting->site_title ?? 'Sterling Wills | Clear, Fixed-Fee Wills & Estate Planning')
 @section('meta_description',
-    $home_page_data->meta_desc ??
+    $siteSetting->site_desc ??
     'Protect what matters most with Sterling Wills. Clear advice,
     fixed fees, and expert guidance to help you create a legally sound will with confidence.')
-@section('meta_keyword', $home_page_data->meta_keyword ?? '')
+@section('meta_keyword', $siteSetting->meta_keyword ?? '')
 @section('content')
     <!-- HERO -->
     <div id="intro-example" class="text-center">
         {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-        <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+        <img src="{{ optional($home_page_data)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
+            alt="{{ optional($siteSetting)->site_title }}">
 
         <div class="mask">
             <div class="text-white">
-                <h1 class="mt-5 banner-title">Professional Will Writing Services You Can Trust</h1>
-                <h4 class="my-4 banner-subtitle">Protect your family’s future with a professionally written Will.</h4>
+                <h1 class="mt-5 banner-title">{{ optional($home_page_data)->banner_title }}</h1>
+                <h4 class="my-4 banner-subtitle">{{ optional($home_page_data)->banner_sub_title }}</h4>
 
-                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('journey') }}" role="button">View
-                    Details..</a>
-                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('contact') }}" role="button">Contact
-                    us today !</a>
+                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('journey') }}"
+                    role="button">{{ optional($home_page_data)->banner_btn_one_text }}</a>
+                <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('contact') }}"
+                    role="button">{{ optional($home_page_data)->banner_btn_two_text }}</a>
             </div>
         </div>
     </div>
@@ -37,8 +38,8 @@
                 <!-- LEFT IMAGE BOX -->
                 <div class="col-md-6 px-5">
                     <div class="feature-box h-100">
-                        <img src="{{ asset('assets/images/about_us.png') }}" alt="Will Writing"
-                            class="img-fluid feature-image">
+                        <img src="{{ optional($home_page_data)->ww_image ?? asset('assets/images/about_us.png') }}"
+                            alt="Will Writing" class="img-fluid feature-image">
                     </div>
                 </div>
 
@@ -48,16 +49,7 @@
 
                         <div class="feature-box flex-fill">
                             <h3>Who are we?</h3>
-                            <p>At Sterling Wills & Estate Planning, we provide clear, reliable will writing and estate
-                                planning services to give you peace of mind. We take a personal, straightforward
-                                approach, ensuring your wishes are clearly explained and legally recorded. Every client
-                                is unique, and our focus is on creating well-structured wills that protect loved ones,
-                                reduce uncertainty, and help prevent future disputes.</p>
-                            <p>Our experienced team upholds the highest standards of professionalism, confidentiality,
-                                and compliance. We also offer guidance on broader estate planning needs, including
-                                updating wills and planning for life changes. By choosing Sterling Wills & Estate
-                                Planning, you gain clarity, trust, and long-term reassurance—protecting what matters
-                                most, now and in the future.</p>
+                            {!! optional($home_page_data)->ww_desc !!}
                         </div>
 
                     </div>

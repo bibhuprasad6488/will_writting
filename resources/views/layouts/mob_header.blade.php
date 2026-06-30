@@ -44,7 +44,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex justify-content-between align-items-center {{ request()->routeIs(['journey', 'protection']) ? 'active' : '' }}"
+                <a class="nav-link d-flex justify-content-between align-items-center {{ request()->routeIs(['service.lists', 'service.details.*']) ? 'active' : '' }}"
                     data-bs-toggle="collapse" href="#servSubMenu" role="button" aria-expanded="false"
                     aria-controls="servSubMenu">
                     Services

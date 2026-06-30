@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CaseStudyController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InsightController;
 use App\Http\Controllers\Admin\PackageController;
@@ -65,6 +66,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Route::get('/dashboard', function () {
         //     return view('admin.dashboard');
         // })->name('dashboard');
+
+        // CMS Pages
+        Route::any('/home-page-cms', [CmsController::class, 'homePageCms'])->name('home-page-cms');
+        Route::any('/contact-us-page', [CmsController::class, 'contactUPage'])->name('contact-us-page');
+        Route::any('/pricing-page-cms', [CmsController::class, 'pricingPage'])->name('pricing-page-cms');
+        Route::any('/all-service-page-cms', [CmsController::class, 'allServicePage'])->name('all-service-page-cms');
+        Route::any('/start-wills-page-cms', [CmsController::class, 'startYourWills'])->name('start-wills-page-cms');
 
         // Partners
         Route::resource('partners', PartnerController::class)->names('partners');

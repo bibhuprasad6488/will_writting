@@ -12,8 +12,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') @if ($siteSetting)
-            | {{ $siteSetting->site_title }}
+    <title>@yield('title') @if ($siteSetting)| {{ $siteSetting->site_title }}
         @endif
     </title>
     <meta name="title" content="@yield('meta_title', '')">

@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AllServicePage;
 use App\Models\CaseStudy;
+use App\Models\ContactUsPage;
 use App\Models\GetInTouch;
 use App\Models\GuidedJourney;
+use App\Models\HomePage;
 use App\Models\OurStory;
 use App\Models\Partner;
 use App\Models\PricePackage;
 use App\Models\Pricing;
 use App\Models\PricingCategory;
+use App\Models\PricingPage;
 use App\Models\PrivacyPolicy;
 use App\Models\ProtectionPage;
 use App\Models\Service;
 use App\Models\SiteSetting;
+use App\Models\StartYourWillPage;
 use App\Models\TermsOfBusiness;
 use App\Models\Testimonial;
 use App\Models\Topic;
@@ -27,15 +32,12 @@ use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    private $setting;
+
+    public function __construct()
+    {
+        $this->setting = SiteSetting::find(1);
+    }
 
     /**
      * Show the application dashboard.
@@ -58,9 +60,13 @@ class HomeController extends Controller
             $t->client_photo_path = $t->client_photo_path ? asset('storage/images/testimonials/' . $t->client_photo_path) : '';
             return $t;
         });
-        $home_page_data = '';
+        $home_page_data = HomePage::find(1);
+        if ($home_page_data) {
+            $home_page_data->banner_image = $home_page_data->banner_image ? asset('storage/images/cmspage/' . $home_page_data->banner_image) : '';
+            $home_page_data->ww_image = $home_page_data->ww_image ? asset('storage/images/cmspage/' . $home_page_data->ww_image) : '';
+        }
         // dd($services);
-        $siteSetting = SiteSetting::find(1);
+        $siteSetting = $this->setting;
         return view('home', compact('services', 'partners', 'home_page_data', 'testimonials', 'siteSetting'));
     }
     public function getServices()
@@ -70,8 +76,13 @@ class HomeController extends Controller
             $service->banner_image = $service->banner_image ? asset('storage/images/services/' . $service->banner_image) : '';
             return $service;
         });
-        $siteSetting = SiteSetting::find(1);
-        return view('services', compact('services', 'siteSetting'));
+        $siteSetting = $this->setting;
+
+        $allServicePage = AllServicePage::find(1);
+        if ($allServicePage) {
+            $allServicePage->banner_image = $allServicePage->banner_image ? asset('storage/images/cmspage/' . $allServicePage->banner_image) : '';
+        }
+        return view('services', compact('services', 'siteSetting', 'allServicePage'));
     }
 
     public function serviceDetails($slug)
@@ -85,13 +96,13 @@ class HomeController extends Controller
             $service->banner_image = $service->banner_image ? asset('storage/images/services/' . $service->banner_image) : '';
             return $service;
         });
-        $siteSetting = SiteSetting::find(1);
+        $siteSetting = $this->setting;
         return view('service_details', compact('service', 'services', 'siteSetting'));
     }
 
     public function guidedJourney()
     {
-        $siteSetting = SiteSetting::find(1);
+        $siteSetting = $this->setting;
         $journey = GuidedJourney::find(1);
         if ($journey) {
             $journey->step_img_one = $journey->step_img_one ? asset('storage/images/journey/' . $journey->step_img_one) : '';
@@ -121,7 +132,7 @@ class HomeController extends Controller
             ->paginate(11);
 
         $topics = Topic::where('status', 1)->get();
-        $siteSetting = SiteSetting::find(1);
+        $siteSetting = $this->setting;
 
         return view('blogs', compact('blogs', 'topics', 'search', 'topic', 'siteSetting'));
     }
@@ -171,16 +182,24 @@ class HomeController extends Controller
             }
         }
         // dd($priceArr);
-        $siteSetting = SiteSetting::find(1);
+        $siteSetting = $this->setting;
         $packages = PricePackage::orderByDesc('id')->get();
 
-        return view('price_list', compact('priceArr', 'siteSetting', 'packages'));
+        $pricingPage = PricingPage::find(1);
+        if ($pricingPage) {
+            $pricingPage->banner_image = $pricingPage->banner_image ? asset('storage/images/cmspage/' . $pricingPage->banner_image) : '';
+        }
+        return view('price_list', compact('priceArr', 'siteSetting', 'packages', 'pricingPage'));
     }
 
     public function contactUs()
     {
-        $siteSetting = SiteSetting::find(1);
-        return view('contact', compact('siteSetting'));
+        $siteSetting = $this->setting;
+        $contactPage = ContactUsPage::find(1);
+        if ($contactPage) {
+            $contactPage->banner_image = $contactPage->banner_image ? asset('storage/images/cmspage/' . $contactPage->banner_image) : '';
+        }
+        return view('contact', compact('siteSetting', 'contactPage'));
     }
 
     public function contactUsStore(Request $request)
@@ -195,7 +214,7 @@ class HomeController extends Controller
             return back()->with('error', 'CAPTCHA verification failed. Please try again.');
         }
 
-        $siteSetting = SiteSetting::find(1);
+        $siteSetting = $this->setting;
 
         DB::beginTransaction();
         try {
@@ -235,7 +254,11 @@ class HomeController extends Controller
 
     public function startYourWills(Request $request)
     {
-        return view('start_will');
+        $startYourWills = StartYourWillPage::find(1);
+        if ($startYourWills) {
+            $startYourWills->banner_image = $startYourWills->banner_image ? asset('storage/images/cmspage/' . $startYourWills->banner_image) : '';
+        }
+        return view('start_will', compact('startYourWills'));
     }
     public function storeWills(Request $request)
     {

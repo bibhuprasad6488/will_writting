@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Price Lists')
+@section('title', optional($pricingPage)->meta_title ?? 'Pricing')
+@section('meta_title', optional($pricingPage)->meta_title)
+@section('meta_description', optional($pricingPage)->meta_desc)
 
 @section('content')
 
@@ -9,13 +11,14 @@
             {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+            <img src="{{ optional($pricingPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
+                alt="Sterling Wills & Estate Planning">
 
             <!-- Overlay (optional dark mask) -->
             <div class="mask">
                 <div class="text-white text-center">
-                    <h2 class="mb-3 banner-title">Pricing:</h2>
-                    <h3 class="mb-3 banner-subtitle"> Estate Planning & Will Writing Services</h3>
+                    <h2 class="mb-3 banner-title">{{ optional($pricingPage)->banner_title }}</h2>
+                    <h3 class="mb-3 banner-subtitle">{{ optional($pricingPage)->banner_sub_title }}</h3>
                 </div>
             </div>
         </div>
@@ -247,7 +250,8 @@
                 <span class="w-50">
                     <hr class="text-secondary">
                 </span>
-                <a href="{{ route('journey') }}" class="btn btn-light  rounded-0 text-uppercase fw-semibold m-2 px-5">Guided journey</a>
+                <a href="{{ route('journey') }}"
+                    class="btn btn-light  rounded-0 text-uppercase fw-semibold m-2 px-5">Guided journey</a>
                 <a href="{{ route('contact') }}"
                     class="btn btn-light  rounded-0 text-uppercase fw-semibold m-2 px-4">Contact Our Team Today</a>
             </div>
