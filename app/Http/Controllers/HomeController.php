@@ -198,6 +198,7 @@ class HomeController extends Controller
         $contactPage = ContactUsPage::find(1);
         if ($contactPage) {
             $contactPage->banner_image = $contactPage->banner_image ? asset('storage/images/cmspage/' . $contactPage->banner_image) : '';
+            $contactPage->c_img = $contactPage->c_img ? asset('storage/images/cmspage/' . $contactPage->c_img) : '';
         }
         return view('contact', compact('siteSetting', 'contactPage'));
     }

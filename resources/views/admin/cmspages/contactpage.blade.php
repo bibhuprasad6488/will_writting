@@ -72,6 +72,37 @@
                                     </div>
                                 </div>
 
+                                <!-- Banner Upload -->
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">
+                                        Right Image @if (!isset($contactPage->c_img))
+                                            <span class="text-danger">*</span>
+                                        @endif
+                                    </label>
+                                    <input type="file" class="form-control" name="c_img"
+                                        accept=".jpg,.jpeg,.png,.webp" onchange="previewImage(event)"
+                                        @if (!isset($contactPage->c_img)) required @endif>
+
+                                    <small class="text-muted">
+                                        Supported formats: JPG, PNG, JPEG, WEBP (Max 2MB)
+                                    </small>
+                                    @error('c_img')
+                                        <span class="alert text-danger py-1">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <!-- Banner Preview -->
+                                <div class="col-md-6 py-2">
+                                    <div class="border rounded p-2 w-100 text-center bg-light">
+                                        <img id="imagePreview"
+                                            @if (isset($contactPage->c_img)) src="{{ $contactPage->c_img }}" style="max-height: 120px;max-width:100%;" @else style="max-height: 120px; display: none;max-width:100%;" @endif
+                                            alt="Preview" style="max-height: 120px; display: none;">
+                                        <div class="text-muted small mt-2">
+                                            Preview
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Description -->
                                 <div class="col-md-12">
                                     <label class="form-label fw-semibold">

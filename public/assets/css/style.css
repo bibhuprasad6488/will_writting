@@ -844,12 +844,25 @@ marquee .partner-card img {
 
 
 @media (min-width: 250px) and (max-width: 349px) {
+    .navbar-brand img {
+        width: 165px;
+        height: auto;
+    }
+
     .services {
-        height: 50vh;
+        height: 30vh;
     }
 
     .services .mask {
         padding: 87px 0 15px;
+    }
+
+    .cm10 {
+        margin: 30px 0;
+    }
+
+    .footer_2nd {
+        padding-left: 0;
     }
 
     .services .banner-title {
@@ -866,6 +879,7 @@ marquee .partner-card img {
 
     #intro-example {
         height: max-content;
+        min-height: 45vh;
     }
 
     #intro-example .mask {
@@ -882,7 +896,7 @@ marquee .partner-card img {
     }
 
     #intro-example .btn-light {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
@@ -893,11 +907,20 @@ marquee .partner-card img {
     }
 
     .services {
-        height: 50vh;
+        height: 40vh;
     }
 
     .services .mask {
         padding: 87px 0 15px;
+    }
+
+
+    .cm10 {
+        margin: 30px 0;
+    }
+
+    .footer_2nd {
+        padding-left: 0;
     }
 
     .services .banner-title {
@@ -914,6 +937,7 @@ marquee .partner-card img {
 
     #intro-example {
         height: max-content;
+        min-height: 45vh;
     }
 
     #intro-example .mask {
@@ -963,6 +987,15 @@ marquee .partner-card img {
     .services .mask {
         margin-top: 45px;
     }
+
+    .cm10 {
+        margin: 30px 0;
+    }
+
+    .footer_2nd {
+        padding-left: 0;
+    }
+
 }
 
 @media (min-width: 550px) and (max-width: 649px) {}
@@ -1001,7 +1034,29 @@ marquee .partner-card img {
     }
 }
 
-@media (min-width: 768px) and (max-width: 990px) {}
+@media (min-width: 768px) and (max-width: 990px) {
+    #intro-example {
+        height: max-content;
+        min-height: 55vh;
+    }
+
+    #intro-example .mask {
+        margin-top: 3px;
+    }
+
+    .services {
+        height: 45vh;
+    }
+
+    .cm10 {
+        margin: 30px 0;
+    }
+
+    .footer_2nd {
+        padding-left: 0;
+    }
+
+}
 
 @media (min-width: 991px) and (max-width: 1023px) {
     .offcanvas {

@@ -140,8 +140,8 @@
 
                 <!-- Right: Image -->
                 <div class="col-md-6 text-center">
-                    <img src="{{ asset('assets/images/consultation.png') }}" alt="Consultation"
-                        class="img-fluid rounded-3 shadow-sm d-none d-md-block">
+                    <img src="{{ optional($contactPage)->c_img ?? asset('assets/images/consultation.png') }}"
+                        alt="Consultation" class="img-fluid rounded-3 shadow-sm d-none d-md-block">
                 </div>
 
             </div>

@@ -129,6 +129,21 @@ class CmsController extends Controller
                     $contactPage->banner_image = $imageName;
                 }
 
+                if ($request->hasFile('c_img')) {
+                    $file = $request->file('c_img');
+                    $imageName = 'cRight_image_' . time() . '_' . $file->getClientOriginalName();
+
+                    if (!empty($contactPage->c_img)) {
+                        $oldFilePath = $destinationPath . $contactPage->c_img;
+                        if (file_exists($oldFilePath)) {
+                            unlink($oldFilePath);
+                        }
+                    }
+
+                    $file->move($destinationPath, $imageName);
+                    $contactPage->c_img = $imageName;
+                }
+
                 $contactPage->save();
                 DB::commit();
 
@@ -141,6 +156,7 @@ class CmsController extends Controller
             $contactPage = ContactUsPage::find(1);
             if ($contactPage) {
                 $contactPage->banner_image = $contactPage->banner_image ? asset('storage/images/cmspage/' . $contactPage->banner_image) : '';
+                $contactPage->c_img = $contactPage->c_img ? asset('storage/images/cmspage/' . $contactPage->c_img) : '';
             }
             return view('admin.cmspages.contactpage', compact('contactPage'));
         }
