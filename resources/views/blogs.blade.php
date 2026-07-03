@@ -1,33 +1,35 @@
 @extends('layouts.app')
-@section('title', 'Insights')
-@section('meta_title', 'Insights | Will Writing & Estate Planning | Sterling Wills')
+@section('title', optional($caseStudyPage)->meta_title ?? 'Insights')
+@section('meta_title',
+    optional($caseStudyPage)->meta_title ??
+    'Insights | Will Writing & Estate Planning | Sterling
+    Wills')
 @section('meta_description',
+    optional($caseStudyPage)->meta_desc ??
     'Read expert insights on will writing & estate planning from Sterling Wills. Guidance on
     wills, trusts, LPAs, and protecting your legacy.')
 
 @section('content')
 
-    <div class="services" class="text-center">
-        <!-- HERO -->
-        <div class="services" class="text-center">
-            {{-- <video class="bg-video" autoplay muted loop playsinline>
+    <!-- HERO -->
+    <div class="services" class="text-center" style="background-image: url('{{ optional($caseStudyPage)->banner_image }}')">
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+        {{-- <img src="{{ optional($caseStudyPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
+                alt="Sterling Wills & Estate Planning"> --}}
 
-            <!-- Overlay (optional dark mask) -->
-            <div class="mask">
-                <div class="text-white">
-                    <h2 class="mb-3 inner-page-title">Case Study</h2>
-                    <p></p>
-                </div>
+        <!-- Overlay (optional dark mask) -->
+        <div class="mask">
+            <div class="text-white">
+                <h2 class="mb-3 inner-page-title">{{ optional($caseStudyPage)->banner_title }}</h2>
+                <p></p>
             </div>
         </div>
-
-        <!-- MOB HEADER -->
-        @include('layouts.mob_header')
-
     </div>
+
+    <!-- MOB HEADER -->
+    @include('layouts.mob_header')
 
     <section class="section page cmt10 text-center">
         <div class="container">
@@ -39,26 +41,7 @@
 
                         <div class="feature-box flex-fill">
                             <h2 class="text-center ">Overview...</h2>
-                            <p>Welcome to the <b>Sterling Wills Insights</b> hub — your source for expert guidance,
-                                practical advice, and up-to-date information on <b>will writing, estate planning, trusts,
-                                    and lasting powers of attorney.</b> Whether you’re just beginning your planning journey
-                                or reviewing existing arrangements, our insights are designed to help you make informed
-                                decisions with confidence.</p>
-                            <p>
-                                Here you’ll find easy-to-understand articles, guides, and explanations covering key topics
-                                such as preparing a will, understanding estate taxes, choosing the right trust structure,
-                                and knowing when to set up lasting powers of attorney. Our content delivers clarity on
-                                complex legal topics, helping you stay informed about best practices and changes in
-                                legislation that may affect your plans.
-                            </p>
-                            <p>We believe that good estate planning begins with the right knowledge, so our insights are
-                                written with you in mind — practical, relevant, and focused on real-life needs. Each piece
-                                is created to empower you to take the next step with confidence and peace of mind.</p>
-                            <p>
-                                Bookmark this page and check back regularly for fresh updates and expert commentary. At
-                                Sterling Wills, we’re committed not only to providing professional services but also to
-                                equipping you with the understanding you need to protect what matters most.
-                            </p>
+                            {!! optional($caseStudyPage)->page_content !!}
                         </div>
 
                     </div>

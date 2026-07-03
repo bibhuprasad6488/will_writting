@@ -369,6 +369,9 @@ class SettingController extends Controller
     public function ourStory()
     {
         $story = OurStory::find(1);
+        if ($story) {
+            $story->banner_image = $story->banner_image ? asset('storage/images/cmspage/' . $story->banner_image) : '';
+        }
         return view('admin.common.story', compact('story'));
     }
     public function ourStoryStore(Request $request)
@@ -386,6 +389,32 @@ class SettingController extends Controller
             $s->story_desc_two = $request->story_desc_two ? preg_replace('/[^\x20-\x7E]/u', '', $request->story_desc_two) : $s->story_desc_two;
             $s->meta_title = $request->meta_title;
             $s->meta_desc = $request->meta_desc;
+
+
+            // /** Upload Path */
+            $destinationPath = public_path('storage/images/cmspage/');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+
+            // Site Logo
+            if ($request->hasFile('banner_image')) {
+                $file = $request->file('banner_image');
+                $bannerImg = 'story_banner_' . time() . '_' . $file->getClientOriginalName();
+
+
+                if (!empty($s->banner_image)) {
+                    $oldFilePath = $destinationPath . $s->banner_image;
+                    if (file_exists($oldFilePath)) {
+                        unlink($oldFilePath);
+                    }
+                }
+
+                $file->move($destinationPath, $bannerImg);
+                $s->banner_image = $bannerImg;
+            }
+
+
             $s->save();
 
             DB::commit();

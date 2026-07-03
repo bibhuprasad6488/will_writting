@@ -1,31 +1,31 @@
 @extends('layouts.app')
-@section('title', 'Guided Journey')
-@section('meta_title', 'Our Will Writing & Estate Planning Journey | Sterling Wills')
-@section('meta_description', 'Discover The Sterling Wills Journey for will writing & estate planning. A clear, guided
+@section('title', optional($journey)->meta_title ?? 'Guided Journey')
+@section('meta_title', optional($journey)->meta_title ?? 'Our Will Writing & Estate Planning Journey | Sterling Wills')
+@section('meta_description',
+    optional($journey)->meta_desc ??
+    'Discover The Sterling Wills Journey for will writing & estate planning. A clear, guided
     process with expert support from start to finish.')
 
 @section('content')
-    <div class="services" class="text-center">
-        <!-- HERO -->
-        <div class="services" class="text-center">
-            {{-- <video class="bg-video" autoplay muted loop playsinline>
+    <!-- HERO -->
+    <div class="services" class="text-center"style="background-image: url('{{ asset('assets/images/banner_bg.jpg') }}')">
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+        {{-- <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning"> --}}
 
-            <!-- Overlay (optional dark mask) -->
-            <div class="mask">
-                <div class="text-white text-center">
-                    <h2 class="mb-3 inner-page-title">Your Guided Will Experience</h2>
-                    <p><b>Expert support at each step to ensure your wishes are clearly recorded and protected.</b></p>
-                </div>
+        <!-- Overlay (optional dark mask) -->
+        <div class="mask">
+            <div class="text-white text-center">
+                <h2 class="mb-3 inner-page-title">Your Guided Will Experience</h2>
+                <p><b>Expert support at each step to ensure your wishes are clearly recorded and protected.</b></p>
             </div>
         </div>
-
-        <!-- MOB HEADER -->
-        @include('layouts.mob_header')
-
     </div>
+
+    <!-- MOB HEADER -->
+    @include('layouts.mob_header')
+
 
     <section class="section page cm10">
         <div class="container">

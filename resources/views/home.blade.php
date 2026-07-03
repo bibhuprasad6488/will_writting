@@ -139,7 +139,7 @@
                     <div class="testimonial-card">
                         <div class="card p-3 text-center rounded-0">
 
-                            <p class="fs-4"> <i>{{ $t->client_name }} ,{{ $t->client_position }}</i>
+                            <p class="fs-4"> <i>{{ $t->client_name }}, {{ $t->client_position }}</i>
                             </p>
                             <p>{{ $t->testimonial_text }}</p>
                         </div>

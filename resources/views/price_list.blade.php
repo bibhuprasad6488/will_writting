@@ -5,28 +5,27 @@
 
 @section('content')
 
-    <div class="services" class="text-center">
-        <!-- HERO -->
-        <div class="services" class="text-center">
-            {{-- <video class="bg-video" autoplay muted loop playsinline>
+    <!-- HERO -->
+    <div class="services" class="text-center"
+        style="background-image: url('{{ optional($pricingPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}')">
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ optional($pricingPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
-                alt="Sterling Wills & Estate Planning">
+        {{-- <img src="{{ optional($pricingPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
+                alt="Sterling Wills & Estate Planning"> --}}
 
-            <!-- Overlay (optional dark mask) -->
-            <div class="mask">
-                <div class="text-white text-center">
-                    <h2 class="mb-3 banner-title">{{ optional($pricingPage)->banner_title }}</h2>
-                    <h3 class="mb-3 banner-subtitle">{{ optional($pricingPage)->banner_sub_title }}</h3>
-                </div>
+        <!-- Overlay (optional dark mask) -->
+        <div class="mask">
+            <div class="text-white text-center">
+                <h2 class="mb-3 banner-title">{{ optional($pricingPage)->banner_title }}</h2>
+                <h3 class="mb-3 banner-subtitle">{{ optional($pricingPage)->banner_sub_title }}</h3>
             </div>
         </div>
-
-        <!-- MOB HEADER -->
-        @include('layouts.mob_header')
-
     </div>
+
+    <!-- MOB HEADER -->
+    @include('layouts.mob_header')
+
 
     <section class="section page">
         <div class="container">

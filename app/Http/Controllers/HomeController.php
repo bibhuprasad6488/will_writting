@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AllServicePage;
 use App\Models\CaseStudy;
+use App\Models\CmsCaseStudy;
 use App\Models\ContactUsPage;
 use App\Models\GetInTouch;
 use App\Models\GuidedJourney;
@@ -134,7 +135,12 @@ class HomeController extends Controller
         $topics = Topic::where('status', 1)->get();
         $siteSetting = $this->setting;
 
-        return view('blogs', compact('blogs', 'topics', 'search', 'topic', 'siteSetting'));
+        $caseStudyPage = CmsCaseStudy::find(1);
+        if ($caseStudyPage) {
+            $caseStudyPage->banner_image = $caseStudyPage->banner_image ? asset('storage/images/cmspage/' . $caseStudyPage->banner_image) : '';
+        }
+
+        return view('blogs', compact('blogs', 'topics', 'search', 'topic', 'siteSetting', 'caseStudyPage'));
     }
 
 
@@ -324,6 +330,9 @@ class HomeController extends Controller
     public function ourStory()
     {
         $story = OurStory::find(1);
+        if ($story) {
+            $story->banner_image = $story->banner_image ? asset('storage/images/cmspage/' . $story->banner_image) : '';
+        }
         return view('our_story', compact('story'));
     }
     public function witnesses()

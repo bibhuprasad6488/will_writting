@@ -1,16 +1,17 @@
 @extends('layouts.app')
-@section('title', 'Our Story')
+@section('title', $story->meta_title ?? 'Our Story')
 @section('meta_title', $story->meta_title)
 @section('meta_description', $story->meta_desc)
 
 @section('content')
 
     <!-- HERO -->
-    <div class="services text-center position-relative">
+    <div class="services text-center position-relative"
+        style="background-image: url('{{ optional($story)->banner_image ?? asset('assets/images/banner_bg.jpg') }}')">
         {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-        <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+        {{-- <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning"> --}}
 
         <!-- Overlay -->
         <div class="mask d-flex align-items-center justify-content-center">

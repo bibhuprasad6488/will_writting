@@ -1,29 +1,29 @@
 @extends('layouts.app')
-@section('title', 'Witnesses')
-@section('meta_title', 'Will Witnesses Explained | Legal Witness Requirements UK | Sterling Wills')
+@section('title', optional($witness)->meta_title ?? 'Witnesses')
+@section('meta_title', optional($witness)->meta_title ?? 'Will Witnesses Explained | Legal Witness Requirements UK |
+    Sterling Wills')
 @section('meta_description',
+    optional($witness)->meta_desc ??
     'Learn who can legally witness a will in the UK, the rules to follow, and how to avoid
     common mistakes. Clear guidance from Sterling Wills & Estate Planning.')
 
 @section('content')
 
-    <div class="services text-center">
-        <!-- HERO -->
-        <div class="services text-center">
-            {{-- <video class="bg-video" autoplay muted loop playsinline>
+    <!-- HERO -->
+    <div class="services text-center" style="background-image: url('{{ asset('assets/images/banner_bg.jpg') }}')">
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+        {{-- <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning"> --}}
 
-            <div class="mask">
-                <div class="text-white">
-                    <h2 class="mb-3 inner-page-title">Witnesses</h2>
-                </div>
+        <div class="mask">
+            <div class="text-white">
+                <h2 class="mb-3 inner-page-title">Witnesses</h2>
             </div>
         </div>
-
-        @include('layouts.mob_header')
     </div>
+
+    @include('layouts.mob_header')
 
     <!-- INTRO -->
     <section class="py-2 cm10">

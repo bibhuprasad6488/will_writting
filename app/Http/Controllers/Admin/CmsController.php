@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllServicePage;
+use App\Models\CmsCaseStudy;
 use App\Models\ContactUsPage;
 use App\Models\HomePage;
 use App\Models\PricingPage;
@@ -339,6 +340,64 @@ class CmsController extends Controller
                 $startYourWills->banner_image = $startYourWills->banner_image ? asset('storage/images/cmspage/' . $startYourWills->banner_image) : '';
             }
             return view('admin.cmspages.startwills', compact('startYourWills'));
+        }
+    }
+
+    public function caseStudyPage(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'banner_title' => 'required|string',
+                // 'banner_sub_title' => 'required|string',
+                'page_content' => 'required|string',
+                'banner_image' => 'nullable|image|mimes:png,jpg,jpeg,webp',
+            ]);
+
+            DB::beginTransaction();
+            try {
+                $caseStudyPage = CmsCaseStudy::find(1) ?? new CmsCaseStudy();
+                $caseStudyPage->banner_title = $request->banner_title;
+                $caseStudyPage->banner_sub_title = $request->banner_sub_title;
+                $caseStudyPage->meta_title = $request->meta_title;
+                $caseStudyPage->meta_desc = $request->meta_desc;
+                $caseStudyPage->meta_key = $request->meta_key;
+                $caseStudyPage->page_content = $request->page_content ? preg_replace('/[^\x20-\x7E]/u', '', $request->page_content) : '';
+
+                // /** Upload Path */
+                $destinationPath = public_path('storage/images/cmspage/');
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0777, true);
+                }
+
+                if ($request->hasFile('banner_image')) {
+                    $file = $request->file('banner_image');
+                    $imageName = 'asbanner_image_' . time() . '_' . $file->getClientOriginalName();
+
+                    if (!empty($caseStudyPage->banner_image)) {
+                        $oldFilePath = $destinationPath . $caseStudyPage->banner_image;
+                        if (file_exists($oldFilePath)) {
+                            unlink($oldFilePath);
+                        }
+                    }
+
+                    $file->move($destinationPath, $imageName);
+                    $caseStudyPage->banner_image = $imageName;
+                }
+
+                $caseStudyPage->save();
+                DB::commit();
+
+                return back()->with('success', 'Page updated successfully');
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                return back()->with('error', 'Error: ' . $th->getMessage());
+            }
+        } else {
+            $caseStudyPage = CmsCaseStudy::find(1);
+            if ($caseStudyPage) {
+                $caseStudyPage->banner_image = $caseStudyPage->banner_image ? asset('storage/images/cmspage/' . $caseStudyPage->banner_image) : '';
+            }
+            return view('admin.cmspages.casestudy', compact('caseStudyPage'));
         }
     }
 }

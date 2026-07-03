@@ -37,6 +37,48 @@
                     @csrf
 
                     <div class="row mb-3 g-4">
+                        <!-- Name -->
+                        <div class="col-md-12">
+                            <label class="form-label fw-semibold">
+                                Banner Title <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" name="page_title"
+                                value="{{ old('page_title', optional($story)->page_title) }}" placeholder="Enter title"
+                                required>
+                            @error('page_title')
+                                <span class="alert text-danger py-1">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <!-- Banner Upload -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">
+                                Banner Image @if (!isset($story->banner_image))
+                                    <span class="text-danger">*</span>
+                                @endif
+                            </label>
+                            <input type="file" class="form-control" name="banner_image" accept=".jpg,.jpeg,.png,.webp"
+                                onchange="previewImageBanner(event)" @if (!isset($story->banner_image)) required @endif>
+
+                            <small class="text-muted">
+                                Supported formats: JPG, PNG, JPEG, WEBP (Max 2MB)
+                            </small>
+                            @error('banner_image')
+                                <span class="alert text-danger py-1">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <!-- Banner Preview -->
+                        <div class="col-md-6 py-2">
+                            <div class="border rounded p-2 w-100 text-center bg-light">
+                                <img id="imagePreview1"
+                                    @if (isset($story->banner_image)) src="{{ $story->banner_image }}" style="max-height: 120px;max-width:100%;" @else style="max-height: 120px; display: none;max-width:100%;" @endif
+                                    alt="Banner Preview" style="max-height: 120px; display: none;">
+                                <div class="text-muted small mt-2">
+                                    Banner Preview
+                                </div>
+                            </div>
+                        </div>
                         <!-- Description -->
                         <div class="col-md-12">
                             <label class="form-label fw-semibold">
@@ -156,5 +198,19 @@
                 height: 300
             });
         });
+
+        function previewImageBanner(event) {
+            const input = event.target;
+            const preview = document.getElementById('imagePreview1');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endpush

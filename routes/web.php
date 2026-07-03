@@ -73,6 +73,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::any('/pricing-page-cms', [CmsController::class, 'pricingPage'])->name('pricing-page-cms');
         Route::any('/all-service-page-cms', [CmsController::class, 'allServicePage'])->name('all-service-page-cms');
         Route::any('/start-wills-page-cms', [CmsController::class, 'startYourWills'])->name('start-wills-page-cms');
+        Route::any('/case-study-page-cms', [CmsController::class, 'caseStudyPage'])->name('case-study-page-cms');
 
         // Partners
         Route::resource('partners', PartnerController::class)->names('partners');

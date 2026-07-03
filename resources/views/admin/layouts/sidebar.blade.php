@@ -23,7 +23,7 @@
                     CMS Management
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.privacy.policy', 'admin.term.business', 'admin.our.story', 'admin.guided.journey', 'admin.protect', 'admin.witnesses', 'admin.contact-us-page', 'admin.home-page-cms', 'admin.pricing-page-cms', 'admin.all-service-page-cms', 'admin.start-wills-page-cms']) ? 'show' : '' }}"
+                <div class="collapse {{ request()->routeIs(['admin.partners.*', 'admin.testimonials.*', 'admin.privacy.policy', 'admin.term.business', 'admin.our.story', 'admin.guided.journey', 'admin.protect', 'admin.witnesses', 'admin.contact-us-page', 'admin.home-page-cms', 'admin.pricing-page-cms', 'admin.all-service-page-cms', 'admin.start-wills-page-cms', 'admin.case-study-page-cms']) ? 'show' : '' }}"
                     id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ request()->routeIs(['admin.home-page-cms']) ? 'active' : '' }}"
@@ -36,6 +36,8 @@
                             href="{{ route('admin.all-service-page-cms') }}">All Services Page</a>
                         <a class="nav-link {{ request()->routeIs(['admin.start-wills-page-cms']) ? 'active' : '' }}"
                             href="{{ route('admin.start-wills-page-cms') }}">Start Wills Page</a>
+                        <a class="nav-link {{ request()->routeIs(['admin.case-study-page-cms']) ? 'active' : '' }}"
+                            href="{{ route('admin.case-study-page-cms') }}">Case Study Page</a>
                         <a class="nav-link {{ request()->routeIs(['admin.partners.*']) ? 'active' : '' }}"
                             href="{{ route('admin.partners.index') }}">Partners List</a>
                         <a class="nav-link {{ request()->routeIs(['admin.testimonials.*']) ? 'active' : '' }}"

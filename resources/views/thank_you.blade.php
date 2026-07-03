@@ -3,27 +3,25 @@
 
 @section('content')
 
-    <div class="services" class="text-center">
-        <!-- HERO -->
-        <div class="services" class="text-center">
-            {{-- <video class="bg-video" autoplay muted loop playsinline>
+    <!-- HERO -->
+    <div class="services" class="text-center" style="background-image: url('{{ asset('assets/images/banner_bg.jpg') }}')">
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning">
+        {{-- <img src="{{ asset('assets/images/banner_bg.jpg') }}" class="bg-video" alt="Sterling Wills & Estate Planning"> --}}
 
-            <!-- Overlay (optional dark mask) -->
-            <div class="mask">
-                <div class="text-white">
-                    <h2 class="mb-3 inner-page-title">Thank You</h2>
-                    <p></p>
-                </div>
+        <!-- Overlay (optional dark mask) -->
+        <div class="mask">
+            <div class="text-white">
+                <h2 class="mb-3 inner-page-title">Thank You</h2>
+                <p></p>
             </div>
         </div>
-
-        <!-- MOB HEADER -->
-        @include('layouts.mob_header')
-
     </div>
+
+    <!-- MOB HEADER -->
+    @include('layouts.mob_header')
+
     <section class="py-5 bg-light d-flex align-items-center">
         <div class="container text-center">
 

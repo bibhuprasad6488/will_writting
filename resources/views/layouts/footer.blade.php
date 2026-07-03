@@ -52,7 +52,7 @@
                     @foreach ($services as $s)
                         <li>
                             <a href="{{ route('service.details', $s->slug) }}">
-                                {{ strtolower($s->name) }}
+                                {{ $s->name }}
                             </a>
                         </li>
                     @endforeach

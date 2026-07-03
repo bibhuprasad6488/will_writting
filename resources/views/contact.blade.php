@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Contact Us')
+@section('title', optional($contactPage)->meta_title ?? 'Contact Us')
 @section('meta_title', optional($contactPage)->meta_title ?? 'Contact Sterling Wills | Will Writing & Estate Planning')
 @section('meta_description',
     optional($contactPage)->meta_desc ??
@@ -8,28 +8,26 @@
 
 @section('content')
 
-    <div class="services" class="text-center">
-        <!-- HERO -->
-        <div class="services" class="text-center">
-            {{-- <video class="bg-video" autoplay muted loop playsinline>
+    <!-- HERO -->
+    <div class="services" class="text-center"
+        style="background-image: url('{{ optional($contactPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}')">
+        {{-- <video class="bg-video" autoplay muted loop playsinline>
             <source src="{{ asset('assets/videos/intro.mp4') }}" type="video/mp4">
         </video> --}}
-            <img src="{{ optional($contactPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
-                alt="Sterling Wills & Estate Planning">
+        {{-- <img src="{{ optional($contactPage)->banner_image ?? asset('assets/images/banner_bg.jpg') }}" class="bg-video"
+                alt="Sterling Wills & Estate Planning"> --}}
 
-            <!-- Overlay (optional dark mask) -->
-            <div class="mask">
-                <div class="text-white">
-                    <h2 class="mb-3 inner-page-title">{{ optional($contactPage)->page_title }}</h2>
-                    <p></p>
-                </div>
+        <!-- Overlay (optional dark mask) -->
+        <div class="mask">
+            <div class="text-white">
+                <h2 class="mb-3 inner-page-title">{{ optional($contactPage)->page_title }}</h2>
+                <p></p>
             </div>
         </div>
-
-        <!-- MOB HEADER -->
-        @include('layouts.mob_header')
-
     </div>
+
+    <!-- MOB HEADER -->
+    @include('layouts.mob_header')
 
     <section class=" py-4 cm10">
         <div class="container">
@@ -141,7 +139,7 @@
                 <!-- Right: Image -->
                 <div class="col-md-6 text-center">
                     <img src="{{ optional($contactPage)->c_img ?? asset('assets/images/consultation.png') }}"
-                        alt="Consultation" class="img-fluid rounded-3 shadow-sm d-none d-md-block">
+                        alt="Consultation" class="img-fluid rounded-3 shadow-sm ">
                 </div>
 
             </div>
