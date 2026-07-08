@@ -12,7 +12,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') @if ($siteSetting)| {{ $siteSetting->site_title }}
+    <title>@yield('title') @if ($siteSetting)
+            | {{ $siteSetting->site_title }}
         @endif
     </title>
     <meta name="title" content="@yield('meta_title', '')">
@@ -140,6 +141,10 @@
 
         </div>
     </div>
+
+    <button id="backToTop" title="Back to Top">
+        ↑
+    </button>
     @include('layouts.footer')
 
     <!-- jQuery FIRST -->
@@ -152,6 +157,26 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = 'block';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
     <script>
         window.onload = function() {
             let alert = document.getElementById('success-alert');
