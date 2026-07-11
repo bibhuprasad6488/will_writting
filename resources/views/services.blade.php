@@ -73,7 +73,7 @@
                 @foreach ($services as $service)
                     <div class="col-md-4 px-5 py-4">
                         <div class="card service-card h-100 text-center rounded-0">
-                            <img src="{{ $service->service_image }}" class="card-img-top">
+                            <img src="{{ $service->service_image }}" class="card-img-top" alt="{{ $service->name }}">
                             <div class="card-body text-center">
                                 <h5 class="service-title">
                                     {{ $service->name }}

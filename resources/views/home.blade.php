@@ -18,7 +18,7 @@
         <div class="mask">
             <div class="text-white">
                 <h1 class="mt-5 banner-title">{{ optional($home_page_data)->banner_title }}</h1>
-                <h4 class="my-4 banner-subtitle">{{ optional($home_page_data)->banner_sub_title }}</h4>
+                <h2 class="my-4 banner-subtitle">{{ optional($home_page_data)->banner_sub_title }}</h2>
 
                 <a class="btn btn-light btn-lg m-2 rounded-0" href="{{ route('journey') }}"
                     role="button">{{ optional($home_page_data)->banner_btn_one_text }}</a>
@@ -67,11 +67,11 @@
                 @foreach ($services as $service)
                     <div class="col-md-4 px-5 py-4">
                         <div class="card service-card h-100 text-center rounded-0">
-                            <img src="{{ $service->service_image }}" class="card-img-top">
+                            <img src="{{ $service->service_image }}" class="card-img-top" alt="{{ $service->name }}">
                             <div class="card-body text-center">
-                                <h5 class="service-title">
+                                <h2 class="service-title">
                                     {{ $service->name }}
-                                </h5>
+                                </h2>
 
                                 <div class="service-divider"></div>
 

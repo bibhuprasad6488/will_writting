@@ -59,7 +59,9 @@
 </script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @if (config('database.connections.mysql.username') === 'root')
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @endif
 </head>
 
 <body>

@@ -21,7 +21,7 @@
             <!-- Column 2: Services -->
             <div class="col-md-3 col-xs-12 mb-4 mb-md-0 ">
                 <div class="footer_2nd">
-                    <h6 class="footer-title">Quick Links</h6>
+                    <h2 class="footer-title">Quick Links</h2>
                     <ul class="footer-links">
                         <li>
                             <a href="{{ route('home') }}">Home</a>
@@ -47,7 +47,7 @@
 
             <!-- Column 2: Services -->
             <div class="col-md-3 col-xs-12 mb-4 mb-md-0">
-                <h6 class="footer-title">Services</h6>
+                <h2 class="footer-title">Services</h2>
                 <ul class="footer-links">
                     @foreach ($services as $s)
                         <li>
@@ -61,7 +61,7 @@
 
             <div class="col-md-3 col-xs-12 mb-4 mb-md-0">
 
-                <h6 class="footer-title">Accreditations</h6>
+                <h2 class="footer-title">Accreditations</h2>
                 <!-- Row 1: Compliance logos -->
                 <div class="footer-logos mb-4">
                     <div class="logo-box">
